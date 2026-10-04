@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <g fill="none" stroke="#181716" stroke-width="1.2">
+    <!-- Artisanal Shoemaker Awl & Last Geometric Crest -->
+    <path d="M 40 18 L 40 62" stroke-linecap="round"/>
+    <circle cx="40" cy="18" r="3" fill="#181716"/>
+    <path d="M 28 32 C 34 26, 46 26, 52 32 C 46 42, 34 42, 28 32 Z" stroke-width="1.1"/>
+    <path d="M 33 48 L 47 48" stroke-width="1"/>
+    <circle cx="40" cy="40" r="18" stroke="#8C5338" stroke-dasharray="1.5 2.5" stroke-width="0.8"/>
+  </g>
+  <!-- Brand Typography -->
+  <text x="76" y="38" font-family="'EB Garamond', 'Cormorant Garamond', Georgia, serif" font-size="20" letter-spacing="4.5" fill="#181716" font-weight="500">MĀHIKAR</text>
+  <text x="76" y="52" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="8.5" letter-spacing="3" fill="#756E65" font-weight="500">ATELIER &amp; MANUFACTURE • LAHORE</text>
+  <text x="76" y="64" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="7" letter-spacing="2.2" fill="#8C5338" font-weight="600">GOODYEAR WELTED BESPOKE</text>
+</svg>
