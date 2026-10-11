@@ -62,7 +62,7 @@ function SpecimenCard({ specimen }: { specimen: PortfolioSpecimen }) {
 
           <div className="pt-2">
             <h3 className="type-label-sm uppercase tracking-wider text-secondary font-semibold mb-1">
-              Bespoke &amp; Private Label Customization:
+              Customisation:
             </h3>
             <p className="type-body-sm text-on-surface-variant leading-normal">{customizationNote}</p>
           </div>
@@ -124,7 +124,7 @@ export function PortfolioCatalog() {
           <div className="hidden xl:flex items-center gap-3 px-3 py-1 bg-surface text-on-surface-variant">
             <Icon name="tune" className="text-[16px] text-secondary" />
             <span className="type-label-sm uppercase tracking-widest">
-              Institutional Specimen Standard • Non-Retail
+              Made to Order • Non-Retail
             </span>
           </div>
         </div>

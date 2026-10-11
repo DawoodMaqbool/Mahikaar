@@ -1,7 +1,7 @@
 import {
   ContactDetails,
   InstitutionalCommitments,
-  TanneryLineage,
+  MaterialOptions,
 } from "@/components/contact/ContactBlocks";
 
 export function QuoteSidebar() {
@@ -9,7 +9,7 @@ export function QuoteSidebar() {
     <aside className="lg:col-span-4 space-y-8">
       <InstitutionalCommitments />
       <ContactDetails />
-      <TanneryLineage />
+      <MaterialOptions />
     </aside>
   );
 }

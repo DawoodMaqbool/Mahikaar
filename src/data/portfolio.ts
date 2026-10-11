@@ -35,7 +35,7 @@ export const portfolioFilters: PortfolioFilter[] = [
 ];
 
 export const customizationNote =
-  "Available in 18+ leathers, custom last widths (D to EE), brass toe taps, closed-channel leather soles or studded rubber. Custom private label branding available.";
+  "Leather, colour, sole options, and branding can be tailored to your brief. Availability and any additional costs are confirmed before an order is finalised.";
 
 export const portfolioSpecimens: PortfolioSpecimen[] = [
   {
@@ -44,18 +44,18 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Empress Cap-Toe Oxford",
     last: "Last No. 042 — Classic Almond",
     image: "/images/products/cap-toe-oxford.jpg",
-    alt: "Cognac museum calf cap-toe oxford resting on a travertine plinth",
+    alt: "Cognac calf leather cap-toe oxford resting on a travertine plinth",
     construction: "Hand-Welted Goodyear 270°",
-    materials: "Cognac Museum Calf • Oak Bark Soles",
+    materials: "Cognac Calf • Leather Sole",
     description:
-      "Sculpted on our definitive St. James silhouette with tight arch support, hand-pitched heels, and micro-skived quarter seams. Tanned in Tuscany; finished with botanical waxes in our Lahore workshops.",
+      "A classic almond silhouette with tight arch support, hand-pitched heels, and neatly skived quarter seams. Finished by hand in Lahore.",
     specs: [
-      { label: "Upper Tannery", value: "Ilcea Tannery, Italy" },
-      { label: "Sole Specification", value: "J. & F.J. Baker 9-Iron Oak Bark" },
-      { label: "Minimum Order Tolerance", value: "12 Pairs / Last Gradient" },
+      { label: "Upper", value: "Calf leather, colour to specification" },
+      { label: "Sole", value: "Leather sole" },
+      { label: "Minimum Order", value: "12 Pairs per Style" },
     ],
     reference: "MKR-OX-042",
-    leadTime: "5–7 Weeks",
+    leadTime: "4–8 Weeks",
   },
   {
     number: "02",
@@ -63,18 +63,18 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Gulberg Penny Loafer",
     last: "Last No. 104 — Round Curvature",
     image: "/images/products/penny-loafer.png",
-    alt: "The Gulberg Penny Loafer in Deep Espresso Box Calf with Bevelled Waist and Brass Flush Toe Plate",
+    alt: "The Gulberg Penny Loafer in deep espresso calf leather with bevelled waist and brass flush toe plate",
     construction: "Hand-Welted 360° • Fiddleback",
-    materials: "Deep Espresso Box Calf • Bevelled Waist",
+    materials: "Deep Espresso Calf • Bevelled Waist",
     description:
-      "Features an articulated hand-stitched apron (pie crust technique) and a sunk flush brass toe protection plate. Zero-slip heel cup geometry engineered for unlined sockless comfort or formal dress.",
+      "Features an articulated hand-stitched apron (pie crust technique) and a sunk flush brass toe protection plate. Heel cup shaped for comfortable sockless wear or formal dress.",
     specs: [
-      { label: "Upper Tannery", value: "Tanneries du Puy, France" },
-      { label: "Sole Specification", value: "Vegetable-Tanned Rendenbach Sole" },
+      { label: "Upper", value: "Calf leather, colour to specification" },
+      { label: "Sole", value: "Leather sole" },
       { label: "Hardware Accent", value: "Milled Solid Brass Toe Cleat" },
     ],
     reference: "MKR-LF-104",
-    leadTime: "4–6 Weeks",
+    leadTime: "4–8 Weeks",
   },
   {
     number: "03",
@@ -82,18 +82,18 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Shalimar Full Brogue Wingtip",
     last: "Last No. 088 — Soft Chisel",
     image: "/images/products/full-brogue-wingtip.png",
-    alt: "The Shalimar Full Brogue Wingtip in Burgundy Cordovan with intricate medallion punch work on stone workbench",
+    alt: "The Shalimar Full Brogue Wingtip in burgundy leather with intricate medallion punch work on stone workbench",
     construction: "Hand-Welted Goodyear 360°",
-    materials: "Burgundy Cordovan • Medallion Punch",
+    materials: "Burgundy Leather • Medallion Punch",
     description:
-      "Archival Lahori perforated gimping executed with hand-filed steel dies. Triple-layer water-resistant storm welting combined with high-sheen hand-glazed shell cordovan quarters.",
+      "Traditional perforated gimping and medallion toe punching, paired with storm welt construction and a hand-burnished burgundy finish.",
     specs: [
-      { label: "Upper Shell", value: "Horween Genuine Shell Cordovan #8" },
+      { label: "Upper", value: "Burgundy leather, finish to specification" },
       { label: "Welting Profile", value: "360° Reverse Storm Welt with Wheel" },
-      { label: "Edge Finish", value: "Carnauba Iron-Burnished Chestnut" },
+      { label: "Edge Finish", value: "Burnished edge, colour to specification" },
     ],
     reference: "MKR-BR-088",
-    leadTime: "6–8 Weeks",
+    leadTime: "4–8 Weeks",
   },
   {
     number: "04",
@@ -101,18 +101,18 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Mall Road Chelsea Boot",
     last: "Last No. 119 — Tapered High-Instep",
     image: "/images/products/chelsea-boot.png",
-    alt: "The Mall Road Chelsea Boot in Dark Chocolate Reverse Suede on raw limestone pedestal",
+    alt: "The Mall Road Chelsea Boot in dark chocolate suede on raw limestone pedestal",
     construction: "Hand-Blocked Wholecut • 270° Welt",
-    materials: "Dark Chocolate Reverse Suede • Vibram or Leather",
+    materials: "Dark Chocolate Suede • Rubber or Leather Sole",
     description:
-      "Single-piece upper blocking over wet wooden lasts ensuring a seamless wrap along the ankles. Reinforced twin elastic webbing from Milan with hand-looped woven webbing pull-tabs.",
+      "Single-piece upper blocked for a seamless wrap along the ankle, with elastic side gussets and hand-looped woven pull tabs.",
     specs: [
-      { label: "Upper Suede", value: "C.F. Stead Waxy Commander, Leeds" },
-      { label: "Outsole Options", value: "Vibram Commando or Baker Oak Bark" },
-      { label: "Structure", value: "Artisan Wet-Crimped Single Piece" },
+      { label: "Upper", value: "Suede, colour to specification" },
+      { label: "Outsole Options", value: "Rubber or leather, per design" },
+      { label: "Structure", value: "Single-piece blocked upper" },
     ],
     reference: "MKR-BT-119",
-    leadTime: "5–7 Weeks",
+    leadTime: "4–8 Weeks",
   },
   {
     number: "05",
@@ -121,17 +121,17 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     last: "Last No. 073 — Sharp Chisel",
     image: "/images/products/adelaide-oxford.jpg",
     alt: "Antique chestnut Adelaide oxford with U-throat broguing on a vintage workbench",
-    construction: "Hand-Welted Rapid Stitch",
+    construction: "Hand-Welted Goodyear",
     materials: "Antique Chestnut Hand-Patina • Chiseled Toe",
     description:
-      "Distinguished by its seamless U-throat brogue framing and layered alcohol-dye burnishing applied by master colourists in our walled city studio. Hand-chamfered fiddleback waist.",
+      "Distinguished by its seamless U-throat brogue framing and a layered, hand-applied patina finish. Hand-chamfered fiddleback waist.",
     specs: [
-      { label: "Upper Tannery", value: "Haas Crust Calf, Alsace" },
+      { label: "Upper", value: "Calf leather, patina to specification" },
       { label: "Waist Construction", value: "Concealed Fiddleback with Brass Pegs" },
-      { label: "Finishing Method", value: "Triple Glaze Bone Glacage" },
+      { label: "Finishing Method", value: "Hand-applied layered finish" },
     ],
     reference: "MKR-AD-073",
-    leadTime: "5–7 Weeks",
+    leadTime: "4–8 Weeks",
   },
   {
     number: "06",
@@ -139,17 +139,17 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Nomad Chukka Boot",
     last: "Last No. 095 — Anatomical Round",
     image: "/images/products/chukka-boot.jpg",
-    alt: "Snuff suede two-eyelet chukka boot on a Dainite rubber sole",
+    alt: "Snuff suede two-eyelet chukka boot on a studded rubber sole",
     construction: "Hand-Welted Goodyear 360°",
-    materials: "Snuff Suede • Dainite Studded Sole",
+    materials: "Snuff Suede • Studded Rubber Sole",
     description:
-      "Designed for trans-continental travel with dual brass blind eyelets, vegetable-tanned full-calf lining, and authentic British Dainite studded rubber outsoles for severe conditions.",
+      "Designed for travel, with dual brass blind eyelets, a leather lining, and a studded rubber outsole option for varied conditions.",
     specs: [
-      { label: "Upper Suede", value: "C.F. Stead Repello Suede, England" },
-      { label: "Sole Specification", value: "Authentic British Dainite Studded Rubber" },
+      { label: "Upper", value: "Suede, colour to specification" },
+      { label: "Sole", value: "Studded rubber sole option" },
       { label: "Heel Counter", value: "Form-Pressed Solid Leather Stiffener" },
     ],
     reference: "MKR-CK-095",
-    leadTime: "4–6 Weeks",
+    leadTime: "4–8 Weeks",
   },
 ];

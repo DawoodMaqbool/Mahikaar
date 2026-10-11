@@ -8,7 +8,7 @@ import { PortfolioIntro } from "@/components/portfolio/PortfolioIntro";
 export const metadata: Metadata = {
   title: "Footwear Portfolio",
   description:
-    "Made-to-order Goodyear welted specimens (oxfords, loafers, brogues and boots) available for private-label commissioning.",
+    "Reference styles in made-to-order Goodyear welted footwear (oxfords, loafers, brogues and boots) for private-label commissioning. Materials and customisation confirmed per project.",
 };
 
 export default function PortfolioPage() {

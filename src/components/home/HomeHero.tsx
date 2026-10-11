@@ -4,10 +4,10 @@ import { Icon } from "@/components/ui/Icon";
 import { routes } from "@/lib/site";
 
 const credo = [
-  { label: "Standard", value: "360° Hand-Welted & Goodyear" },
-  { label: "Provenance", value: "Tuscan & French Box Calf" },
-  { label: "B2B Volume", value: "Boutique Small Batch & Scale" },
-  { label: "Manufacture", value: "Lahore Guild Quarter" },
+  { label: "Standard", value: "Goodyear Welted, Made by Hand" },
+  { label: "Provenance", value: "Local Leather Suppliers" },
+  { label: "Minimum Order", value: "12 Pairs per Style" },
+  { label: "Manufacture", value: "Lahore, Pakistan" },
 ];
 
 const badgeBase = "px-3.5 py-1.5 type-label-sm uppercase tracking-[0.2em]";
@@ -32,13 +32,13 @@ export function HomeHero() {
       <div className="relative w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-36 pb-24 lg:pt-44 lg:pb-32 flex flex-col justify-between min-h-[90vh]">
         <div className="flex flex-wrap items-center gap-3 mb-10">
           <span className={`${badgeBase} bg-surface/10 backdrop-blur-md text-surface border border-surface/20`}>
-            Lahore Historic Craft Guild
+            Lahore, Pakistan
           </span>
           <span className={`${badgeBase} bg-surface/10 backdrop-blur-md text-secondary-container border border-secondary-container/30`}>
-            Institutional B2B Shoemaker
+            Premium B2B Footwear
           </span>
           <span className={`${badgeBase} hidden sm:inline-flex bg-surface/5 backdrop-blur-xs text-surface-variant`}>
-            Archival Last Vault AT-01 / AT-94
+            Made to Order
           </span>
         </div>
 
@@ -48,9 +48,9 @@ export function HomeHero() {
             <span className="italic font-normal text-secondary-fixed">Made for Your Brand.</span>
           </h1>
           <p className="type-body-lg text-surface-container max-w-2xl leading-relaxed font-light">
-            Handcrafted, made-to-order leather footwear for international brands, heritage
-            boutiques, and discerning private labels. Synthesized with master artisans in Lahore,
-            Pakistan under British &amp; Continental bespoke tolerances.
+            Made-to-order leather footwear for international brands, heritage boutiques, and
+            discerning private labels. Constructed by hand in our Lahore, Pakistan
+            atelier, with materials and branding tailored to your requirements.
           </p>
         </div>
 
@@ -60,14 +60,14 @@ export function HomeHero() {
               href={routes.quote}
               className="px-8 py-4 bg-surface text-primary type-label-md uppercase tracking-[0.2em] hover:bg-secondary-fixed hover:text-primary transition-all duration-200 shadow-xl inline-flex items-center gap-3 group"
             >
-              <span>Request a Quotation Dossier</span>
+              <span>Request a Quote</span>
               <Icon name="arrow_forward" className="text-[16px] group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
               href="#specimens"
               className="px-7 py-4 bg-transparent text-surface hover:text-secondary-fixed type-label-md uppercase tracking-[0.2em] border border-surface/30 hover:border-secondary-fixed transition-all duration-200 backdrop-blur-xs"
             >
-              Explore Footwear Specimens
+              Explore Footwear Styles
             </a>
           </div>
 

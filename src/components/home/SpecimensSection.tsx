@@ -21,45 +21,45 @@ const specimens: Specimen[] = [
     number: "01",
     last: "AT-084 (Almond)",
     image: "/images/atelier/workshop-cap-toe-oxford.png",
-    alt: "The Belgrave Cap-Toe Oxford in Antique Cognac Museum Calf",
+    alt: "The Belgrave Cap-Toe Oxford in antique cognac calf leather",
     tags: ["Goodyear Welted 270°", "Hand-Stitched Cap"],
     name: "The Belgrave Oxford",
     description:
-      "Antique cognac museum calf, hand-bevelled waist, closed-channel oak bark sole with recessed brass toe plate.",
-    leadTime: "5 Wks",
+      "Antique cognac calf leather, hand-bevelled waist, leather sole with recessed brass toe plate.",
+    leadTime: "4–8 Wks",
   },
   {
     number: "02",
     last: "AT-062 (Round)",
     image: "/images/products/penny-loafer.png",
-    alt: "The Montgomery Penny Loafer in Espresso French Box Calf on stone pedestal",
+    alt: "The Montgomery Penny Loafer in espresso calf leather on stone pedestal",
     tags: ["Hand-Sewn Apron", "Brass Toe Tap"],
     name: "The Montgomery Penny Loafer",
     description:
-      "Espresso French box calfskin, flush brass architectural toe reinforcement, vegetable-tanned stacked leather heel.",
-    leadTime: "4 Wks",
+      "Espresso calf leather, flush brass toe reinforcement, stacked leather heel.",
+    leadTime: "4–8 Wks",
   },
   {
     number: "03",
     last: "AT-091 (Soft Chisel)",
     image: "/images/products/full-brogue-wingtip.png",
-    alt: "The Anarkali Full Brogue Wingtip in Burgundy Cordovan",
+    alt: "The Anarkali Full Brogue Wingtip in burgundy leather",
     tags: ["Norwegian Storm Welt", "Hand Medallion"],
     name: "The Anarkali Full Brogue",
     description:
-      "Hand-patinated burgundy cordovan, traditional gimping and intricate toe punching, triple leather water-resistant sole.",
-    leadTime: "6 Wks",
+      "Burgundy leather, traditional gimping and intricate toe punching, storm welt construction.",
+    leadTime: "4–8 Wks",
   },
   {
     number: "04",
     last: "AT-075 (Boot Chisel)",
     image: "/images/products/chelsea-boot.png",
-    alt: "The Ravi Wholecut Chelsea Boot in Dark Chocolate Reverse Suede",
+    alt: "The Ravi Wholecut Chelsea Boot in dark chocolate suede",
     tags: ["Hand-Blocked Single Cut", "Fiddleback Waist"],
     name: "The Ravi Chelsea Boot",
     description:
-      "Dark chocolate reverse waxed suede, seamless one-piece blocked upper, woven pull loops, hand-sculpted waist profile.",
-    leadTime: "5 Wks",
+      "Dark chocolate suede, seamless one-piece blocked upper, woven pull loops, hand-sculpted waist profile.",
+    leadTime: "4–8 Wks",
   },
 ];
 
@@ -104,13 +104,13 @@ function SpecimenCard({ specimen }: { specimen: Specimen }) {
 
       <div className="px-6 pb-6 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
         <span className="type-label-sm uppercase tracking-wider text-outline">
-          Lead Time: {specimen.leadTime}
+          Bulk Lead Time: {specimen.leadTime}
         </span>
         <Link
           href={routes.quote}
           className="type-label-sm uppercase tracking-widest text-secondary hover:text-on-surface font-semibold inline-flex items-center gap-1"
         >
-          Spec Inquest →<span className="sr-only"> for {specimen.name}</span>
+          Enquire →<span className="sr-only"> for {specimen.name}</span>
         </Link>
       </div>
     </article>
@@ -123,14 +123,14 @@ export function SpecimensSection() {
       <Container>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <Eyebrow className="mb-3">Atelier Catalog</Eyebrow>
+            <Eyebrow className="mb-3">Footwear Styles</Eyebrow>
             <h2 className="type-headline-lg text-on-surface tracking-tight">
-              Curated Manufacturing Specimens
+              Curated Footwear Styles
             </h2>
             <p className="type-body-md text-on-surface-variant max-w-xl mt-2">
-              Archetypal lasts, constructions, and silhouette profiles available for custom
-              private-label production. All articles are produced made-to-order to your brand
-              specifications.
+              Reference styles for custom private-label production. All articles are made to order;
+              materials, colours, and customisation are confirmed with you before an order is
+              finalised.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -138,7 +138,7 @@ export function SpecimensSection() {
               href={routes.portfolio}
               className="px-5 py-2.5 bg-surface-container text-on-surface type-label-md uppercase tracking-[0.16em] hover:bg-primary hover:text-surface transition-colors border border-outline-variant/40"
             >
-              View Complete Archival Matrix →
+              View Full Portfolio →
             </Link>
           </div>
         </div>
@@ -153,17 +153,17 @@ export function SpecimensSection() {
           <div className="flex items-start gap-3">
             <Icon name="info" className="text-secondary text-xl" />
             <p className="type-body-sm text-on-surface-variant">
-              <strong className="text-on-surface font-medium">B2B Customization Protocol:</strong>{" "}
-              All articles shown above represent reference archetypes. We engineer custom bespoke
-              lasts, proprietary pattern alterations, private blind-embossed sockliners, and
-              distinctive sole stampings for every commissioning partner.
+              <strong className="text-on-surface font-medium">B2B Customisation:</strong>{" "}
+              The styles shown are reference designs. Agreed customisation, such as pattern
+              adjustments, branded insoles, and sole markings, can be discussed for each project,
+              with feasibility and any additional costs confirmed before an order is finalised.
             </p>
           </div>
           <Link
             href={routes.privateLabel}
             className="whitespace-nowrap type-label-sm uppercase tracking-[0.16em] text-primary hover:text-secondary font-semibold"
           >
-            Review Tolerances →
+            Private Label →
           </Link>
         </aside>
       </Container>

@@ -3,17 +3,17 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Icon } from "@/components/ui/Icon";
 
 const qualityMatrix = [
-  { term: "180+ Steps", detail: "Individual hand operations per pair", icon: "pan_tool" },
-  { term: "10 SPI", detail: "Stitches Per Inch welt seam density", icon: "straighten" },
-  { term: "Vegetable-Tanned", detail: "Bespoke oak-bark outsoles & brass heel taps", icon: "layers" },
-  { term: "100% Real Cork", detail: "Zero synthetic paste or EVA cavity fillers", icon: "eco" },
+  { term: "Hand-Constructed", detail: "Construction carried out by hand throughout", icon: "pan_tool" },
+  { term: "Goodyear Welted", detail: "Resolable construction built for long wear", icon: "straighten" },
+  { term: "Material Selection", detail: "Leathers and finishes discussed per project", icon: "layers" },
+  { term: "Client Branding", detail: "Agreed branding and customisation options", icon: "eco" },
 ];
 
 const metrics = [
-  { value: "30–45 Days", label: "Sampling Turnaround" },
-  { value: "12 Pairs", label: "Low-Volume Trial MOQ" },
-  { value: "Grade-A", label: "European & Local Traceability" },
-  { value: "FOB / CIF", label: "Global Express Freight" },
+  { value: "12 Pairs", label: "Minimum Order per Style" },
+  { value: "2–4 Weeks", label: "Custom Prototype" },
+  { value: "4–8 Weeks", label: "Bulk Production" },
+  { value: "Made to Order", label: "Lahore, Pakistan" },
 ];
 
 type ProvenanceSectionProps = {
@@ -26,35 +26,33 @@ export function ProvenanceSection({ headingLevel: Heading = "h2" }: ProvenanceSe
     <section className="w-full bg-surface py-20 lg:py-32 border-b border-outline-variant/30">
       <Container>
         <Eyebrow rule="long" className="mb-8">
-          Institutional Provenance
+          About Mahikaar
         </Eyebrow>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-7 space-y-6">
             <Heading className="type-headline-lg text-on-surface tracking-tight leading-[1.15]">
-              Traditional Shoemaking Reimagined for Discerning Global Houses.
+              Premium Made-to-Order Footwear for Discerning Brands.
             </Heading>
             <p className="type-body-lg text-on-surface-variant leading-relaxed">
-              Māhikar Atelier operates at the quiet axis where historic Punjabi cordwaining
-              converges with the architectural precision of British and Continental bespoke
-              shoemaking. Founded in Lahore to serve bespoke clothiers, luxury boutiques, and
-              independent labels worldwide, our workshop eliminates the friction between heritage
-              craft and commercial export reliability.
+              Mahikaar is a Lahore-based business offering premium, made-to-order Goodyear welted
+              footwear to B2B buyers. Drawing on a local leather sourcing network, we work with you
+              on your specifications, materials, and branding in our Lahore atelier, with clear
+              communication at every step.
             </p>
             <p className="type-body-md text-outline leading-relaxed">
-              Every specimen leaving our guild enclave undergoes strict orthographic inspection. We
-              preserve centuries-old hand-skiving, hand-welting, and glass-burnished sole
-              treatments, offering our international brand partners unmatched structural integrity
-              and timeless proportion.
+              Construction is carried out by hand throughout. Each order is made to the agreed
+              specification, with materials, finishes, and customisation options discussed and
+              confirmed before production begins.
             </p>
           </div>
 
           <div className="lg:col-span-5 bg-surface-container-low p-8 lg:p-10 border border-outline-variant/40 shadow-xs relative">
             <div className="absolute -top-3 left-8 px-3 py-0.5 bg-secondary text-surface type-label-sm uppercase tracking-widest">
-              Craft Tolerances
+              Craft Details
             </div>
             <h3 className="type-label-md uppercase tracking-[0.2em] text-on-surface mb-6">
-              Institutional Quality Matrix
+              What Defines Our Footwear
             </h3>
             <dl className="space-y-6 divide-y divide-outline-variant/40">
               {qualityMatrix.map((item, index) => (

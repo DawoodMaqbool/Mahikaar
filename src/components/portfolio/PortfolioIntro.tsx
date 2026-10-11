@@ -1,9 +1,9 @@
 import { Container } from "@/components/ui/Container";
 
 const counters = [
-  { value: "240+", label: "Artisanal Hours/Pair" },
-  { value: "18+", label: "Tannery Stocks" },
-  { value: "D–EE", label: "Bespoke Fit Tolerances" },
+  { value: "12 Pairs", label: "Minimum per Style" },
+  { value: "UK 6–12", label: "Standard Size Run" },
+  { value: "4–8 Wks", label: "Bulk Production" },
 ];
 
 export function PortfolioIntro() {
@@ -14,15 +14,16 @@ export function PortfolioIntro() {
           <div className="flex items-center gap-3">
             <span aria-hidden="true" className="inline-block w-2 h-2 bg-secondary" />
             <p className="type-label-sm uppercase tracking-[0.22em] text-secondary font-semibold">
-              Lahore Archival Manufacture • Index Vol. IV
+              Made in Lahore • Footwear Portfolio
             </p>
           </div>
           <h1 className="type-headline-xl text-on-surface tracking-tight leading-[1.08]">
             Curated Footwear Portfolio — Made-to-Order Specimens
           </h1>
           <p className="type-body-lg text-on-surface-variant max-w-2xl leading-relaxed pt-1">
-            A selective archive of lasts, patterns, and finishing archetypes developed at our Lahore
-            manufacture. Available for private-label commissioning and custom batch development.
+            A selection of reference styles, made to order in Lahore. Available for private-label
+            commissioning and custom development, with materials and customisation confirmed for
+            each project.
           </p>
         </div>
 

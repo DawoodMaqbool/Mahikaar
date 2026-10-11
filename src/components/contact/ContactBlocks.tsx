@@ -7,30 +7,29 @@ import { Icon } from "@/components/ui/Icon";
 
 const commitments = [
   {
-    title: "Strict Design NDA",
-    text: "All pattern silhouettes, brass die prints, and lasts developed for private labels are governed by binding non-disclosure. We never disclose client portfolios or repurpose proprietary lasts.",
+    title: "Design Confidentiality",
+    text: "Designs, references, and branding shared for private-label projects are treated as confidential, and non-disclosure agreements can be arranged on request.",
   },
   {
-    title: "Sample Prototyping Approval",
-    text: "Zero serial production commences prior to physical sample sign-off. We provide wear-testable prototypes with cross-sectional welt verification in 3 to 4 weeks.",
+    title: "Sample Approval",
+    text: "Production begins only after your sample and specifications are approved. Selected styles can be sampled in as little as 2 days; fully custom prototypes typically take 2–4 weeks.",
   },
   {
-    title: "Lahore Master Patternmakers",
-    text: "Direct communication with our technical team. Technical packs are interpreted by artisans boasting over three decades of British and Continental shoemaking lineage.",
+    title: "Specification Review",
+    text: "We review your technical packs, references, and specifications with you before work begins, so your requirements are understood clearly and accurately.",
   },
   {
-    title: "Door-to-Door Freight",
-    text: "Turnkey customs brokerage and bonded logistics across the UK, Continental Europe, North America, the UAE, and East Asia via LHE Air Freight and FOB Karachi maritime links.",
+    title: "Shipping & Delivery",
+    text: "Shipping and delivery arrangements are discussed and agreed for each order.",
   },
 ];
 
-const tanneries = [
-  "Tanneries du Puy",
-  "Charles F. Stead",
-  "J&FJ Baker Oak Bark",
-  "Horween Chicago",
-  "Weinheimer Box Calf",
-  "Dainite England",
+const materialOptions = [
+  "Classic Calf & Smooth Leather",
+  "Suede & Nubuck",
+  "Patent & High-Gloss",
+  "Embossed & Patterned",
+  "Specialty & Custom Finishes",
 ];
 
 export function InstitutionalCommitments({ className = "" }: { className?: string }) {
@@ -39,7 +38,7 @@ export function InstitutionalCommitments({ className = "" }: { className?: strin
       <div className="flex items-center gap-3">
         <Icon name="verified_user" className="text-secondary text-[24px]" />
         <h2 className="type-label-md uppercase tracking-wider text-on-surface">
-          Institutional Commitments
+          Our Commitments
         </h2>
       </div>
       <div className="space-y-6">
@@ -58,17 +57,13 @@ export function ContactDetails({ className = "" }: { className?: string }) {
   return (
     <div className={`bg-surface-container-high p-8 space-y-6 shadow-xs ${className}`}>
       <span className="type-label-sm uppercase tracking-[0.2em] text-secondary block">
-        Atelier Physical Presence
+        Get in Touch
       </span>
       <div className="space-y-3">
-        <h2 className="type-headline-sm text-on-surface">Lahore Manufacture &amp; Works</h2>
-        <address className="not-italic type-body-sm text-on-surface-variant leading-relaxed">
-          Plot 48-A, Gulberg Industrial Quarter
-          <br />
-          Old City Craft Guild Enclave
-          <br />
-          Lahore 54000, Pakistan
-        </address>
+        <h2 className="type-headline-sm text-on-surface">Based in Lahore, Pakistan</h2>
+        <p className="type-body-sm text-on-surface-variant leading-relaxed">
+          Enquiries are handled directly by our private-label desk.
+        </p>
       </div>
       <div className="space-y-2 pt-2">
         <span className="type-label-sm uppercase tracking-widest text-outline block">
@@ -86,22 +81,22 @@ export function ContactDetails({ className = "" }: { className?: string }) {
         </p>
       </div>
       <div id="visits" className="pt-4 bg-surface p-4 shadow-xs space-y-2 scroll-mt-24">
-        <h3 className="type-label-md uppercase tracking-wider text-secondary">In-Person Atelier Visits</h3>
+        <h3 className="type-label-md uppercase tracking-wider text-secondary">Atelier Visits</h3>
         <p className="type-body-sm text-on-surface-variant">
-          Visiting the Lahore works is open exclusively to brand principals and creative directors
-          by prior diplomatic schedule.
+          Visits to our Lahore atelier can be arranged by prior appointment for buyers
+          considering a project.
         </p>
       </div>
     </div>
   );
 }
 
-export function TanneryLineage({ className = "" }: { className?: string }) {
+export function MaterialOptions({ className = "" }: { className?: string }) {
   return (
     <div className={`bg-surface-container-low p-6 space-y-4 ${className}`}>
-      <h2 className="type-label-sm uppercase tracking-widest text-secondary">Tannery Lineage</h2>
+      <h2 className="type-label-sm uppercase tracking-widest text-secondary">Material Options</h2>
       <ul className="flex flex-wrap gap-2">
-        {tanneries.map((name) => (
+        {materialOptions.map((name) => (
           <li key={name} className="px-2.5 py-1 bg-surface type-label-sm uppercase text-on-surface-variant">
             {name}
           </li>
