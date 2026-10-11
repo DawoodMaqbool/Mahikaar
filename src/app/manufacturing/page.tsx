@@ -8,7 +8,7 @@ import { PrototypeCta } from "@/components/manufacturing/PrototypeCta";
 export const metadata: Metadata = {
   title: "Manufacturing & Craft",
   description:
-    "The 8-stage bench protocol behind every Māhikar pair: carved lasts, hand clicking, Goodyear hand-welting, European tannages and private-label tooling.",
+    "How Mahikaar footwear is made: Goodyear welted construction carried out by hand, material selection and customisation for private-label orders.",
 };
 
 export default function ManufacturingPage() {

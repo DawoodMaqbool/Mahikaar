@@ -39,8 +39,8 @@ const fieldInput =
 export function InquiryModalProvider({ children }: { children: ReactNode }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [target, setTarget] = useState<InquiryTarget>({
-    title: "Commission Inquest",
-    subtitle: "Last Specification Reference",
+    title: "Enquiry",
+    subtitle: "Style Reference",
   });
   const [submitted, setSubmitted] = useState(false);
   const id = useId();
@@ -87,7 +87,7 @@ export function InquiryModalProvider({ children }: { children: ReactNode }) {
 
           <div className="space-y-2">
             <span className="type-label-sm uppercase tracking-[0.22em] text-secondary font-semibold">
-              Atelier Inquest • Commercial Dossier
+              Mahikaar • Enquiry
             </span>
             <h2 id={`${id}-title`} className="type-headline-lg text-on-surface tracking-tight leading-tight">
               {target.title}
@@ -100,10 +100,10 @@ export function InquiryModalProvider({ children }: { children: ReactNode }) {
           {submitted ? (
             <div role="status" className="p-6 bg-surface-container-low text-center space-y-2">
               <Icon name="verified" className="text-[36px] text-secondary" />
-              <h3 className="type-headline-sm text-on-surface">Dossier Request Transmitted</h3>
+              <h3 className="type-headline-sm text-on-surface">Enquiry Received</h3>
               <p className="type-body-sm text-on-surface-variant">
-                Your reference has been logged into the Lahore Manufacture Registry. Our technical
-                directorship will be in contact shortly.
+                Thank you. Your enquiry has been received, and we will be in touch to confirm
+                feasibility, materials, pricing, and timelines.
               </p>
             </div>
           ) : (
@@ -126,7 +126,7 @@ export function InquiryModalProvider({ children }: { children: ReactNode }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label htmlFor={`${id}-email`} className={fieldLabel}>
-                    Institutional Email
+                    Business Email
                   </label>
                   <input id={`${id}-email`} type="email" required placeholder="client@atelier.com" className={fieldInput} />
                 </div>
@@ -135,33 +135,33 @@ export function InquiryModalProvider({ children }: { children: ReactNode }) {
                     Projected Volume (Pairs)
                   </label>
                   <select id={`${id}-volume`} className={fieldInput}>
-                    <option>12–24 Pairs (Trial Batch)</option>
+                    <option>12–24 Pairs (Trial Order)</option>
                     <option>25–50 Pairs (Seasonal Capsule)</option>
-                    <option>50–150 Pairs (Private Label Volume)</option>
-                    <option>Bespoke / Individual Client Commission</option>
+                    <option>50+ Pairs (Private Label Volume)</option>
+                    <option>Sample or Prototype Request</option>
                   </select>
                 </div>
               </div>
 
               <div className="space-y-1">
                 <label htmlFor={`${id}-requirements`} className={fieldLabel}>
-                  Specific Leather &amp; Welting Requirements
+                  Leather, Colour &amp; Branding Requirements
                 </label>
                 <textarea
                   id={`${id}-requirements`}
                   rows={3}
-                  placeholder="Outline specific tannery requests, toe-tap preferences, edge coloring, or custom sock-lining foil stamps..."
+                  placeholder="Outline leather type, colour, sole, branding, or finishing requirements..."
                   className={fieldInput}
                 />
               </div>
 
               <div className="p-4 bg-surface-container-low space-y-1">
                 <span className="type-label-sm uppercase tracking-wider text-on-surface block font-semibold">
-                  Institutional Assurance
+                  What Happens Next
                 </span>
                 <p className="type-body-sm text-on-surface-variant">
-                  Technical dossier, leather swatch pack availability, and commercial export pricing
-                  will be transmitted within 24 business hours directly by the Head of Lasting.
+                  We will review your requirements and confirm feasibility, material availability,
+                  pricing, and estimated timelines before an order is finalised.
                 </p>
               </div>
 
@@ -177,7 +177,7 @@ export function InquiryModalProvider({ children }: { children: ReactNode }) {
                   type="submit"
                   className="py-3 px-8 bg-primary text-on-primary hover:bg-secondary transition-colors type-label-md uppercase tracking-[0.18em] shadow-xs"
                 >
-                  Transmit Inquest
+                  Send Enquiry
                 </button>
               </div>
             </form>

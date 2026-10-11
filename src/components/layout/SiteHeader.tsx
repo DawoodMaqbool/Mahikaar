@@ -22,12 +22,12 @@ export function SiteHeader() {
         <Link
           href={routes.home}
           onClick={closeMenu}
-          aria-label="Māhikar Atelier — Home"
+          aria-label="Mahikaar — Home"
           className="flex items-center gap-3.5 group min-w-fit"
         >
           {/* Crest only; the name beside it is real text, so it stays sharp and uses the web fonts. */}
           <Image
-            src="/brand/mahikar-crest.svg"
+            src="/brand/mahikaar-crest.svg"
             alt=""
             width={31}
             height={40}
@@ -35,10 +35,10 @@ export function SiteHeader() {
           />
           <span className="flex flex-col">
             <span className="type-headline-sm tracking-tight text-on-surface leading-tight">
-              Māhikar
+              Mahikaar
             </span>
             <span className="hidden sm:block type-label-sm uppercase tracking-[0.2em] text-secondary font-medium">
-              Atelier &amp; Manufacture • Lahore
+              Made-to-Order Footwear • Lahore
             </span>
           </span>
         </Link>

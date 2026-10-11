@@ -7,7 +7,7 @@ import { MaterialsSection } from "@/components/manufacturing/MaterialsSection";
 export const metadata: Metadata = {
   title: "About Atelier",
   description:
-    "Māhikar Atelier unites historic Punjabi cordwaining with British and Continental bespoke shoemaking, serving clothiers, boutiques and independent labels worldwide from Lahore.",
+    "Mahikaar is a Lahore-based business offering premium, made-to-order Goodyear welted footwear to B2B buyers, from our Lahore atelier, drawing on a local leather sourcing network.",
 };
 
 // Built entirely from existing sections: the page is a new arrangement, not new content.

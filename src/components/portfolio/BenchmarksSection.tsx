@@ -4,23 +4,23 @@ import { Icon } from "@/components/ui/Icon";
 const benchmarks = [
   {
     icon: "architecture",
-    title: "Precision Hand Lasting",
-    text: "Upper patterns undergo 72 hours of prolonged rest upon bespoke beechwood lasts to eradicate leather memory tension, guaranteeing permanent shape retention over decades of wear.",
+    title: "Hand Lasting",
+    text: "Uppers are lasted by hand and left to rest on the last so the shape settles before the sole is attached, helping each pair hold its form.",
   },
   {
     icon: "handyman",
-    title: "Awl-Pierced Hand Welting",
-    text: "We carve a feather directly from the 5mm thick vegetable-tanned insole, stitching the leather welt entirely by hand using waxed flax thread treated with pine pitch.",
+    title: "Hand Welting",
+    text: "A feather is carved directly from the leather insole and the welt is stitched by hand, creating the structure that allows the shoe to be resoled.",
   },
   {
     icon: "layers",
-    title: "Oak Bark Ground Soles",
-    text: "Tanned naturally for up to 14 months in underground pits using crushed oak, spruce, and mimosa bark, yielding unmatched abrasion resistance and flexibility.",
+    title: "Sole Options",
+    text: "Leather soles for classic styling, with other sole options discussed for each design.",
   },
   {
     icon: "palette",
-    title: "Lahori Museum Finish",
-    text: "Multi-tint alcohol dye layering creates deep photographic marbling, sealed with unadulterated beeswax and hand-rubbed with deer bone to close outer pores.",
+    title: "Hand Finishing",
+    text: "Colour is built up in layers by hand and sealed with wax, then burnished for depth and a refined finish.",
   },
 ];
 
@@ -31,23 +31,23 @@ export function BenchmarksSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-4 space-y-4">
             <span className="type-label-sm uppercase tracking-[0.22em] text-secondary font-semibold">
-              Institutional Benchmarks
+              Craft Details
             </span>
             <h2 className="type-headline-lg text-on-surface tracking-tight leading-tight">
-              An Uncompromising Manufacturing Cadence
+              Crafted by Hand, Made to Order
             </h2>
             <p className="type-body-md text-on-surface-variant leading-relaxed">
-              Every specimen leaving our Lahore manufacture undergoes an 8-stage verification
-              protocol before packaging into client private-label archives.
+              Each order is made to your agreed specification, with construction carried out by
+              hand throughout.
             </p>
             <div className="pt-4">
               <div className="p-6 bg-surface-container-lowest shadow-xs space-y-3">
                 <h3 className="type-label-sm uppercase tracking-widest text-secondary">
-                  Compliance Certifications
+                  Made to Order
                 </h3>
                 <p className="type-body-sm text-on-surface-variant">
-                  BSCI Social Audit Compliant • ISO 9001:2015 Last Grading Consistency • REACH
-                  Compliant Tannery Provenance.
+                  Materials, sizing, and branding are agreed with you before production begins, so
+                  every pair reflects your brief.
                 </p>
               </div>
             </div>

@@ -6,27 +6,27 @@ import { routes } from "@/lib/site";
 const steps = [
   {
     icon: "draw",
-    title: "Last & Pattern Sculpting",
-    text: "We machine-turn or hand-carve dedicated lasts according to your regional anatomical fitting targets, establishing a silhouette signature unique to your house.",
-    footnote: "CAD & Hornbeam Models",
+    title: "Design & Fit Development",
+    text: "Share your design reference, sizing, and customisation requirements. We develop the pattern and fit details with you so the finished pair reflects your brand.",
+    footnote: "Made to Your Specification",
   },
   {
     icon: "palette",
     title: "Curated Material Sourcing",
-    text: "Direct access to our audited network of French box calf, Italian veg-tanned soling, British Janus calf suede, and local archival vegetable leathers.",
-    footnote: "Full Tannery Traceability",
+    text: "Access to local leather suppliers, with calf, suede, patent, embossed, and specialty finishes discussed around your project. Availability is confirmed before an order is finalised.",
+    footnote: "Availability Confirmed per Order",
   },
   {
     icon: "verified",
-    title: "Prototype Sampling Batch",
-    text: "Prior to scaling, we deliver fit-testing trial samples with full cross-sectional reports, wear-testing stress checks, and branded finishing proofs.",
-    footnote: "30 to 45 Day Inquest",
+    title: "Sample Approval",
+    text: "Before production, a sample is prepared so your team can approve fit, leather, and finishing. Selected styles can be sampled in as little as 2 days; fully custom prototypes typically take 2–4 weeks.",
+    footnote: "2 Days to 4 Weeks",
   },
   {
     icon: "local_shipping",
     title: "Scaled Made-to-Order",
-    text: "Batch production under continuous QA inspection, complete with custom monogrammed cloth bags, archival rigid slide boxes, and worldwide freight handling.",
-    footnote: "Air Freight & Maritime FOB",
+    text: "Production begins once the sample, specifications, and commercial terms are agreed. Bulk orders usually take 4–8 weeks depending on order size, with agreed branding and packaging.",
+    footnote: "Typically 4–8 Weeks",
   },
 ];
 
@@ -45,15 +45,15 @@ export function PrivateLabelTeaser({
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <p className="type-label-md uppercase tracking-[0.25em] text-secondary">
-            Bespoke White-Label Services
+            Private Label Services
           </p>
           <Heading className="type-headline-lg text-on-surface tracking-tight">
             Build Footwear Around Your Brand
           </Heading>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
-            From proprietary last sculpting and debossed branded sockliners to custom brass
-            packaging hardware, we act as the dedicated manufacturing wing for discerning menswear
-            labels and regional luxury brands.
+            From client branding and agreed customisation to made-to-order production, we
+            work with you on your specification in our Lahore atelier for menswear labels and
+            boutique brands.
           </p>
         </div>
 
@@ -86,13 +86,13 @@ export function PrivateLabelTeaser({
               href={routes.privateLabel}
               className="px-8 py-3.5 bg-primary text-surface type-label-md uppercase tracking-[0.2em] hover:bg-secondary transition-colors"
             >
-              Explore Private Label Framework
+              Explore Private Label
             </Link>
             <Link
               href={routes.contact}
               className="px-8 py-3.5 bg-transparent text-on-surface type-label-md uppercase tracking-[0.2em] border border-outline-variant hover:border-on-surface transition-colors"
             >
-              Inquire About Last Development
+              Discuss Your Project
             </Link>
           </div>
         )}

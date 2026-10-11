@@ -2,9 +2,9 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 
 const highlights = [
-  { label: "Turnaround", value: "48 Hours", note: "Commercial proposal" },
-  { label: "Standard", value: "Goodyear", note: "Hand-welted & 360°" },
-  { label: "Discretion", value: "Strict NDA", note: "Brand confidentiality", wide: true },
+  { label: "Minimum Order", value: "12 Pairs", note: "Per style" },
+  { label: "Standard", value: "Goodyear", note: "Welted, made by hand" },
+  { label: "Discretion", value: "Confidential", note: "Brand confidentiality respected", wide: true },
 ];
 
 export function QuoteHero() {
@@ -15,17 +15,17 @@ export function QuoteHero() {
           <div className="flex items-center gap-3">
             <span aria-hidden="true" className="inline-flex w-2 h-2 rounded-full bg-secondary" />
             <span className="type-label-sm uppercase tracking-[0.25em] text-secondary">
-              Institutional B2B Intake • Lahore Works
+              B2B Enquiries • Lahore
             </span>
           </div>
           <h1 className="type-headline-xl text-on-surface leading-[1.08] tracking-tight">
             Commission &amp; <br />
-            <span className="italic font-normal text-secondary">Quotation Dossier</span>
+            <span className="italic font-normal text-secondary">Quote Request</span>
           </h1>
           <p className="type-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
-            Tell us what you are looking to manufacture. Our production director and master
-            patternmakers will review your silhouettes, lasts, and material requirements to present
-            a comprehensive manufacturing dossier and batch quotation within two business days.
+            Tell us what you are looking to make. We will review your designs, quantities, sizes,
+            materials, and branding requirements, then confirm feasibility, material availability,
+            pricing, and estimated timelines before an order is finalised.
           </p>
           <dl className="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 text-on-surface">
             {highlights.map((item) => (
@@ -57,10 +57,10 @@ export function QuoteHero() {
             <span>
               <span className="type-label-sm uppercase tracking-widest text-secondary block">Bench Specimen</span>
               <span className="type-body-sm text-on-surface font-medium">
-                Archival Oxford Last AT-041 • Tanneries du Puy Calf
+                Oxford • Constructed by Hand in Lahore
               </span>
             </span>
-            <span className="type-label-sm uppercase tracking-widest text-outline">Lahore Guild</span>
+            <span className="type-label-sm uppercase tracking-widest text-outline">Lahore</span>
           </figcaption>
         </figure>
       </Container>

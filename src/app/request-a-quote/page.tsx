@@ -9,7 +9,7 @@ import { QuoteSidebar } from "@/components/quote/QuoteSidebar";
 export const metadata: Metadata = {
   title: "Request a Quote",
   description:
-    "Submit your private-label production brief. Our Lahore production director returns a manufacturing dossier and batch quotation within two business days.",
+    "Share your brief for made-to-order Goodyear welted footwear. We confirm feasibility, material availability, pricing and estimated timelines before an order is finalised.",
 };
 
 export default function RequestQuotePage() {
@@ -24,10 +24,10 @@ export default function RequestQuotePage() {
               <div className="flex items-center gap-3">
                 <Icon name="verified" className="text-secondary text-[22px]" />
                 <span className="type-label-md uppercase tracking-wider text-on-surface">
-                  Confidential Commercial Protocol
+                  Confidential Enquiry
                 </span>
               </div>
-              <span className="type-label-sm uppercase tracking-widest text-outline">Ref: B2B-INQ-2025</span>
+              <span className="type-label-sm uppercase tracking-widest text-outline">B2B Enquiry</span>
             </div>
             <QuoteForm />
           </div>

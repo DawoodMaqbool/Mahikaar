@@ -121,31 +121,31 @@ const typologies = [
   { value: "chelsea", title: "Chelsea Boots", description: "Wholecut hand-blocked shaft" },
   { value: "loafers", title: "Penny Loafers", description: "Unlined / Lined Hand-Stitched Apron" },
   { value: "monkstraps", title: "Monkstraps", description: "Single & Double solid brass buckled" },
-  { value: "bespoke_silhouette", title: "Proprietary Silhouette", description: "New pattern development" },
+  { value: "bespoke_silhouette", title: "Your Own Design", description: "Reference, sample or tech pack" },
 ];
 
 const brandingOptions = [
   {
     value: "insole_emboss",
     title: "Custom Insole Debossing",
-    description: "Hot-foil stamping or raw blind-deboss in vegetable leather",
+    description: "Hot-foil stamping or blind deboss, subject to feasibility",
     defaultChecked: true,
   },
   {
     value: "packaging",
-    title: "Rigid Shoebox & Flannel Bags",
-    description: "Custom linen-textured paperboard, foiled crest & brass eyelets",
+    title: "Branded Packaging",
+    description: "Shoe boxes and dust bags carrying your branding",
     defaultChecked: true,
   },
   {
     value: "hardware",
-    title: "Proprietary Metal Hardware",
-    description: "Cast solid brass buckles, eyelets & heel-plates branded to spec",
+    title: "Branded Hardware",
+    description: "Buckles, eyelets or heel plates, subject to feasibility",
   },
   {
     value: "bespoke_lasts",
-    title: "Bespoke Wooden Last Development",
-    description: "Exclusive hand-turned hornbeam last archive solely for your brand",
+    title: "Custom Sizing & Fit",
+    description: "Standard UK 6–12 size curves or tailored to your sizing",
   },
 ];
 
@@ -181,7 +181,7 @@ export function QuoteForm() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     // There is no backend yet: like the original, this only shows a confirmation.
-    setReference(`MK-2025-${Math.floor(1000 + Math.random() * 9000)}`);
+    setReference(`MK-${Math.floor(1000 + Math.random() * 9000)}`);
   }
 
   return (
@@ -209,9 +209,9 @@ export function QuoteForm() {
         </div>
 
         <div className="space-y-6 pt-6">
-          <SectionHeading number="02" tag="Silhouettes" title="Production Scope & Footwear Typologies" />
+          <SectionHeading number="02" tag="Silhouettes" title="Footwear Styles" />
           <p className="type-body-sm text-on-surface-variant">
-            Select all construction profiles required for your inaugural or seasonal run:
+            Select all styles you are interested in:
           </p>
           <OptionGroup legend="Footwear typologies" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
             {typologies.map((option) => (
@@ -224,7 +224,7 @@ export function QuoteForm() {
           <div className="space-y-4">
             <SectionHeading number="03" tag="Order Scale" title="Batch Volume" />
             <p className="type-body-sm text-on-surface-variant">
-              Tiered pricing calibrated to workshop bench allocation:
+              Minimum order is 12 pairs per style. Pricing is confirmed after we review your brief:
             </p>
             <SelectField
               id="quantityScale"
@@ -233,7 +233,8 @@ export function QuoteForm() {
               icon="expand_more"
               options={[
                 { value: "samples", label: "Prototyping & Fitting Samples (1 – 5 pairs)" },
-                { value: "boutique", label: "Small Boutique Capsule (25 – 50 pairs)" },
+                { value: "trial", label: "Trial Order (12 – 24 pairs)" },
+                { value: "boutique", label: "Boutique Capsule (25 – 50 pairs)" },
                 { value: "commercial", label: "Commercial Production Run (50 – 200 pairs)" },
                 { value: "scaled", label: "Scaled Private Label Deployment (200+ pairs)" },
               ]}
@@ -242,7 +243,7 @@ export function QuoteForm() {
           <div className="space-y-4">
             <SectionHeading number="04" tag="Milestones" title="Target Delivery Window" />
             <p className="type-body-sm text-on-surface-variant">
-              Aligned with European fashion calendars &amp; seasonal drops:
+              Share your preferred window. Timelines are confirmed once specifications are agreed:
             </p>
             <SelectField
               id="timeline"
@@ -250,20 +251,20 @@ export function QuoteForm() {
               placeholder="Select production window..."
               icon="schedule"
               options={[
-                { value: "aw25", label: "Autumn / Winter 2025 Delivery" },
-                { value: "ss26", label: "Spring / Summer 2026 Delivery" },
-                { value: "aw26", label: "Autumn / Winter 2026 Delivery" },
-                { value: "urgent_prototype", label: "Expedited Prototyping (Within 45 Days)" },
-                { value: "ongoing", label: "Quarterly Replenishment Agreement" },
+                { value: "ss27", label: "Spring / Summer 2027 Delivery" },
+                { value: "aw27", label: "Autumn / Winter 2027 Delivery" },
+                { value: "sample_first", label: "Sample or Prototype First" },
+                { value: "ongoing", label: "Ongoing / Repeat Orders" },
+                { value: "discuss", label: "To Be Discussed" },
               ]}
             />
           </div>
         </div>
 
         <div className="space-y-6 pt-6">
-          <SectionHeading number="05" tag="Customization" title="Private Label Execution & Tooling" />
+          <SectionHeading number="05" tag="Customization" title="Branding & Customisation" />
           <p className="type-body-sm text-on-surface-variant">
-            Tailored identity components produced by our in-house brass and packaging artisans:
+            Branding and customisation options. Availability and any additional costs are confirmed before an order is finalised:
           </p>
           <OptionGroup legend="Private label options" className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
             {brandingOptions.map((option) => (
@@ -276,13 +277,13 @@ export function QuoteForm() {
           <SectionHeading number="06" tag="Documentation" title="Technical Pack & Specification Directives" />
           <div className="space-y-2">
             <label className={labelClass} htmlFor="specNotes">
-              Material Preferences, Last Profiles &amp; Target Costings
+              Materials, Sizing, Branding &amp; Target Costings
             </label>
             <textarea
               id="specNotes"
               name="specNotes"
               rows={5}
-              placeholder="Include references regarding leather origin (e.g. French Box Calf, Horween Chromexcel, Repello Suede), outsole build (Oak Bark Leather Sole, Dainite, Vibram Lug), stitch density per inch, waist sculpt (Fiddleback / Beveled), and any target FOB parameters..."
+              placeholder="Include your preferred leather type and finish (e.g. smooth calf, suede, patent, embossed), colours, sole type, sizing, branding requirements, and any target price..."
               className={inputClass}
             />
           </div>
@@ -309,7 +310,7 @@ export function QuoteForm() {
               <span className="space-y-1 block">
                 <span className="type-headline-sm text-on-surface block">Click to upload or drag files here</span>
                 <span className="type-body-sm text-on-surface-variant block">
-                  Engineering Tech Packs, CAD files, Vector Silhouettes or Moodboards (PDF, ZIP, AI,
+                  Tech packs, design files, reference images or moodboards (PDF, ZIP, AI,
                   DXF, PNG up to 25MB)
                 </span>
               </span>
@@ -345,9 +346,9 @@ export function QuoteForm() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-outline">
             <div className="flex items-center gap-2">
               <Icon name="lock" className="text-[18px] text-secondary" />
-              <span className="type-body-sm">256-bit encrypted intake. Commercial non-disclosure guaranteed.</span>
+              <span className="type-body-sm">Your brief is treated as confidential.</span>
             </div>
-            <span className="type-label-sm uppercase tracking-widest">FOB Lahore / CIF Global Ports</span>
+            <span className="type-label-sm uppercase tracking-widest">Shipping Agreed per Order</span>
           </div>
         </div>
       </form>
@@ -356,15 +357,15 @@ export function QuoteForm() {
         <div ref={confirmationRef} role="status" className="mt-8 p-8 bg-surface-container text-on-surface space-y-4">
           <div className="flex items-center gap-3 text-secondary">
             <Icon name="task_alt" className="text-[28px]" />
-            <span className="type-headline-sm">Commercial Inquiry Dossier Received</span>
+            <span className="type-headline-sm">Enquiry Received</span>
           </div>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
-            Your production requirements have been forwarded to the Māhikar Atelier Master Lastmaker
-            and Commercial Director in Lahore. An archival evaluation and tailored manufacturing
-            quotation will be dispatched to your corporate email within 48 business hours.
+            Thank you. Your enquiry has been received by the Mahikaar team. We will review your
+            brief and reply by email to confirm feasibility, material availability, pricing, and
+            estimated timelines.
           </p>
           <div className="pt-2 type-label-sm uppercase tracking-widest text-secondary">
-            Reference Dossier ID: <span>{reference}</span>
+            Enquiry Reference: <span>{reference}</span>
           </div>
         </div>
       )}

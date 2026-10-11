@@ -8,7 +8,7 @@ import { InquiryModalProvider } from "@/components/portfolio/InquiryModal";
 export const metadata: Metadata = {
   title: "Private Label",
   description:
-    "Proprietary last sculpting, debossed branded sockliners, custom brass hardware and archival packaging: Māhikar acts as the manufacturing wing for menswear labels.",
+    "Client branding, agreed customisation and material selection for made-to-order Goodyear welted footwear. Made by Mahikaar in our Lahore atelier.",
 };
 
 export default function PrivateLabelPage() {

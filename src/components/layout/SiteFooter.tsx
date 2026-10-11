@@ -3,25 +3,25 @@ import { Container } from "@/components/ui/Container";
 import { routes } from "@/lib/site";
 
 const capabilities = [
-  "Hand-Sewn Goodyear Welted (270° & 360°)",
+  "Goodyear Welted Construction",
   "Artisanal Hand-Lasting & Hand-Welting",
-  "Private Label & Custom White-Label Runs",
-  "Bespoke Last Sculpting & Archival MTO",
-  "European Box Calf & Horween Sourcing",
+  "Private Label & Client Branding",
+  "Made-to-Order Leather Footwear",
+  "Material Selection & Customisation",
 ];
 
 const specimenLinks = [
   "Full & Semi Brogues",
-  "Museum Calf Oxfords",
+  "Calf Leather Oxfords",
   "Hand-Blocked Chelsea Boots",
   "Unlined Penny Loafers",
   "Double & Single Monkstraps",
 ];
 
 const inquiryLinks = [
-  { label: "Schedule Lahore Atelier Inquest", href: routes.contact },
-  { label: "Tannery Traceability & Sourcing Dossier", href: routes.manufacturing },
-  { label: "Minimum Order Tolerances & B2B Terms", href: routes.privateLabel },
+  { label: "Contact Mahikaar", href: routes.contact },
+  { label: "Materials & Customisation", href: routes.manufacturing },
+  { label: "Minimum Orders & Private Label", href: routes.privateLabel },
 ];
 
 const columnHeading =
@@ -33,17 +33,12 @@ export function SiteFooter() {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-[#2d2c2a]">
           <div className="lg:col-span-4 space-y-4">
-            <p className="type-headline-md tracking-normal text-surface">Māhikar Atelier</p>
+            <p className="type-headline-md tracking-normal text-surface">Mahikaar</p>
             <p className="type-body-sm text-outline-variant leading-relaxed max-w-sm">
-              Handcrafted institutional shoemaking synthesizing historical Punjabi leathercraft
-              with English bespoke proportions. Commissioned by Savile Row houses, Continental
-              luxury purveyors, and independent sartorial labels.
+              Premium, made-to-order Goodyear welted leather footwear for B2B buyers, crafted
+              in our Lahore atelier, drawing on a local leather sourcing network.
             </p>
-            <address className="not-italic pt-2 type-body-sm text-outline-variant/80 space-y-1">
-              <p className="font-medium text-surface">Manufacture &amp; Archival Last Vault:</p>
-              <p>Plot 48-A, Gulberg Industrial Quarter</p>
-              <p>Old City Craft Guild Enclave, Lahore 54000, Pakistan</p>
-            </address>
+            <p className="pt-2 type-body-sm text-outline-variant/80">Lahore, Pakistan</p>
           </div>
 
           <div className="lg:col-span-3 space-y-4">
@@ -78,7 +73,7 @@ export function SiteFooter() {
                   href={routes.quote}
                   className="text-surface font-medium hover:text-secondary-container transition-colors"
                 >
-                  Request Commercial Dossier &amp; Quote →
+                  Request a Quote →
                 </Link>
               </li>
               {inquiryLinks.map((link) => (
@@ -91,7 +86,7 @@ export function SiteFooter() {
             </ul>
             <div className="pt-3">
               <div className="inline-block px-3 py-1.5 border border-outline-variant/30 text-outline-variant type-label-sm uppercase tracking-widest">
-                Export Protocol: FOB Karachi / LHE Air
+                Shipping Arranged per Order
               </div>
             </div>
           </nav>
@@ -99,12 +94,11 @@ export function SiteFooter() {
 
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 type-body-sm text-outline-variant/70">
           <p>
-            © 2025 Māhikar Atelier &amp; Manufacture. Handcrafted in Lahore, Pakistan. Serving
-            Savile Row, European Boutiques &amp; Global Private Labels.
+            © 2026 Mahikaar. Made-to-order leather footwear from Lahore, Pakistan.
           </p>
           <div className="flex items-center gap-6 type-label-sm uppercase tracking-widest">
-            <span>ISO 9001 Certified Lasting</span>
-            <span>BSCI Ethical Atelier</span>
+            <span>Goodyear Welted</span>
+            <span>Made to Order</span>
           </div>
         </div>
       </Container>

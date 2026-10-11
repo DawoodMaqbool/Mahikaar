@@ -2,30 +2,30 @@ import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 
 const capacity = [
-  { label: "Bench Capacity", value: "320 Pairs / Month", note: "Guild Standard Tolerance" },
-  { label: "Last Turnaround", value: "21 Business Days", note: "Proto-Sample to Fit Approval" },
+  { label: "Minimum Order", value: "12 Pairs", note: "Per style" },
+  { label: "Bulk Production", value: "4–8 Weeks", note: "After sample approval" },
 ];
 
 const blueprint = [
   {
     icon: "architecture",
-    title: "Sculpted Lasts",
-    text: "European hornbeam and seasoned beech blanks sculpted to bespoke foot profiles, graded with 1.2mm precision.",
+    title: "Sizing & Fit",
+    text: "Standard UK 6 to 12 size curves, or tailored to your custom sizing and fit requirements.",
   },
   {
     icon: "verified",
     title: "Hand-Sewn Welt",
-    text: "Artisanal 270° and 360° Goodyear storm and flat welting pitched with natural braided Irish flax.",
+    text: "Goodyear welted construction, carried out by hand throughout, with welt options discussed per design.",
   },
   {
     icon: "history_edu",
-    title: "Lahori Guild Lineage",
-    text: "Fourth-generation master clickers and bottom-makers blending historical Punjabi saddlery precision with British lasts.",
+    title: "Lahore Atelier",
+    text: "Your specifications are developed with you in our Lahore atelier.",
   },
   {
     icon: "diamond",
-    title: "European Tannages",
-    text: "100% full-traceability grain leather sourced directly from Annonay, Haas, Charles F. Stead, and J&FJ Baker.",
+    title: "Material Selection",
+    text: "Calf, suede, patent, embossed, and specialty leathers discussed per project and sourced through our local supplier network.",
   },
 ];
 
@@ -37,19 +37,19 @@ export function ManufacturingIntro() {
           <div className="max-w-3xl space-y-4">
             <div className="flex flex-wrap items-center gap-3">
               <span className="type-label-sm uppercase tracking-[0.25em] text-secondary">
-                Manufacturing Protocol • Folio 04
+                Manufacturing &amp; Craft
               </span>
               <span aria-hidden="true" className="w-8 h-px bg-secondary-container" />
               <span className="type-label-sm text-on-surface-variant uppercase tracking-widest">
-                Lahore Manufacture
+                Lahore, Pakistan
               </span>
             </div>
             <h1 className="type-headline-xl text-on-surface tracking-tight leading-[1.05]">
-              The Anatomy of Bespoke Manufacture
+              The Anatomy of Hand-Welted Footwear
             </h1>
             <p className="type-body-lg text-on-surface-variant max-w-2xl pt-2">
-              Inside our Lahore atelier, where multi-generational leather artisans cut, last, and
-              welt footwear according to traditional European benchcraft standards.
+              Mahikaar works with an established Lahore atelier, where footwear is cut, lasted,
+              and welted by hand to your agreed specifications.
             </p>
           </div>
 

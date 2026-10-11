@@ -23,4 +23,4 @@ export const mainNav: NavLink[] = [
   { label: "Contact", href: routes.contact },
 ];
 
-export const siteName = "Māhikar Atelier & Manufacture • Lahore";
+export const siteName = "Mahikaar • Made-to-Order Leather Footwear • Lahore";

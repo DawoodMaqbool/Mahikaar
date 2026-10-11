@@ -20,10 +20,10 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: {
     default: siteName,
-    template: `%s • Māhikar Atelier`,
+    template: `%s • Mahikaar`,
   },
   description:
-    "Handcrafted, made-to-order Goodyear welted leather footwear for international brands, heritage boutiques and private labels. Made by master artisans in Lahore, Pakistan.",
+    "Premium, made-to-order Goodyear welted leather footwear for B2B buyers, crafted for your brand in Lahore, Pakistan.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

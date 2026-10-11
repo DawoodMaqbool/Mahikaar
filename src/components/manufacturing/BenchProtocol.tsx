@@ -48,10 +48,10 @@ function StageRow({ stage, imageFirst }: { stage: BenchStage; imageFirst: boolea
 }
 
 const weltCallouts = [
-  { label: "Thread Material", value: "Waxed Linen", text: "Braided flax soaked in pine rosin and beeswax." },
-  { label: "Insole Anchor", value: "Carved Feather", text: "Hand-channeled solid leather insole holdfast." },
-  { label: "Stitch Density", value: "10 SPI Density", text: "Evenly spaced with hand awl guide pricks." },
-  { label: "Welt Profile", value: "270° / 360° Options", text: "Flat welt, reverse storm welt, or Norwegian." },
+  { label: "Thread", value: "Waxed Thread", text: "Strong, waxed thread for a durable hand-stitched welt." },
+  { label: "Insole Anchor", value: "Carved Feather", text: "Hand-channelled leather insole holdfast." },
+  { label: "Stitching", value: "Hand-Stitched", text: "Evenly spaced, guided by hand awl pricks." },
+  { label: "Welt Profile", value: "270° / 360° Options", text: "Flat, storm, or Norwegian welts, subject to the design." },
 ];
 
 /** Stage 05 gets a larger feature treatment: the welt is the centrepiece of the process. */
@@ -61,17 +61,16 @@ function WeltFeatureStage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-5 space-y-5">
           <div className="flex items-center gap-3">
-            <span className="type-headline-md text-secondary">05 • ARCHIVAL FOCUS</span>
+            <span className="type-headline-md text-secondary">05 • KEY STAGE</span>
             <span aria-hidden="true" className="w-8 h-px bg-secondary" />
           </div>
           <h3 className="type-headline-lg lg:type-headline-xl text-on-surface leading-tight">
             The Goodyear Welt &amp; Hand Stitching
           </h3>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
-            The defining signature of benchmade longevity. A 3.5mm thick vegetable-tanned leather
-            welt strip is hand-stitched directly through the insole&apos;s carved holdfast feather
-            using pitch-impregnated braided linen thread, creating an impenetrable water barrier
-            while ensuring lifetime resolability.
+            The defining signature of long-lasting footwear. A leather welt strip is hand-stitched
+            through the insole&apos;s carved holdfast feather, joining upper, insole, and welt in a
+            construction that can be resoled and maintained for years.
           </p>
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             {weltCallouts.map((item) => (
@@ -96,7 +95,7 @@ function WeltFeatureStage() {
               className="object-cover"
             />
             <span className="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1.5 shadow-xs type-label-sm uppercase tracking-widest">
-              Master Cobbler • Bench Station 02
+              Hand Welting
             </span>
             <div className="absolute bottom-4 left-4 right-4 sm:right-auto bg-surface/95 backdrop-blur-md p-4 max-w-md shadow-xs">
               <span className="type-label-sm uppercase tracking-widest text-secondary block">
@@ -120,13 +119,12 @@ export function BenchProtocol() {
       <Container className="space-y-16">
         <div className="max-w-2xl space-y-3">
           <span className="type-label-sm uppercase tracking-[0.2em] text-secondary">
-            The Chronology of Craft
+            How Each Pair Is Made
           </span>
-          <h2 className="type-headline-lg text-on-surface">The 8-Stage Bench Protocol</h2>
+          <h2 className="type-headline-lg text-on-surface">Eight Stages of Hand Construction</h2>
           <p className="type-body-md text-on-surface-variant">
-            Every commission follows an uncompromising eight-tier sequence taking upwards of 36
-            bench hours. No pre-formed plastic components or synthetic fillers ever enter the
-            manufacture floor.
+            Every order follows a clear sequence from selecting materials to final finishing,
+            with construction carried out by hand throughout.
           </p>
         </div>
 

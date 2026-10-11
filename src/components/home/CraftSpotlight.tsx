@@ -7,16 +7,16 @@ import { routes } from "@/lib/site";
 
 const pillars = [
   {
-    title: "Solid Oak Bark Welting",
-    text: "Tannery-stiffened welt strips contoured to prevent lateral welt distortion over time.",
+    title: "Hand-Stitched Welt",
+    text: "A leather welt stitched by hand to the insole rib, forming the structure that makes resoling possible.",
   },
   {
-    title: "Pure Granulated Cork",
-    text: "Thermosetting natural cork cavity filling that molds precisely to the wearer's footprint.",
+    title: "Cork Filling",
+    text: "Natural cork filling between insole and outsole that moulds gradually to the wearer's footprint.",
   },
   {
     title: "Fiddleback Waist",
-    text: "Tight, hand-sculpted waist bevelling evoking bespoke Northampton and Parisian silhouettes.",
+    text: "A hand-sculpted, bevelled waist available for a refined, elegant silhouette.",
   },
 ];
 
@@ -28,7 +28,7 @@ export function CraftSpotlight() {
           <figure className="lg:col-span-6 relative bg-surface p-3 border border-outline-variant/40 shadow-lg">
             <Image
               src="/images/process/welt-hand-stitching.png"
-              alt="Master craftsman hand-stitching the Goodyear welt rib with awl and waxed hemp thread in Lahore atelier"
+              alt="Craftsman hand-stitching the Goodyear welt rib with an awl and waxed thread in a Lahore atelier"
               width={1200}
               height={896}
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -39,24 +39,23 @@ export function CraftSpotlight() {
                 Technique #24
               </span>
               <span className="type-body-sm text-surface-container font-light block">
-                Hand-skiving the leather welt and drawing pitch-waxed thread through the holdfast
-                rib at 10 SPI.
+                Hand-stitching the leather welt through the holdfast rib of the insole.
               </span>
             </figcaption>
           </figure>
 
           <div className="lg:col-span-6 space-y-8">
             <div>
-              <Eyebrow className="mb-3">The Archival Standard</Eyebrow>
+              <Eyebrow className="mb-3">Goodyear Welted Construction</Eyebrow>
               <h2 className="type-headline-lg text-on-surface tracking-tight leading-[1.15]">
-                Engineered for Re-Craftability: The Pure Goodyear Welt.
+                Built to Be Resoled: The Goodyear Welt.
               </h2>
             </div>
             <p className="type-body-md text-on-surface-variant leading-relaxed">
-              Unlike mass-market footwear anchored by cement and synthetic gemming, Māhikar Atelier
-              adheres to classical structural shoemaking. The upper, insole rib, and welt are
-              locked into a singular mechanical unit with heavy waxed linen thread, allowing your
-              customers to recraft, resoles, and preserve their pairs over decades.
+              Unlike mass-market footwear held together with cement, Mahikaar footwear is built
+              with classical Goodyear welted construction, carried out by hand throughout. The
+              upper, insole rib, and welt are stitched together, allowing your customers to
+              resole and maintain their pairs for years.
             </p>
 
             <ol className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-outline-variant/30">
@@ -78,7 +77,7 @@ export function CraftSpotlight() {
                 href={routes.manufacturing}
                 className="px-7 py-3.5 bg-primary text-surface type-label-md uppercase tracking-[0.2em] hover:bg-secondary transition-colors inline-flex items-center gap-2 group"
               >
-                <span>Inspect Our Manufacturing Process</span>
+                <span>Explore Our Craft</span>
                 <Icon name="arrow_forward" className="text-[16px] group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
