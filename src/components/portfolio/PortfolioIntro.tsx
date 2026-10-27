@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { customizationNote } from "@/data/portfolio";
 
 const counters = [
   { value: "12 Pairs", label: "Minimum per Style" },
@@ -25,6 +26,12 @@ export function PortfolioIntro() {
             commissioning and custom development, with materials and customisation confirmed for
             each project.
           </p>
+          <div className="border-l-2 border-secondary pl-4 mt-2">
+            <h2 className="type-label-md uppercase tracking-[0.18em] text-on-surface font-semibold mb-1">
+              Made to Order. Made for Your Brand.
+            </h2>
+            <p className="type-body-sm text-on-surface-variant leading-normal">{customizationNote}</p>
+          </div>
         </div>
 
         <div className="flex items-center gap-6 sm:gap-10 p-5 bg-surface-container-low shadow-xs self-start md:self-auto">
