@@ -5,10 +5,11 @@ import { useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import {
-  portfolioFilters,
   portfolioSpecimens,
-  type PortfolioFilter,
+  specimensForCategory,
+  styleCategories,
   type PortfolioSpecimen,
+  type StyleCategoryId,
 } from "@/data/portfolio";
 import { useInquiryModal } from "./InquiryModal";
 import { ProductDetailDialog, specimenSubtitle } from "./ProductDetailDialog";
@@ -113,9 +114,61 @@ function SpecimenCard({
   );
 }
 
-/** Category filter ribbon plus the specimen grid it controls. */
+type View = StyleCategoryId | "all" | null;
+
+function CategoryTile({
+  title,
+  blurb,
+  count,
+  image,
+  alt,
+  whiteBackdrop,
+  onOpen,
+}: {
+  title: string;
+  blurb: string;
+  count: number;
+  image: string;
+  alt: string;
+  whiteBackdrop?: boolean;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className="group flex flex-col text-left bg-surface-container-lowest shadow-xs hover:shadow-md transition-shadow duration-300"
+    >
+      <div className="relative bg-surface-container-low aspect-[4/3] overflow-hidden p-6">
+        <div className="relative w-full h-full">
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className={`object-contain transition-transform duration-500 group-hover:scale-[1.03] ${
+              whiteBackdrop ? "mix-blend-multiply" : ""
+            }`}
+          />
+        </div>
+      </div>
+      <div className="p-7 space-y-2">
+        <h2 className="type-headline-md text-on-surface tracking-tight">{title}</h2>
+        <p className="type-body-md text-on-surface-variant leading-relaxed">{blurb}</p>
+        <p className="type-label-md uppercase tracking-[0.18em] text-secondary flex items-center gap-2 pt-2">
+          <span>
+            {count} {count === 1 ? "Style" : "Styles"}
+          </span>
+          <Icon name="arrow_forward" className="text-[16px]" />
+        </p>
+      </div>
+    </button>
+  );
+}
+
+/** Category-first landing, then the specimen grid for the chosen category. */
 export function PortfolioCatalog() {
-  const [filter, setFilter] = useState<PortfolioFilter["value"]>("all");
+  const [view, setView] = useState<View>(null);
   const [detail, setDetail] = useState<PortfolioSpecimen | null>(null);
   const detailRef = useRef<HTMLDialogElement>(null);
 
@@ -124,53 +177,71 @@ export function PortfolioCatalog() {
     detailRef.current?.showModal();
   }
 
+  const category = styleCategories.find((entry) => entry.id === view);
   const visible =
-    filter === "all"
-      ? portfolioSpecimens
-      : portfolioSpecimens.filter((specimen) => specimen.category === filter);
+    view === "all" ? portfolioSpecimens : view ? specimensForCategory(view) : [];
+  const heading = view === "all" ? "All Articles" : category?.label;
+
+  // Only categories that have an approved specimen are offered.
+  const tiles = styleCategories
+    .map((entry) => ({ entry, cards: specimensForCategory(entry.id) }))
+    .filter(({ cards }) => cards.length > 0);
 
   return (
     <>
-      <Container className="pb-12">
-        <div className="w-full bg-surface-container-low p-2 shadow-xs mt-4 flex flex-wrap items-center justify-between gap-3">
-          <div role="group" aria-label="Filter by category" className="flex flex-wrap items-center gap-1.5 text-on-surface">
-            {portfolioFilters.map((option) => {
-              const active = option.value === filter;
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => setFilter(option.value)}
-                  className={`px-4 py-2 type-label-md uppercase tracking-[0.16em] transition-all duration-150 ${
-                    active
-                      ? "bg-surface text-on-surface"
-                      : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
-                  }`}
-                >
-                  {option.value === "all"
-                    ? `${option.label} (${String(portfolioSpecimens.length).padStart(2, "0")})`
-                    : option.label}
-                </button>
-              );
-            })}
+      {view === null ? (
+        <section
+          aria-label="Footwear categories"
+          className="w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-4 pb-24"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tiles.map(({ entry, cards }) => (
+              <CategoryTile
+                key={entry.id}
+                title={entry.label}
+                blurb={entry.blurb}
+                count={cards.length}
+                image={cards[0].image}
+                alt={cards[0].alt}
+                whiteBackdrop={cards[0].whiteBackdrop}
+                onOpen={() => setView(entry.id)}
+              />
+            ))}
+            <CategoryTile
+              title="All Articles"
+              blurb="Every reference style in the portfolio, in specimen order."
+              count={portfolioSpecimens.length}
+              image={portfolioSpecimens[0].image}
+              alt={portfolioSpecimens[0].alt}
+              onOpen={() => setView("all")}
+            />
           </div>
-          <div className="hidden xl:flex items-center gap-3 px-3 py-1 bg-surface text-on-surface-variant">
-            <Icon name="tune" className="text-[16px] text-secondary" />
-            <span className="type-label-sm uppercase tracking-widest">
-              Made to Order • Non-Retail
-            </span>
-          </div>
-        </div>
-      </Container>
+        </section>
+      ) : (
+        <>
+          <Container className="pb-8">
+            <div className="flex flex-wrap items-center justify-between gap-3 mt-4">
+              <button
+                type="button"
+                onClick={() => setView(null)}
+                className="px-4 py-2 bg-surface-container-low text-on-surface hover:bg-surface-container type-label-md uppercase tracking-[0.16em] flex items-center gap-2"
+              >
+                <Icon name="arrow_back" className="text-[16px]" />
+                <span>All Categories</span>
+              </button>
+              <h2 className="type-headline-md text-on-surface tracking-tight">{heading}</h2>
+            </div>
+          </Container>
 
-      <section aria-label="Footwear specimens" className="w-full max-w-[1440px] mx-auto px-6 lg:px-12 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" aria-live="polite">
-          {visible.map((specimen) => (
-            <SpecimenCard key={specimen.number} specimen={specimen} onDetails={showDetails} />
-          ))}
-        </div>
-      </section>
+          <section aria-label={`${heading} specimens`} className="w-full max-w-[1440px] mx-auto px-6 lg:px-12 pb-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" aria-live="polite">
+              {visible.map((specimen) => (
+                <SpecimenCard key={`${specimen.number}-${specimen.name}`} specimen={specimen} onDetails={showDetails} />
+              ))}
+            </div>
+          </section>
+        </>
+      )}
 
       <ProductDetailDialog specimen={detail} dialogRef={detailRef} onClosed={() => setDetail(null)} />
     </>
