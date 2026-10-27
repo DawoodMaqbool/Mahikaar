@@ -4,7 +4,7 @@ One row per image served from `public/images/products/`. Keep this file in step 
 
 - **Source path** is the original location under `/Users/burq/Documents/Shoes/` (outside the repo). A copy with the same filename is kept locally in `catalogue-assets/<slug>/`, which is gitignored and never served.
 - **Method:** the source file is a "Product Beautifier" background edit of a Pixel phone photograph. This is from the filename and your description (PhotoRoom); I did not verify it independently. The only processing on this side was a resize to 1600 px on the long edge and WebP encoding (quality 84, ICC profile kept) with Pillow. The shoe was not recoloured, regenerated or retouched.
-- **Kind:** `photograph` = real physical sample. `ai-concept` = AI-generated digital preview, always shown with a "Digital preview" caption. One is published, for owner testing (Wingtip Zip Boot collage); other AI collages remain unpublished.
+- **Kind:** `photograph` = real physical sample. `ai-concept` = AI-generated digital preview, always shown with a "Digital preview" caption. Published: the Wingtip Zip Boot collage, the three Black Full Brogue views and two Heritage Wingtip views; other AI collages remain unpublished.
 - Exported 2026-10-27.
 
 ## Full Brogue Wingtip: `public/images/products/full-brogue-wingtip/`
@@ -50,11 +50,35 @@ Files are copied as-is (no WebP encoder available here), so they are larger than
 
 Not published: the six `Loafers-*.jpg` and three `PXL_20261024_*` originals, the low-resolution (1142×862) PhotoRoom sole view (its toe looks squarer than the original), the two `Burgundy Woven Leather Loafers` PNGs, `shot_*` and the videos (uncertain provenance), and both AI collages (which include invented tan, olive and black colourways).
 
+## Black Full Brogue: `public/images/products/black-brogue/`
+
+Owner confirmed the shoe is a display sample they made. All three images are **Gemini-generated digital previews** (ai-concept), made from the owner's real shop photographs (`Black Brogue/PXL_20261018_*.jpg`, which are reference only and not published: hand, watch and clutter in frame). Copied unchanged as JPEG (1200×896); copies in `catalogue-assets/black-brogue/`. Details can differ from the real shoe (welt stitching a little thin, sole slightly chunky, medallion neater than the original).
+
+| Destination | Source path | Method | Kind |
+|---|---|---|---|
+| `black-three-quarter.jpg` | `Black Brogue/Gemini_Generated_Image_npthu1npthu1npth.jpeg` | Generated pair, three-quarter view; card lead (labelled "Digital preview" on the card) | ai-concept |
+| `black-front.jpg` | `Black Brogue/Gemini_Generated_Image_ogdrq9ogdrq9ogdr.jpeg` | Generated pair, front view | ai-concept |
+| `black-side.jpg` | `Black Brogue/Gemini_Generated_Image_5kde4t5kde4t5kde.jpeg` | Generated side profile | ai-concept |
+
+Colour variants were tried by AI recolouring and dropped; only black is published. Replace the lead with a real photograph when one is taken.
+
+## Heritage Wingtip: `public/images/products/heritage-wingtip/`
+
+Owner confirmed the shoe is a display sample in full grain leather, hand-welted with a full 360° Goodyear welt, tan leather sole and stacked leather heel, five eyelet pairs. Each file is a 4:3 crop (896×672, no resize, JPEG) of the original in `catalogue-assets/heritage-wingtip/`, made with `sips`.
+
+| Destination | Source path | Method | Kind |
+|---|---|---|---|
+| `brown-three-quarter.jpg` | `Brown Brogue Wingtip/Gemini_Generated_Image_bq6w8dbq6w8dbq6w.jpeg` | Gemini-generated pair from the marble photo and the earlier approved studio look; cropped from 896×1195; card lead (labelled "Digital preview" on the card) | ai-concept |
+| `brown-side.jpg` | `Brown Brogue Wingtip/Gemini_Generated_Image_r6h0hur6h0hur6h0.jpeg` | Gemini-generated side profile, same inputs; cropped | ai-concept |
+| `brown-worn.jpg` | `Brown Brogue Wingtip/marble-background-edit.jpeg` | Phone photo of the worn sample (`WhatsApp Image 2026-10-17 at 7.57.11 PM.jpeg` or a sibling frame, **unconfirmed which**) with the background replaced by Gemini ("just change the background"). Owner states the shoe is unaltered; I cannot verify that. Cropped from 896×1195 | photograph (edited) |
+
+Known differences in the generated views: toe-cap perforations sparser than the real shoe, an invented tan lining, round laces (real ones are flat), and a slightly more chiselled toe in the side view. The rear of the shoe and the heel-wrapping welt are **not** shown in any image; the 360° welt claim is the owner's statement, not visible in the previews. Not published: the top-down generation (no lace bows, tapered toe, invented lining), the AI collages, and the chips-floor phone photos (reference only).
+
 ## Not published (kept out of `public/`)
 
-Brown Brogue Wingtip: a separate design from the Shalimar Full Brogue (different last, tan welt). Three clean crops of the "Heritage Wingtip" AI collage are staged in `catalogue-assets/brown-wingtip/` but not served, pending a real lead photograph.
+Brown Brogue Wingtip (published above as the Heritage Wingtip) is a separate design from the Shalimar Full Brogue (different last, tan welt). The three crops of the old "Heritage Wingtip" AI collage staged in `catalogue-assets/brown-wingtip/` are not served.
 
-AI collages (`Gemini_Generated_Image_*`) other than the one listed above, all unedited `PXL_*` originals, the low-resolution `WhatsApp Image …` files, the `Black Brogue` shop photographs, and the other PhotoRoom edits not listed above. They stay in `~/Documents/Shoes/`.
+AI collages (`Gemini_Generated_Image_*`) other than the one listed above, all unedited `PXL_*` originals, the low-resolution `WhatsApp Image …` files, the `Black Brogue` shop photographs and unused Gemini attempts, and the other PhotoRoom edits not listed above. They stay in `~/Documents/Shoes/`.
 
 ## Open provenance points
 

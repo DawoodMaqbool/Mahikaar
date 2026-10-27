@@ -346,4 +346,93 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       },
     ],
   },
+  {
+    number: "10",
+    slug: "black-brogue",
+    category: "brogue",
+    name: "The Kohl Full Brogue",
+    image: "/images/products/black-brogue/black-three-quarter.jpg",
+    alt: "Digital preview of a pair of black full brogue shoes with a cream welt, three-quarter view",
+    construction: "Goodyear Welted",
+    materials: "Black • Antiqued Leather",
+    description:
+      "A full brogue with a medallion toe, decorative perforation and a contrast welt, shown in black. The images are digital previews made from our display sample. Leather, colour, sole, and finish are tailored to your brief.",
+    specs: [
+      { label: "Style", value: "Full brogue, five-eyelet lacing" },
+      { label: "Upper", value: "Leather and colour to specification" },
+      { label: "Sole", value: "Leather; colour and finish to specification" },
+      { label: "Minimum Order", value: "12 Pairs per Style" },
+    ],
+    leadTime: "4–8 Weeks",
+    colourways: [
+      {
+        name: "Black",
+        images: [
+          {
+            src: "/images/products/black-brogue/black-three-quarter.jpg",
+            alt: "Digital preview of a pair of black full brogue shoes with a cream welt, three-quarter view",
+            label: "Pair, three-quarter view",
+            kind: "ai-concept",
+          },
+          {
+            src: "/images/products/black-brogue/black-front.jpg",
+            alt: "Digital preview of black full brogue shoes seen from the front, showing the medallion toe",
+            label: "Pair, front view",
+            kind: "ai-concept",
+          },
+          {
+            src: "/images/products/black-brogue/black-side.jpg",
+            alt: "Digital preview of a black full brogue shoe in side profile, showing the welt and sole",
+            label: "Side profile",
+            kind: "ai-concept",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "11",
+    slug: "heritage-wingtip",
+    category: "brogue",
+    name: "The Heritage Wingtip",
+    image: "/images/products/heritage-wingtip/brown-three-quarter.jpg",
+    alt: "Digital preview of a pair of dark brown full wingtip Oxford shoes with a tan welt, three-quarter view",
+    construction: "Goodyear Welted",
+    materials: "Dark Brown • Full Grain Leather",
+    description:
+      "A full wingtip Oxford with five-eyelet lacing, a W-shaped wing seam and a scatter of perforations across the toe cap, hand-welted with a full 360° Goodyear welt. Two images are digital previews made from our display sample; the third is a photograph of the sample with an edited background. Leather, colour, sole, and finish are tailored to your brief.",
+    specs: [
+      { label: "Style", value: "Full wingtip Oxford, five-eyelet lacing" },
+      { label: "Upper", value: "Full grain leather; colour to specification" },
+      { label: "Welt", value: "Hand-welted, 360° around the sole" },
+      { label: "Sole", value: "Leather; colour and finish to specification" },
+      { label: "Minimum Order", value: "12 Pairs per Style" },
+    ],
+    leadTime: "4–8 Weeks",
+    colourways: [
+      {
+        name: "Dark Brown",
+        images: [
+          {
+            src: "/images/products/heritage-wingtip/brown-three-quarter.jpg",
+            alt: "Digital preview of a pair of dark brown full wingtip Oxford shoes with a tan welt, three-quarter view",
+            label: "Pair, three-quarter view",
+            kind: "ai-concept",
+          },
+          {
+            src: "/images/products/heritage-wingtip/brown-side.jpg",
+            alt: "Digital preview of a dark brown full wingtip Oxford in side profile, showing the tan welt, sole and stacked heel",
+            label: "Side profile",
+            kind: "ai-concept",
+          },
+          {
+            src: "/images/products/heritage-wingtip/brown-worn.jpg",
+            alt: "Photograph of the dark brown full wingtip Oxford sample worn, seen from the front, with an edited background",
+            label: "Display sample, worn",
+            kind: "photograph",
+          },
+        ],
+      },
+    ],
+  },
 ];

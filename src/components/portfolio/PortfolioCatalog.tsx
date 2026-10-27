@@ -47,6 +47,11 @@ function SpecimenCard({
         <span className="absolute bottom-4 left-4 px-2 py-0.5 bg-primary text-on-primary type-label-sm uppercase tracking-widest">
           {specimen.construction}
         </span>
+        {specimen.colourways?.[0]?.images[0]?.kind === "ai-concept" && (
+          <span className="absolute top-14 left-4 z-10 px-2 py-0.5 bg-surface type-label-sm uppercase tracking-wider text-on-surface-variant">
+            Digital preview
+          </span>
+        )}
         {specimen.colourways && specimen.colourways.length > 1 && (
           <span className="absolute bottom-4 right-4 z-10 px-2 py-0.5 bg-surface type-label-sm uppercase tracking-widest text-on-surface">
             {specimen.colourways.length} Colourways
