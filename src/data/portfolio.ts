@@ -436,3 +436,100 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     ],
   },
 ];
+
+/**
+ * Category-first browsing layer. Purely additive: it points at existing records
+ * by slug/number and never changes them. `semi-brogue` has no approved sample
+ * yet, so it is hidden until a specimen is assigned to it.
+ */
+export type StyleCategoryId =
+  | "full-brogue-wingtip"
+  | "semi-brogue"
+  | "spectator"
+  | "oxfords-derbies"
+  | "loafers-slip-ons"
+  | "boots";
+
+export type StyleCategory = {
+  id: StyleCategoryId;
+  label: string;
+  blurb: string;
+  /** Specimen numbers listed under this category. */
+  numbers: string[];
+};
+
+export const styleCategories: StyleCategory[] = [
+  {
+    id: "full-brogue-wingtip",
+    label: "Full Brogue / Wingtip",
+    blurb: "Wing-cap Oxfords with medallion and perforation detail.",
+    numbers: ["03", "10", "11"],
+  },
+  {
+    id: "semi-brogue",
+    label: "Semi-Brogue",
+    blurb: "Perforated toe cap with a plain wing-free vamp.",
+    numbers: [],
+  },
+  {
+    id: "spectator",
+    label: "Spectator Shoes",
+    blurb: "Two-tone brogues with contrasting panels, listed by colourway.",
+    numbers: ["07"],
+  },
+  {
+    id: "oxfords-derbies",
+    label: "Oxfords & Derbies",
+    blurb: "Closed-lacing dress shoes in clean cap-toe and Adelaide patterns.",
+    numbers: ["01", "05"],
+  },
+  {
+    id: "loafers-slip-ons",
+    label: "Loafers & Slip-Ons",
+    blurb: "Penny and woven loafers.",
+    numbers: ["02", "09"],
+  },
+  {
+    id: "boots",
+    label: "Boots & Chelsea",
+    blurb: "Chelsea, chukka and zip boots.",
+    numbers: ["04", "06", "08"],
+  },
+];
+
+/** Specimens whose colourways are listed as separate cards inside their category. */
+const splitByColourway = new Set<StyleCategoryId>(["spectator"]);
+
+/**
+ * Cards for a category. A split category turns each colourway of an existing
+ * specimen into its own card (own name, lead photograph and enquiry) without
+ * duplicating or editing the stored record.
+ */
+export function specimensForCategory(id: StyleCategoryId): PortfolioSpecimen[] {
+  const category = styleCategories.find((entry) => entry.id === id);
+  if (!category) return [];
+  const specimens = portfolioSpecimens.filter((specimen) => category.numbers.includes(specimen.number));
+  if (!splitByColourway.has(id)) return specimens;
+
+  return specimens.flatMap((specimen) =>
+    (specimen.colourways ?? []).map((colourway) => {
+      const label = colourway.name.replace(" / ", " & ");
+      const lead = colourway.images[0];
+      return {
+        ...specimen,
+        name: `${label} Spectator Brogue`,
+        image: lead.src,
+        alt: lead.alt,
+        materials: colourway.name,
+        description: `A two-tone wingtip brogue with contrasting panels and decorative perforation, shown in ${colourway.name.toLowerCase()}. Colour combinations, leathers, and finishes are discussed against your brief.`,
+        specs: specimen.specs.map((spec) =>
+          spec.label === "Colourways Shown" ? { label: "Colourway", value: colourway.name } : spec,
+        ),
+        colourways: [colourway],
+      };
+    }),
+  );
+}
+
+/** Every specimen number that appears under some category (for integrity checks). */
+export const categorisedNumbers = styleCategories.flatMap((category) => category.numbers);
