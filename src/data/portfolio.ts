@@ -17,6 +17,8 @@ export type ProductImage = {
   label: string;
   /** "photograph" is a real sample; "ai-concept" must never be shown as a sample. */
   kind: "photograph" | "ai-concept";
+  /** Taller than wide; the catalogue gives it a portrait tile instead of shrinking it into a landscape one. */
+  portrait?: boolean;
 };
 
 /** One physically photographed colour of a design. The first image is its lead view. */
@@ -435,12 +437,136 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       },
     ],
   },
+  {
+    number: "12",
+    slug: "resort-spectator-brogue",
+    category: "brogue",
+    name: "The Resort Spectator Brogue",
+    image: "/images/products/spectator-colours/olive-three-quarter.jpg",
+    alt: "Digital preview of a pair of olive green and white spectator brogue wingtip shoes, three-quarter view",
+    construction: "Goodyear Welted",
+    materials: "Olive / White • Navy / White Previews",
+    description:
+      "The same two-tone wingtip brogue shown in further colourways. All images are digital previews of how the look changes with the colour of the panels; final leather, colour and sole are agreed against your brief.",
+    specs: [
+      { label: "Style", value: "Two-tone wingtip brogue" },
+      { label: "Colourways Shown", value: "Olive / White, Navy / White" },
+      { label: "Sole", value: "Leather; colour and finish to specification" },
+      { label: "Minimum Order", value: "12 Pairs per Style" },
+    ],
+    leadTime: "4–8 Weeks",
+    colourways: [
+      {
+        name: "Olive / White",
+        images: [
+          {
+            src: "/images/products/spectator-colours/olive-three-quarter.jpg",
+            alt: "Digital preview of a pair of olive green and white spectator brogue wingtip shoes, three-quarter view",
+            label: "Pair, three-quarter view",
+            kind: "ai-concept",
+          },
+          {
+            src: "/images/products/spectator-colours/olive-side.jpg",
+            alt: "Digital preview of an olive green and white spectator brogue wingtip in side profile, showing the tan welt and sole",
+            label: "Side profile",
+            kind: "ai-concept",
+          },
+          {
+            src: "/images/products/spectator-colours/olive-top.jpg",
+            alt: "Digital preview of olive green and white spectator brogue wingtips seen from above",
+            label: "Pair, top view",
+            kind: "ai-concept",
+          },
+        ],
+      },
+      {
+        name: "Navy / White",
+        images: [
+          {
+            src: "/images/products/spectator-colours/navy-three-quarter.jpg",
+            alt: "Digital preview of a pair of navy and white spectator brogue wingtip shoes, three-quarter view",
+            label: "Pair, three-quarter view",
+            kind: "ai-concept",
+          },
+          {
+            src: "/images/products/spectator-colours/navy-side.jpg",
+            alt: "Digital preview of a navy and white spectator brogue wingtip in side profile, showing the tan welt and sole",
+            label: "Side profile",
+            kind: "ai-concept",
+          },
+          {
+            src: "/images/products/spectator-colours/navy-top.jpg",
+            alt: "Digital preview of navy and white spectator brogue wingtips seen from above",
+            label: "Pair, top view",
+            kind: "ai-concept",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "13",
+    slug: "semi-brogue-cap-toe",
+    category: "oxford",
+    name: "The Semi-Brogue Cap-Toe",
+    image: "/images/products/semi-brogue/white-black-three-quarter.jpg",
+    alt: "Digital preview of a pair of white and black semi-brogue cap-toe Oxford shoes, three-quarter view",
+    construction: "Goodyear Welted",
+    materials: "White / Black • White / Brown Previews",
+    description:
+      "A cap-toe Oxford with a perforated toe cap and quarter brogueing, shown in two-tone colourways. All images are digital previews of how the look changes with colour; final leather, colour and sole are agreed against your brief.",
+    specs: [
+      { label: "Style", value: "Semi-brogue cap-toe Oxford" },
+      { label: "Colourways Shown", value: "White / Black, White / Brown" },
+      { label: "Sole", value: "Leather; colour and finish to specification" },
+      { label: "Minimum Order", value: "12 Pairs per Style" },
+    ],
+    leadTime: "4–8 Weeks",
+    colourways: [
+      {
+        name: "White / Black",
+        images: [
+          {
+            src: "/images/products/semi-brogue/white-black-three-quarter.jpg",
+            alt: "Digital preview of a pair of white and black semi-brogue cap-toe Oxford shoes, three-quarter view",
+            label: "Pair, three-quarter view",
+            kind: "ai-concept",
+            portrait: true,
+          },
+          {
+            src: "/images/products/semi-brogue/white-black-top.jpg",
+            alt: "Digital preview of white and black semi-brogue cap-toe Oxfords seen from above",
+            label: "Pair, top view",
+            kind: "ai-concept",
+            portrait: true,
+          },
+        ],
+      },
+      {
+        name: "White / Brown",
+        images: [
+          {
+            src: "/images/products/semi-brogue/white-brown-three-quarter.jpg",
+            alt: "Digital preview of a pair of white and brown semi-brogue cap-toe Oxford shoes, three-quarter view",
+            label: "Pair, three-quarter view",
+            kind: "ai-concept",
+            portrait: true,
+          },
+          {
+            src: "/images/products/semi-brogue/white-brown-top.jpg",
+            alt: "Digital preview of white and brown semi-brogue cap-toe Oxfords seen from above",
+            label: "Pair, top view",
+            kind: "ai-concept",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 /**
  * Category-first browsing layer. Purely additive: it points at existing records
- * by slug/number and never changes them. `semi-brogue` has no approved sample
- * yet, so it is hidden until a specimen is assigned to it.
+ * by slug/number and never changes them.
  */
 export type StyleCategoryId =
   | "full-brogue-wingtip"
@@ -454,6 +580,8 @@ export type StyleCategory = {
   id: StyleCategoryId;
   label: string;
   blurb: string;
+  /** Prefix for the short reference code shown on each photo, e.g. "FB" gives FB-01. */
+  code: string;
   /** Specimen numbers listed under this category. */
   numbers: string[];
 };
@@ -461,39 +589,45 @@ export type StyleCategory = {
 export const styleCategories: StyleCategory[] = [
   {
     id: "full-brogue-wingtip",
+    code: "FB",
     label: "Full Brogue / Wingtip",
     blurb: "Wing-cap Oxfords with medallion and perforation detail.",
     numbers: ["03", "10", "11"],
   },
   {
     id: "semi-brogue",
+    code: "SB",
     label: "Semi-Brogue",
     blurb: "Perforated toe cap with a plain wing-free vamp.",
     numbers: [],
   },
   {
     id: "spectator",
+    code: "SP",
     label: "Spectator Shoes",
     blurb: "Two-tone brogues with contrasting panels, listed by colourway.",
-    numbers: ["07"],
+    numbers: ["07", "12", "13"],
   },
   {
     id: "oxfords-derbies",
+    code: "OX",
     label: "Oxfords & Derbies",
     blurb: "Closed-lacing dress shoes in clean cap-toe and Adelaide patterns.",
     numbers: ["01", "05"],
   },
   {
     id: "loafers-slip-ons",
+    code: "LF",
     label: "Loafers & Slip-Ons",
     blurb: "Penny and woven loafers.",
-    numbers: ["02", "09"],
+    numbers: ["09", "02"],
   },
   {
     id: "boots",
+    code: "BT",
     label: "Boots & Chelsea",
     blurb: "Chelsea, chukka and zip boots.",
-    numbers: ["04", "06", "08"],
+    numbers: ["08", "04", "06"],
   },
 ];
 
@@ -508,7 +642,10 @@ const splitByColourway = new Set<StyleCategoryId>(["spectator"]);
 export function specimensForCategory(id: StyleCategoryId): PortfolioSpecimen[] {
   const category = styleCategories.find((entry) => entry.id === id);
   if (!category) return [];
-  const specimens = portfolioSpecimens.filter((specimen) => category.numbers.includes(specimen.number));
+  // Follow the order of `numbers` (not the order of the records) so the first one leads the category.
+  const specimens = category.numbers.flatMap((number) =>
+    portfolioSpecimens.filter((specimen) => specimen.number === number),
+  );
   if (!splitByColourway.has(id)) return specimens;
 
   return specimens.flatMap((specimen) =>
@@ -517,11 +654,11 @@ export function specimensForCategory(id: StyleCategoryId): PortfolioSpecimen[] {
       const lead = colourway.images[0];
       return {
         ...specimen,
-        name: `${label} Spectator Brogue`,
+        name: `${label} ${specimen.slug === "semi-brogue-cap-toe" ? "Spectator Semi-Brogue" : "Spectator Brogue"}`,
         image: lead.src,
         alt: lead.alt,
         materials: colourway.name,
-        description: `A two-tone wingtip brogue with contrasting panels and decorative perforation, shown in ${colourway.name.toLowerCase()}. Colour combinations, leathers, and finishes are discussed against your brief.`,
+        description: `${specimen.name} shown in ${colourway.name.toLowerCase()}. Colour combinations, leathers, and finishes are discussed against your brief.`,
         specs: specimen.specs.map((spec) =>
           spec.label === "Colourways Shown" ? { label: "Colourway", value: colourway.name } : spec,
         ),
@@ -533,3 +670,39 @@ export function specimensForCategory(id: StyleCategoryId): PortfolioSpecimen[] {
 
 /** Every specimen number that appears under some category (for integrity checks). */
 export const categorisedNumbers = styleCategories.flatMap((category) => category.numbers);
+
+/** One photo in a category grid: a single look (design and colour) with a short code. */
+export type CatalogueVariant = {
+  code: string;
+  name: string;
+  colour?: string;
+  /** Every available view; the first is the lead shown in the grid. */
+  images: ProductImage[];
+  whiteBackdrop?: boolean;
+};
+
+/** Photo-first listing: the lead photograph of every colourway in a category, with generated codes. */
+export function variantsForCategory(id: StyleCategoryId): CatalogueVariant[] {
+  const category = styleCategories.find((entry) => entry.id === id);
+  if (!category) return [];
+
+  type Look = { specimen: PortfolioSpecimen; colour?: string; images: ProductImage[] };
+  const looks = specimensForCategory(id).flatMap((specimen): Look[] =>
+    specimen.colourways?.length
+      ? specimen.colourways.map((colourway) => ({ specimen, colour: colourway.name, images: colourway.images }))
+      : [
+          {
+            specimen,
+            images: [{ src: specimen.image, alt: specimen.alt, label: specimen.name, kind: "photograph" }],
+          },
+        ],
+  );
+
+  return looks.map(({ specimen, colour, images }, index) => ({
+    code: `${category.code}-${String(index + 1).padStart(2, "0")}`,
+    name: specimen.name,
+    colour,
+    images,
+    whiteBackdrop: specimen.whiteBackdrop,
+  }));
+}

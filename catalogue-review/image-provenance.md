@@ -74,6 +74,32 @@ Owner confirmed the shoe is a display sample in full grain leather, hand-welted 
 
 Known differences in the generated views: toe-cap perforations sparser than the real shoe, an invented tan lining, round laces (real ones are flat), and a slightly more chiselled toe in the side view. The rear of the shoe and the heel-wrapping welt are **not** shown in any image; the 360° welt claim is the owner's statement, not visible in the previews. Not published: the top-down generation (no lace bows, tapered toe, invented lining), the AI collages, and the chips-floor phone photos (reference only).
 
+## Resort Spectator Brogue: `public/images/products/spectator-colours/`
+
+All **ai-concept** (Gemini-generated, shown with "Digital preview"). Each file is a JPEG resized to 1400 px on the long edge with `sips`; originals are copied to `catalogue-assets/spectator-colours/`. Source folder: `White & Black Brogue/`. Colour variants of the spectator look, for reference only; no physical sample exists.
+
+| Destination | Source file (`Gemini_Generated_Image_…`) | Colourway |
+|---|---|---|
+| `olive-three-quarter.jpg` | `t2ynsbt2ynsbt2yn.jpeg` | Olive / White |
+| `olive-side.jpg` | `2751kc2751kc2751.jpeg` | Olive / White |
+| `olive-top.jpg` | `3zsms53zsms53zsm.jpeg` | Olive / White |
+| `navy-three-quarter.jpg` | `kfu39nkfu39nkfu3.jpeg` | Navy / White |
+| `navy-side.jpg` | `9svx1x9svx1x9svx.jpeg` | Navy / White |
+| `navy-top.jpg` | `nrp6sznrp6sznrp6.jpeg` | Navy / White |
+
+## Semi-Brogue Cap-Toe: `public/images/products/semi-brogue/`
+
+All **ai-concept**, same processing; originals in `catalogue-assets/semi-brogue/`. Source folder: `Semi Brogue/`.
+
+| Destination | Source file (`Gemini_Generated_Image_…`) | Colourway |
+|---|---|---|
+| `white-black-three-quarter.jpg` | `ly5jwyly5jwyly5j.jpeg` | White / Black |
+| `white-black-top.jpg` | `4lfpay4lfpay4lfp.jpeg` | White / Black |
+| `white-brown-three-quarter.jpg` | `9t9yvc9t9yvc9t9y.jpeg` | White / Brown |
+| `white-brown-top.jpg` | `dhkv5kdhkv5kdhkv.jpeg` | White / Brown |
+
+Not published from these folders: the AI collages with baked-in "Mahikaar" text (two in Spectator, three in Semi Brogue) and the three phone photographs of real black and tan semi-brogues taken in a shop (cluttered backgrounds; they could be background-edited and added as real photographs).
+
 ## Not published (kept out of `public/`)
 
 Brown Brogue Wingtip (published above as the Heritage Wingtip) is a separate design from the Shalimar Full Brogue (different last, tan welt). The three crops of the old "Heritage Wingtip" AI collage staged in `catalogue-assets/brown-wingtip/` are not served.
