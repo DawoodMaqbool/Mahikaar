@@ -68,7 +68,7 @@ export function SiteHeader() {
             href={routes.contact}
             className="hidden xl:inline-flex items-center type-label-sm uppercase tracking-[0.18em] text-secondary hover:text-on-surface transition-colors"
           >
-            Atelier Direct
+            Contact Us
           </Link>
           <Link
             href={routes.quote}

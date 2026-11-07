@@ -78,10 +78,10 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     specs: [
       { label: "Upper", value: "Calf leather, colour to specification" },
       { label: "Sole", value: "Leather sole" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
     reference: "MKR-OX-042",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "02",
@@ -100,7 +100,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Hardware Accent", value: "Milled Solid Brass Toe Cleat" },
     ],
     reference: "MKR-LF-104",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "03",
@@ -117,9 +117,9 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Style", value: "Full brogue wingtip" },
       { label: "Upper", value: "Leather and colour to specification" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
     whiteBackdrop: true,
     colourways: [
       {
@@ -164,7 +164,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Structure", value: "Single-piece blocked upper" },
     ],
     reference: "MKR-BT-119",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "05",
@@ -183,7 +183,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Finishing Method", value: "Hand-applied layered finish" },
     ],
     reference: "MKR-AD-073",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "06",
@@ -202,7 +202,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Heel Counter", value: "Form-Pressed Solid Leather Stiffener" },
     ],
     reference: "MKR-CK-095",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "07",
@@ -219,9 +219,9 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Style", value: "Two-tone wingtip brogue" },
       { label: "Colourways Shown", value: "White / Black, White / Brown" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
     whiteBackdrop: true,
     colourways: [
       {
@@ -281,9 +281,9 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Style", value: "Side-zip wingtip ankle boot" },
       { label: "Upper", value: "Leather and colour to specification" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
     colourways: [
       {
         name: "Dark Brown",
@@ -325,9 +325,9 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Style", value: "Woven penny loafer" },
       { label: "Upper", value: "Leather and colour to specification" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
     colourways: [
       {
         name: "Burgundy",
@@ -363,9 +363,9 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Style", value: "Full brogue, five-eyelet lacing" },
       { label: "Upper", value: "Leather and colour to specification" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
     colourways: [
       {
         name: "Black",
@@ -408,9 +408,9 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Upper", value: "Full grain leather; colour to specification" },
       { label: "Welt", value: "Hand-welted, 360° around the sole" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
     colourways: [
       {
         name: "Dark Brown",
@@ -452,9 +452,9 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Style", value: "Two-tone wingtip brogue" },
       { label: "Colourways Shown", value: "Olive / White, Navy / White" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
     colourways: [
       {
         name: "Olive / White",
@@ -519,9 +519,9 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Style", value: "Semi-brogue cap-toe Oxford" },
       { label: "Colourways Shown", value: "White / Black, White / Brown" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
     colourways: [
       {
         name: "White / Black",

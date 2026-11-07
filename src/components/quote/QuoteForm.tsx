@@ -224,7 +224,7 @@ export function QuoteForm() {
           <div className="space-y-4">
             <SectionHeading number="03" tag="Order Scale" title="Batch Volume" />
             <p className="type-body-sm text-on-surface-variant">
-              Minimum order is 12 pairs per style. Pricing is confirmed after we review your brief:
+              Minimum order is 12 pairs per design and colour, with mixed sizes allowed. Pricing is confirmed after we review your brief:
             </p>
             <SelectField
               id="quantityScale"
@@ -346,7 +346,7 @@ export function QuoteForm() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-outline">
             <div className="flex items-center gap-2">
               <Icon name="lock" className="text-[18px] text-secondary" />
-              <span className="type-body-sm">Your brief is treated as confidential.</span>
+              <span className="type-body-sm">Share as much or as little as you have.</span>
             </div>
             <span className="type-label-sm uppercase tracking-widest">Shipping Agreed per Order</span>
           </div>

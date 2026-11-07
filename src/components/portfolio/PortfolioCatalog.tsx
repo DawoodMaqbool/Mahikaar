@@ -285,7 +285,7 @@ export function PortfolioCatalog() {
             <p className="type-body-md text-on-surface-variant mt-4 max-w-3xl">
               Examples of the looks possible on this silhouette. Perforation pattern, leather, colour and sole
               are tailored to your brief, and some images are digital previews. Goodyear welted, 12 pairs per
-              style, 4–8 weeks.
+              design and colour, approximately 2–4 weeks for bulk production.
             </p>
           </Container>
 

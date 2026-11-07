@@ -24,7 +24,7 @@ export default function RequestQuotePage() {
               <div className="flex items-center gap-3">
                 <Icon name="verified" className="text-secondary text-[22px]" />
                 <span className="type-label-md uppercase tracking-wider text-on-surface">
-                  Confidential Enquiry
+                  Direct Enquiry
                 </span>
               </div>
               <span className="type-label-sm uppercase tracking-widest text-outline">B2B Enquiry</span>

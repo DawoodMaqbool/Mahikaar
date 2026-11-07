@@ -2,8 +2,8 @@ import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 
 const capacity = [
-  { label: "Minimum Order", value: "12 Pairs", note: "Per style" },
-  { label: "Bulk Production", value: "4–8 Weeks", note: "After sample approval" },
+  { label: "Minimum Order", value: "12 Pairs", note: "Per design & colour" },
+  { label: "Bulk Production", value: "2–4 Weeks", note: "After sample approval" },
 ];
 
 const blueprint = [
@@ -15,17 +15,17 @@ const blueprint = [
   {
     icon: "verified",
     title: "Hand-Sewn Welt",
-    text: "Goodyear welted construction, carried out by hand throughout, with welt options discussed per design.",
+    text: "Goodyear welted construction, carried out by hand throughout.",
   },
   {
     icon: "history_edu",
-    title: "Lahore Atelier",
-    text: "Your specifications are developed with you in our Lahore atelier.",
+    title: "Our Workshop",
+    text: "Our shoemaking team makes your footwear in our Lahore workshop, overseen throughout.",
   },
   {
     icon: "diamond",
     title: "Material Selection",
-    text: "Calf, suede, patent, embossed, and specialty leathers discussed per project and sourced through our local supplier network.",
+    text: "A range of leathers and finishes through our sourcing network in Pakistan, discussed per project.",
   },
 ];
 
@@ -48,8 +48,8 @@ export function ManufacturingIntro() {
               The Anatomy of Hand-Welted Footwear
             </h1>
             <p className="type-body-lg text-on-surface-variant max-w-2xl pt-2">
-              Mahikaar works with an established Lahore atelier, where footwear is cut, lasted,
-              and welted by hand to your agreed specifications.
+              In our Lahore workshop, our craftsmen cut, last, and weld footwear by hand to your
+              agreed specifications, with our team involved at every stage.
             </p>
           </div>
 

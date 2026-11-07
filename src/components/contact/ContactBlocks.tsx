@@ -7,12 +7,8 @@ import { Icon } from "@/components/ui/Icon";
 
 const commitments = [
   {
-    title: "Design Confidentiality",
-    text: "Designs, references, and branding shared for private-label projects are treated as confidential, and non-disclosure agreements can be arranged on request.",
-  },
-  {
     title: "Sample Approval",
-    text: "Production begins only after your sample and specifications are approved. Selected styles can be sampled in as little as 2 days; fully custom prototypes typically take 2–4 weeks.",
+    text: "Production begins only after your sample and specifications are approved.",
   },
   {
     title: "Specification Review",
@@ -22,14 +18,6 @@ const commitments = [
     title: "Shipping & Delivery",
     text: "Shipping and delivery arrangements are discussed and agreed for each order.",
   },
-];
-
-const materialOptions = [
-  "Classic Calf & Smooth Leather",
-  "Suede & Nubuck",
-  "Patent & High-Gloss",
-  "Embossed & Patterned",
-  "Specialty & Custom Finishes",
 ];
 
 export function InstitutionalCommitments({ className = "" }: { className?: string }) {
@@ -81,27 +69,13 @@ export function ContactDetails({ className = "" }: { className?: string }) {
         </p>
       </div>
       <div id="visits" className="pt-4 bg-surface p-4 shadow-xs space-y-2 scroll-mt-24">
-        <h3 className="type-label-md uppercase tracking-wider text-secondary">Atelier Visits</h3>
+        <h3 className="type-label-md uppercase tracking-wider text-secondary">Workshop Visits</h3>
         <p className="type-body-sm text-on-surface-variant">
-          Visits to our Lahore atelier can be arranged by prior appointment for buyers
-          considering a project.
+          Prospective buyers may be able to visit our workshop, subject to prior arrangement
+          and availability. Video calls, photographs, videos and physical samples are also
+          available.
         </p>
       </div>
-    </div>
-  );
-}
-
-export function MaterialOptions({ className = "" }: { className?: string }) {
-  return (
-    <div className={`bg-surface-container-low p-6 space-y-4 ${className}`}>
-      <h2 className="type-label-sm uppercase tracking-widest text-secondary">Material Options</h2>
-      <ul className="flex flex-wrap gap-2">
-        {materialOptions.map((name) => (
-          <li key={name} className="px-2.5 py-1 bg-surface type-label-sm uppercase text-on-surface-variant">
-            {name}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

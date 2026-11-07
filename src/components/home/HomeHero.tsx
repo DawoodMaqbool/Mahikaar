@@ -5,8 +5,8 @@ import { routes } from "@/lib/site";
 
 const credo = [
   { label: "Standard", value: "Goodyear Welted, Made by Hand" },
-  { label: "Provenance", value: "Local Leather Suppliers" },
-  { label: "Minimum Order", value: "12 Pairs per Style" },
+  { label: "Sourcing", value: "Pakistan Leather Network" },
+  { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
   { label: "Manufacture", value: "Lahore, Pakistan" },
 ];
 
@@ -49,8 +49,8 @@ export function HomeHero() {
           </h1>
           <p className="type-body-lg text-surface-container max-w-2xl leading-relaxed font-light">
             Made-to-order leather footwear for international brands, heritage boutiques, and
-            discerning private labels. Constructed by hand in our Lahore, Pakistan
-            atelier, with materials and branding tailored to your requirements.
+            discerning private labels. Goodyear welted by our craftsmen in our Lahore, Pakistan
+            workshop, with materials and branding tailored to your requirements.
           </p>
         </div>
 

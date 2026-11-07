@@ -8,15 +8,15 @@ import { routes } from "@/lib/site";
 const pillars = [
   {
     title: "Hand-Stitched Welt",
-    text: "A leather welt stitched by hand to the insole rib, forming the structure that makes resoling possible.",
+    text: "The leather welt is stitched by hand, forming the structure of the shoe.",
   },
   {
-    title: "Cork Filling",
-    text: "Natural cork filling between insole and outsole that moulds gradually to the wearer's footprint.",
+    title: "Hand Lasting",
+    text: "Each upper is shaped over the last by hand to establish its form and proportions.",
   },
   {
-    title: "Fiddleback Waist",
-    text: "A hand-sculpted, bevelled waist available for a refined, elegant silhouette.",
+    title: "Hand Finishing",
+    text: "Soles, heels, and uppers are finished by hand before every pair is inspected.",
   },
 ];
 
@@ -36,7 +36,7 @@ export function CraftSpotlight() {
             />
             <figcaption className="absolute bottom-6 right-6 bg-ink/90 text-surface p-4 max-w-xs backdrop-blur-xs border border-surface/20">
               <span className="type-label-sm uppercase tracking-widest text-secondary-container block mb-1">
-                Technique #24
+                Hand Welting
               </span>
               <span className="type-body-sm text-surface-container font-light block">
                 Hand-stitching the leather welt through the holdfast rib of the insole.
@@ -48,14 +48,13 @@ export function CraftSpotlight() {
             <div>
               <Eyebrow className="mb-3">Goodyear Welted Construction</Eyebrow>
               <h2 className="type-headline-lg text-on-surface tracking-tight leading-[1.15]">
-                Built to Be Resoled: The Goodyear Welt.
+                The Goodyear Welt, Made by Hand.
               </h2>
             </div>
             <p className="type-body-md text-on-surface-variant leading-relaxed">
-              Unlike mass-market footwear held together with cement, Mahikaar footwear is built
-              with classical Goodyear welted construction, carried out by hand throughout. The
-              upper, insole rib, and welt are stitched together, allowing your customers to
-              resole and maintain their pairs for years.
+              Mahikaar footwear is built with Goodyear welted construction, carried out by hand
+              throughout by our craftsmen. The upper, insole rib, and welt are stitched together
+              to form a structured, durable shoe.
             </p>
 
             <ol className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-outline-variant/30">
