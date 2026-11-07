@@ -5,19 +5,19 @@ const faqs = [
     topic: "Minimum Order Quantity",
     question: "What is your minimum order quantity?",
     answer:
-      "Our minimum production run begins at 12 pairs per design and colour, with mixed sizes allowed, across standard European or UK size curves (UK 6 to 12) or tailored to your custom sizing. Smaller sample or prototype requests (1–5 pairs) are quoted separately.",
+      "Our minimum production run begins at 12 pairs per design/article and colour, with mixed sizes permitted, across standard European or UK size curves (UK 6 to 12) or tailored to your custom sizing.",
   },
   {
     topic: "Lead Times",
     question: "What is the delivery turnaround?",
     answer:
-      "Sample development typically takes approximately 2–3 weeks. Once your team has approved the sample and specifications and commercial arrangements are agreed, bulk production takes approximately 2–4 weeks, depending on seasonal demand. These are indicative timelines, confirmed for each order rather than guaranteed.",
+      "Sample development typically takes approximately 2–3 weeks. Once your team has approved the sample and specifications and commercial arrangements are agreed, bulk production takes approximately 2–4 weeks, depending on seasonal demand. Production timelines begin once the required advance and agreed production specifications are in place. Timelines are approximate and depend on the design and material availability.",
   },
   {
     topic: "Leather Sourcing",
-    question: "Can we specify proprietary hides?",
+    question: "Which leathers can you work with?",
     answer:
-      "Yes. We partner exclusively with Pakistan’s premier, export-grade tanneries to source premium locally refined calfskins and suedes, or we can cut from custom client-supplied hides delivered directly to the workshop in Lahore.",
+      "A range of leather types, textures, colours and finishes can be discussed according to your design and its intended use. Availability, specifications and pricing are confirmed against order quantity and sourcing requirements. See the Private Label page for the material options.",
   },
   {
     topic: "Branding & Customisation",

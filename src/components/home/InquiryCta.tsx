@@ -55,7 +55,7 @@ export function InquiryCta({
             <span>Goodyear welted construction, made to order</span>
           </div>
           <div className="flex items-center gap-6 type-label-sm uppercase tracking-widest text-outline-variant/80">
-            <span>Confidentiality Respected</span>
+            <span>Made by Our Shoemaking Team</span>
             <span aria-hidden="true">•</span>
             <span>Shipping Arranged per Order</span>
           </div>

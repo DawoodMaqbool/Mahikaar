@@ -4,8 +4,8 @@ import { Icon } from "@/components/ui/Icon";
 
 const qualityMatrix = [
   { term: "Hand-Constructed", detail: "Construction carried out by hand throughout", icon: "pan_tool" },
-  { term: "Goodyear Welted", detail: "Resolable construction built for long wear", icon: "straighten" },
-  { term: "Material Selection", detail: "Leathers and finishes discussed per project", icon: "layers" },
+  { term: "Goodyear Welted", detail: "Welted construction, with the work carried out by hand", icon: "straighten" },
+  { term: "Material Selection", detail: "A range of leathers and finishes, discussed per project", icon: "layers" },
   { term: "Client Branding", detail: "Agreed branding and customisation options", icon: "eco" },
 ];
 
@@ -36,14 +36,15 @@ export function ProvenanceSection({ headingLevel: Heading = "h2" }: ProvenanceSe
             </Heading>
             <p className="type-body-lg text-on-surface-variant leading-relaxed">
               Mahikaar is a Lahore-based business offering premium, made-to-order Goodyear welted
-              footwear to B2B buyers. Drawing on a local leather sourcing network, we work with you
-              on your specifications, materials, and branding through an established local
-              shoemaking workshop, with clear communication at every step.
+              footwear to B2B buyers. Our shoemaking team makes
+              each pair by hand in our workshop in Lahore, drawing on our material sourcing
+              network in Pakistan, with clear communication at every step.
             </p>
             <p className="type-body-md text-outline leading-relaxed">
-              Construction is carried out by hand throughout. Each order is made to the agreed
-              specification, with materials, finishes, and customisation options discussed and
-              confirmed before production begins.
+              Construction is carried out by hand throughout. Our team stays involved from
+              pattern cutting to the finished shoe, and each order is made to the agreed
+              specification, with materials, finishes, and customisation confirmed before
+              production begins.
             </p>
           </div>
 

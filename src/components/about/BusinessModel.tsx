@@ -3,18 +3,18 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { routes } from "@/lib/site";
 
-const roles = [
+const points = [
   {
-    title: "Mahikaar",
-    text: "Your point of contact from first enquiry to dispatch. We handle requirements, material and specification discussions, sample coordination, and the final review of your completed order.",
+    title: "Based in Pakistan",
+    text: "Mahikaar is a Pakistan-based business making premium, made-to-order leather footwear for B2B buyers, with our shoemaking set-up in Lahore.",
   },
   {
-    title: "The Workshop",
-    text: "Mahikaar works through an established local shoemaking workshop in Lahore, which makes each pair using Goodyear welted construction carried out by hand. Mahikaar does not own the workshop.",
+    title: "Our Shoemaking Team",
+    text: "Our workshop is home to our production team and craftsmen, who make each pair by hand, using Goodyear welted construction.",
   },
   {
-    title: "Shared Accountability",
-    text: "The workshop checks each pair during production, and accepts responsibility for qualifying production defects, arranging replacements where needed.",
+    title: "Hands-On Oversight",
+    text: "Our team is present at the workshop and involved from pattern cutting through to the completed shoe, so the footwear you approve is the footwear you receive.",
   },
 ];
 
@@ -23,31 +23,27 @@ export function BusinessModel() {
     <section className="w-full bg-surface-container-low py-20 border-b border-outline-variant/30">
       <Container className="space-y-12">
         <div className="max-w-2xl space-y-3">
-          <Eyebrow>Our Business Model</Eyebrow>
-          <h2 className="type-headline-lg text-on-surface">A Pakistan-Based Partnership</h2>
-          <p className="type-body-md text-on-surface-variant leading-relaxed">
-            Mahikaar is based in Lahore, Pakistan, and pairs a client-facing service with the
-            skill of an established local workshop.
-          </p>
+          <Eyebrow>Our Workshop &amp; Our Team</Eyebrow>
+          <h2 className="type-headline-lg text-on-surface">Made by Our Own Hands, in Lahore</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {roles.map((role) => (
-            <div key={role.title} className="bg-surface-container-lowest p-8 shadow-xs space-y-3">
-              <h3 className="type-headline-sm text-on-surface">{role.title}</h3>
-              <p className="type-body-sm text-on-surface-variant leading-relaxed">{role.text}</p>
+          {points.map((point) => (
+            <div key={point.title} className="bg-surface-container-lowest p-8 shadow-xs space-y-3">
+              <h3 className="type-headline-sm text-on-surface">{point.title}</h3>
+              <p className="type-body-sm text-on-surface-variant leading-relaxed">{point.text}</p>
             </div>
           ))}
         </div>
 
         <p className="type-body-sm text-on-surface-variant">
-          See{" "}
+          Explore{" "}
           <Link href={routes.manufacturing} className="text-secondary hover:text-on-surface underline underline-offset-4">
-            how each pair is made and reviewed
+            our manufacturing process
           </Link>{" "}
           or{" "}
           <Link href={routes.privateLabel} className="text-secondary hover:text-on-surface underline underline-offset-4">
-            the full ordering journey
+            how ordering works
           </Link>
           .
         </p>

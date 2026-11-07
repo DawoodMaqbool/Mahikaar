@@ -5,12 +5,12 @@ const benchmarks = [
   {
     icon: "architecture",
     title: "Hand Lasting",
-    text: "Uppers are lasted by hand and left to rest on the last so the shape settles before the sole is attached, helping each pair hold its form.",
+    text: "Uppers are lasted by hand so that the shoe's form and proportions are established before the sole is attached.",
   },
   {
     icon: "handyman",
     title: "Hand Welting",
-    text: "A feather is carved directly from the leather insole and the welt is stitched by hand, creating the structure that allows the shoe to be resoled.",
+    text: "The welt is stitched by hand as part of our Goodyear welted construction.",
   },
   {
     icon: "layers",
@@ -20,7 +20,7 @@ const benchmarks = [
   {
     icon: "palette",
     title: "Hand Finishing",
-    text: "Colour is built up in layers by hand and sealed with wax, then burnished for depth and a refined finish.",
+    text: "Each pair is finished and burnished by hand for depth of colour and a refined finish.",
   },
 ];
 

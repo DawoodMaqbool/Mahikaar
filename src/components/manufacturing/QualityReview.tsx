@@ -1,71 +1,86 @@
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Icon } from "@/components/ui/Icon";
 
-const activities = [
+const stages = [
   {
-    icon: "visibility",
-    title: "Workshop Checks During Production",
-    text: "The workshop checks each pair as production progresses, so issues can be addressed while the shoe is still being made.",
+    title: "Pattern & Material Preparation",
+    points: [
+      "Pattern and design accuracy",
+      "Correct leather selection",
+      "Cutting accuracy",
+      "Component consistency",
+    ],
   },
   {
-    icon: "fact_check",
-    title: "Joint Final Review",
-    text: "Both the workshop and Mahikaar review the completed order against the approved sample and agreed specifications before dispatch.",
+    title: "Upper Preparation & Stitching",
+    points: [
+      "Leather panel alignment",
+      "Stitching quality and consistency",
+      "Brogue perforations and decorative patterns",
+      "Overall upper workmanship",
+    ],
   },
-];
-
-const reviewAreas = [
-  "Design and pattern consistency",
-  "Left and right pair matching",
-  "Visible stitching and workmanship",
-  "Welt, sole and heel attachment and finishing",
-  "Leather surface and finishing",
-  "Branding, sizing and agreed specifications",
+  {
+    title: "Lasting & Goodyear Welted Construction",
+    points: [
+      "Shoe shape and proportions",
+      "Construction consistency",
+      "Welt stitching and visible workmanship",
+      "Alignment with the approved design",
+    ],
+  },
+  {
+    title: "Sole & Heel Finishing",
+    points: ["Sole attachment", "Heel alignment", "Edge finishing", "Overall finishing quality"],
+  },
+  {
+    title: "Final Inspection",
+    points: [
+      "Left and right shoe consistency",
+      "Overall shape and appearance",
+      "Leather surface and finishing",
+      "Branding and sizing",
+      "Consistency with the approved sample and agreed specifications",
+    ],
+  },
 ];
 
 export function QualityReview() {
   return (
     <section id="quality-review" className="w-full bg-surface py-20 scroll-mt-24">
       <Container className="space-y-12">
-        <div className="max-w-2xl space-y-3">
-          <Eyebrow>Quality Review</Eyebrow>
-          <h2 className="type-headline-lg text-on-surface">Quality Reviewed at Every Stage.</h2>
-          <p className="type-body-md text-on-surface-variant">
-            Two distinct activities keep each order in line with the sample you approved.
+        <div className="max-w-3xl space-y-3">
+          <Eyebrow>Our Quality Inspection</Eyebrow>
+          <h2 className="type-headline-lg text-on-surface">Inspected at Every Stage.</h2>
+          <p className="type-body-md text-on-surface-variant leading-relaxed">
+            Our team remains involved throughout production, reviewing each stage from pattern
+            cutting to final finishing. Every completed pair is checked against the approved
+            sample and agreed specifications before dispatch.
+            Our workshop and our team both review the completed order before it leaves.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {activities.map((item) => (
-            <div key={item.title} className="bg-surface-container-low p-8 shadow-xs space-y-3">
-              <Icon name={item.icon} className="text-secondary text-2xl" />
-              <h3 className="type-headline-sm text-on-surface">{item.title}</h3>
-              <p className="type-body-sm text-on-surface-variant leading-relaxed">{item.text}</p>
-            </div>
+        <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {stages.map((stage, index) => (
+            <li
+              key={stage.title}
+              className="bg-surface-container-low p-8 shadow-xs space-y-4"
+            >
+              <span className="type-headline-md text-secondary">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="type-headline-sm text-on-surface">{stage.title}</h3>
+              <ul className="space-y-2 type-body-sm text-on-surface-variant leading-relaxed">
+                {stage.points.map((point) => (
+                  <li key={point} className="flex items-start gap-2">
+                    <span aria-hidden="true" className="mt-2 w-1 h-1 rounded-full bg-secondary shrink-0" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
           ))}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-5 space-y-3">
-            <h3 className="type-headline-md text-on-surface">What the Review Covers</h3>
-            <p className="type-body-sm text-on-surface-variant leading-relaxed">
-              Identified production defects are raised with the workshop for correction or
-              replacement before dispatch.
-            </p>
-          </div>
-          <ul className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {reviewAreas.map((area) => (
-              <li
-                key={area}
-                className="flex items-start gap-3 bg-surface-container-lowest p-4 shadow-xs type-body-sm text-on-surface"
-              >
-                <Icon name="check_circle" className="text-secondary text-lg mt-0.5" />
-                <span>{area}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        </ol>
       </Container>
     </section>
   );

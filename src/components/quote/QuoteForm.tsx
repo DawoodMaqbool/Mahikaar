@@ -346,7 +346,7 @@ export function QuoteForm() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-outline">
             <div className="flex items-center gap-2">
               <Icon name="lock" className="text-[18px] text-secondary" />
-              <span className="type-body-sm">Your brief is treated as confidential.</span>
+              <span className="type-body-sm">Share as much or as little as you have.</span>
             </div>
             <span className="type-label-sm uppercase tracking-widest">Shipping Agreed per Order</span>
           </div>

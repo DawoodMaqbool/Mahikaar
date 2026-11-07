@@ -9,23 +9,23 @@ export function WorkshopAccess() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-5 space-y-3">
-            <Eyebrow>Workshop Access</Eyebrow>
-            <h2 className="type-headline-lg text-on-surface">Seeing the Work First-Hand</h2>
+            <Eyebrow>Visits &amp; Direct Interaction</Eyebrow>
+            <h2 className="type-headline-lg text-on-surface">See the Work First-Hand</h2>
           </div>
           <div className="lg:col-span-7 space-y-4 type-body-md text-on-surface-variant leading-relaxed">
             <p>
-              Workshop visits may be considered by prior arrangement, subject to availability and
-              the permission of the workshop owner. Access cannot be guaranteed.
+              Prospective buyers interested in our manufacturing process may be able to visit our
+              workshop, subject to prior arrangement and availability.
             </p>
             <p>
-              Where a visit is not practical, video calls and physical samples are alternative
-              ways to review the footwear before you commit to an order.
+              You can also discuss your requirements by video call, and review actual footwear
+              through photographs, videos and physical samples.
             </p>
             <Link
               href={routes.contact}
               className="inline-block type-label-md uppercase tracking-[0.2em] text-secondary hover:text-on-surface transition-colors"
             >
-              Ask About a Visit
+              Arrange a Conversation
             </Link>
           </div>
         </div>

@@ -7,26 +7,26 @@ const steps = [
   {
     icon: "draw",
     title: "Requirements & Materials",
-    text: "Share your design reference, sizing, and customisation requirements. Leathers, finishes, and branding are selected and agreed with you before sampling.",
+    text: "Share a sample, reference photograph, technical pack or design idea. Leather, colours, and branding are agreed with you before production.",
     footnote: "Made to Your Specification",
   },
   {
     icon: "verified",
     title: "Sample Approval",
-    text: "A sample is developed so your team can approve fit, leather, and finishing before production begins.",
+    text: "Our shoemaking team develops a sample by hand so your team can approve fit, leather, and finishing.",
     footnote: "Approx. 2–3 Weeks",
   },
   {
-    icon: "local_shipping",
+    icon: "inventory_2",
     title: "Made-to-Order Production",
-    text: "Production proceeds once the sample, specifications, and commercial arrangements are agreed. Bulk production takes approximately 2–4 weeks, depending on seasonal demand.",
+    text: "Production proceeds from your approved sample and agreed specifications, from 12 pairs per design and colour.",
     footnote: "Approx. 2–4 Weeks",
   },
   {
     icon: "fact_check",
-    title: "Quality Review & Dispatch",
-    text: "The workshop checks each pair during production, and the workshop and Mahikaar review the completed order before it is dispatched.",
-    footnote: "Reviewed Before Dispatch",
+    title: "Quality Oversight",
+    text: "Our team reviews each stage from pattern cutting to final finishing, and checks every completed pair before dispatch.",
+    footnote: "Inspected Throughout",
   },
 ];
 

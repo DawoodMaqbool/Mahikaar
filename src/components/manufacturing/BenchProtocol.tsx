@@ -1,22 +1,84 @@
 import Image from "next/image";
-import { Fragment } from "react";
 import { Container } from "@/components/ui/Container";
-import { benchStages, type BenchStage } from "@/data/manufacturing";
+import { benchStages, type BenchStage, type StageMedia } from "@/data/manufacturing";
 
-function StageRow({ stage, imageFirst }: { stage: BenchStage; imageFirst: boolean }) {
+function MediaFrame({ item, className }: { item: StageMedia; className: string }) {
   return (
-    <li className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-surface-container-lowest p-8 lg:p-12 shadow-xs">
-      {/* Text always comes first on mobile; on desktop the image alternates sides. */}
-      <div className={`lg:col-span-5 space-y-4 ${imageFirst ? "lg:order-2" : ""}`}>
+    <figure className={`relative w-full overflow-hidden bg-surface-container shadow-inner ${className}`}>
+      {item.type === "image" ? (
+        <Image
+          src={item.src}
+          alt={item.alt}
+          fill
+          sizes="(min-width: 1024px) 55vw, 100vw"
+          className="object-cover"
+        />
+      ) : (
+        // Short, muted workshop clips: the viewer starts playback, nothing autoplays.
+        <video
+          controls
+          muted
+          playsInline
+          preload="metadata"
+          poster={item.poster}
+          aria-label={item.alt}
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={item.src} />
+        </video>
+      )}
+      {item.caption && (
+        <figcaption className="absolute bottom-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1.5 shadow-xs type-label-sm uppercase tracking-widest text-on-surface pointer-events-none">
+          {item.caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+function StageRow({
+  stage,
+  imageFirst,
+  featured,
+}: {
+  stage: BenchStage;
+  imageFirst: boolean;
+  featured: boolean;
+}) {
+  const [lead, ...more] = stage.media ?? [];
+
+  return (
+    <li
+      className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
+        featured
+          ? "bg-surface-container-highest p-8 lg:p-14 shadow-md"
+          : "bg-surface-container-lowest p-8 lg:p-12 shadow-xs"
+      }`}
+    >
+      {/* Text always comes first on mobile; on desktop the media alternates sides. */}
+      <div
+        className={`space-y-4 ${lead ? "lg:col-span-5" : "lg:col-span-12 max-w-3xl"} ${
+          lead && imageFirst ? "lg:order-2" : ""
+        }`}
+      >
         <div className="flex items-center gap-3">
           <span className="type-headline-md text-secondary">{stage.number}</span>
           <span aria-hidden="true" className="w-6 h-px bg-secondary-container" />
           <span className="type-label-sm uppercase tracking-widest text-on-surface-variant">
-            {stage.phase}
+            {featured ? "Key Stage" : stage.phase}
           </span>
         </div>
-        <h3 className="type-headline-md text-on-surface">{stage.title}</h3>
-        <p className="type-body-md text-on-surface-variant">{stage.text}</p>
+        <h3
+          className={
+            featured
+              ? "type-headline-lg text-on-surface leading-tight"
+              : "type-headline-md text-on-surface"
+          }
+        >
+          {stage.title}
+        </h3>
+        <p className="type-label-md uppercase tracking-[0.18em] text-secondary">{stage.subtitle}</p>
+        <p className="type-body-md text-on-surface-variant leading-relaxed">{stage.text}</p>
         <ul className="pt-2 flex flex-wrap gap-2">
           {stage.tags.map((tag) => (
             <li
@@ -29,86 +91,18 @@ function StageRow({ stage, imageFirst }: { stage: BenchStage; imageFirst: boolea
         </ul>
       </div>
 
-      <figure className={`lg:col-span-7 ${imageFirst ? "lg:order-1" : ""}`}>
-        <div className="relative w-full h-[360px] bg-surface-container overflow-hidden shadow-inner">
-          <Image
-            src={stage.image}
-            alt={stage.alt}
-            fill
-            sizes="(min-width: 1024px) 55vw, 100vw"
-            className="object-cover"
-          />
-          <figcaption className="absolute bottom-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1.5 shadow-xs type-label-sm uppercase tracking-widest text-on-surface">
-            {stage.caption}
-          </figcaption>
-        </div>
-      </figure>
-    </li>
-  );
-}
-
-const weltCallouts = [
-  { label: "Thread", value: "Waxed Thread", text: "Strong, waxed thread for a durable hand-stitched welt." },
-  { label: "Insole Anchor", value: "Carved Feather", text: "Hand-channelled leather insole holdfast." },
-  { label: "Stitching", value: "Hand-Stitched", text: "Evenly spaced, guided by hand awl pricks." },
-  { label: "Welt Profile", value: "270° / 360° Options", text: "Flat, storm, or Norwegian welts, subject to the design." },
-];
-
-/** Stage 05 gets a larger feature treatment: the welt is the centrepiece of the process. */
-function WeltFeatureStage() {
-  return (
-    <li className="bg-surface-container-highest p-8 lg:p-14 shadow-md">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div className="lg:col-span-5 space-y-5">
-          <div className="flex items-center gap-3">
-            <span className="type-headline-md text-secondary">05 • KEY STAGE</span>
-            <span aria-hidden="true" className="w-8 h-px bg-secondary" />
-          </div>
-          <h3 className="type-headline-lg lg:type-headline-xl text-on-surface leading-tight">
-            The Goodyear Welt &amp; Hand Stitching
-          </h3>
-          <p className="type-body-md text-on-surface-variant leading-relaxed">
-            The defining signature of long-lasting footwear. A leather welt strip is hand-stitched
-            through the insole&apos;s carved holdfast feather, joining upper, insole, and welt in a
-            construction that can be resoled and maintained for years.
-          </p>
-          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            {weltCallouts.map((item) => (
-              <div key={item.label} className="bg-surface-container-lowest p-4 shadow-xs">
-                <dt className="type-label-sm text-secondary uppercase tracking-wider">{item.label}</dt>
-                <dd>
-                  <span className="type-headline-sm text-on-surface">{item.value}</span>
-                  <p className="type-body-sm text-on-surface-variant pt-1">{item.text}</p>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <div className="lg:col-span-7">
-          <div className="relative w-full h-[460px] bg-surface-container-low overflow-hidden shadow-lg">
-            <Image
-              src="/images/process/welt-hand-stitching.png"
-              alt="Artisan shoemaker hands sewing the leather welt onto a dress shoe using a hand awl and waxed thread, workshop tools around on timber table"
-              fill
-              sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover"
-            />
-            <span className="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1.5 shadow-xs type-label-sm uppercase tracking-widest">
-              Hand Welting
-            </span>
-            <div className="absolute bottom-4 left-4 right-4 sm:right-auto bg-surface/95 backdrop-blur-md p-4 max-w-md shadow-xs">
-              <span className="type-label-sm uppercase tracking-widest text-secondary block">
-                Macro Specification
-              </span>
-              <p className="type-body-sm text-on-surface">
-                Hand-curved curved awl puncture passing through insole rib, upper edge, and
-                exterior welt strip in a single continuous strike.
-              </p>
+      {lead && (
+        <div className={`lg:col-span-7 space-y-4 ${imageFirst ? "lg:order-1" : ""}`}>
+          <MediaFrame item={lead} className={featured ? "h-[460px]" : "h-[360px]"} />
+          {more.length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {more.map((item) => (
+                <MediaFrame key={item.src} item={item} className="aspect-[4/3]" />
+              ))}
             </div>
-          </div>
+          )}
         </div>
-      </div>
+      )}
     </li>
   );
 }
@@ -119,21 +113,24 @@ export function BenchProtocol() {
       <Container className="space-y-16">
         <div className="max-w-2xl space-y-3">
           <span className="type-label-sm uppercase tracking-[0.2em] text-secondary">
-            How Each Pair Is Made
+            Our Manufacturing Process
           </span>
-          <h2 className="type-headline-lg text-on-surface">Eight Stages of Hand Construction</h2>
+          <h2 className="type-headline-lg text-on-surface">From Pattern to Finished Shoe</h2>
           <p className="type-body-md text-on-surface-variant">
-            Every order follows a clear sequence from selecting materials to final finishing,
-            with construction carried out by hand throughout.
+            Our shoemaking team works through seven stages in our workshop in Lahore, with
+            Goodyear welted construction carried out by hand and each stage overseen by our
+            team.
           </p>
         </div>
 
         <ol className="space-y-12">
           {benchStages.map((stage, index) => (
-            <Fragment key={stage.number}>
-              <StageRow stage={stage} imageFirst={index % 2 === 1} />
-              {stage.number === "04" && <WeltFeatureStage />}
-            </Fragment>
+            <StageRow
+              key={stage.number}
+              stage={stage}
+              imageFirst={index % 2 === 1}
+              featured={stage.number === "05"}
+            />
           ))}
         </ol>
       </Container>

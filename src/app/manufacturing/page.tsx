@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { BenchProtocol } from "@/components/manufacturing/BenchProtocol";
 import { ManufacturingIntro } from "@/components/manufacturing/ManufacturingIntro";
-import { MaterialsSection } from "@/components/manufacturing/MaterialsSection";
 import { PrototypeCta } from "@/components/manufacturing/PrototypeCta";
 import { QualityReview } from "@/components/manufacturing/QualityReview";
 import { WorkshopAccess } from "@/components/manufacturing/WorkshopAccess";
@@ -9,7 +8,7 @@ import { WorkshopAccess } from "@/components/manufacturing/WorkshopAccess";
 export const metadata: Metadata = {
   title: "Manufacturing & Craft",
   description:
-    "How Mahikaar footwear is made: Goodyear welted construction carried out by hand, material selection, production checks and final review.",
+    "How Mahikaar footwear is made: Goodyear welted construction carried out by hand, our manufacturing stages, production supervision and quality inspection.",
 };
 
 export default function ManufacturingPage() {
@@ -19,7 +18,6 @@ export default function ManufacturingPage() {
       <BenchProtocol />
       <QualityReview />
       <WorkshopAccess />
-      <MaterialsSection />
       <PrototypeCta />
     </>
   );

@@ -7,7 +7,7 @@ const commitments = [
     text: "Each order is made to the specification you approve, with materials and customisation confirmed before production begins.",
   },
   {
-    title: "Welted, Not Cemented:",
+    title: "Goodyear Welted:",
     text: "Goodyear welted construction, carried out by hand throughout.",
   },
   {
@@ -40,7 +40,7 @@ const capabilities = [
   {
     icon: "tune",
     title: "Minimum Orders",
-    text: "Orders start at 12 pairs per design and colour, with mixed sizes allowed, in standard UK 6 to 12 size curves or tailored to your custom sizing.",
+    text: "Orders start at 12 pairs per design/article and colour, with mixed sizes permitted, in standard UK 6 to 12 size curves or tailored to your custom sizing.",
   },
 ];
 
@@ -61,8 +61,8 @@ export function PrivateLabelPrecision() {
               international labels to create their own footwear lines.
             </p>
             <p className="type-body-md text-on-surface-variant">
-              Mahikaar coordinates your specifications and orders with an established Lahore
-              workshop, supporting both small capsule collections and recurring seasonal orders.
+              Our shoemaking team works with you on your specifications, supporting both small
+              capsule collections and recurring seasonal orders.
             </p>
           </div>
 

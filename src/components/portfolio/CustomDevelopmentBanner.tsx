@@ -30,10 +30,10 @@ export function CustomDevelopmentBanner() {
                 <p className="type-label-sm uppercase tracking-widest text-secondary-fixed">
                   Direct B2B Channel
                 </p>
-                <h3 className="type-headline-sm text-surface">Confidential Development</h3>
+                <h3 className="type-headline-sm text-surface">Starting Your Design</h3>
                 <p className="type-body-sm text-outline-variant leading-relaxed">
-                  Your designs and branding are treated as confidential, and non-disclosure
-                  agreements can be arranged on request.
+                  Share a physical sample, reference photograph, technical pack or design idea,
+                  and we will talk it through with you.
                 </p>
               </div>
               <CustomDevelopmentButton />

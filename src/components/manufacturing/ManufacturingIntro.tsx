@@ -15,17 +15,17 @@ const blueprint = [
   {
     icon: "verified",
     title: "Hand-Sewn Welt",
-    text: "Goodyear welted construction, carried out by hand throughout, with welt options discussed per design.",
+    text: "Goodyear welted construction, carried out by hand throughout.",
   },
   {
     icon: "history_edu",
-    title: "Lahore Workshop",
-    text: "Made by an established local workshop, with Mahikaar coordinating your specifications.",
+    title: "Our Workshop",
+    text: "Our shoemaking team makes your footwear in our Lahore workshop, overseen throughout.",
   },
   {
     icon: "diamond",
     title: "Material Selection",
-    text: "Calf, suede, patent, embossed, and specialty leathers discussed per project and sourced through our local supplier network.",
+    text: "A range of leathers and finishes through our sourcing network in Pakistan, discussed per project.",
   },
 ];
 
@@ -48,8 +48,8 @@ export function ManufacturingIntro() {
               The Anatomy of Hand-Welted Footwear
             </h1>
             <p className="type-body-lg text-on-surface-variant max-w-2xl pt-2">
-              Mahikaar works with an established Lahore workshop, where footwear is cut, lasted,
-              and welted by hand to your agreed specifications.
+              In our Lahore workshop, our craftsmen cut, last, and weld footwear by hand to your
+              agreed specifications, with our team involved at every stage.
             </p>
           </div>
 

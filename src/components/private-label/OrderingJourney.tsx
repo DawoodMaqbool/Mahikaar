@@ -7,44 +7,44 @@ const stages = [
   {
     icon: "draw",
     title: "Share Your Requirements",
-    text: "Send your design references, tech pack or physical sample, together with quantities, sizes, colours and branding needs. We review feasibility, material availability and pricing with you.",
+    text: "Share an existing design reference, technical pack, physical sample or custom footwear idea. We discuss the intended collection, order quantity, size assortment and branding requirements.",
     footnote: "Your Brief",
   },
   {
     icon: "palette",
     title: "Design & Material Selection",
-    text: "Last, pattern details, leather, colours, finishes and branding are confirmed with you. Specifications are agreed before sampling begins.",
-    footnote: "Agreed Before Sampling",
+    text: "Agree the shoe design, leather, colours, sole, finishing, accessories and branding. Material availability, suitability, specifications and pricing are confirmed before proceeding.",
+    footnote: "Agreed Before Production",
   },
   {
     icon: "content_cut",
     title: "Sample Development",
-    text: "A sample is made by hand to the agreed specification so that your team can assess the design in person. Sample development typically takes approximately 2–3 weeks.",
+    text: "A physical sample is developed for your review. Indicative sample lead time is approximately 2–3 weeks.",
     footnote: "Approx. 2–3 Weeks",
   },
   {
     icon: "verified",
     title: "Sample Review & Approval",
-    text: "Your team reviews fit, leather, finishing and detailing, and any adjustments are discussed. Bulk production does not begin until you approve the sample and specifications.",
+    text: "You review the physical sample and confirm the design, fit, leather, finishing and other agreed specifications. Any required adjustments are discussed before bulk production.",
     footnote: "Your Approval",
   },
   {
     icon: "inventory_2",
     title: "Made-to-Order Production",
-    text: "Production proceeds once the sample and specifications are approved and commercial arrangements have been agreed. Orders start at 12 pairs per design and colour, with mixed sizes allowed. Bulk production takes approximately 2–4 weeks, depending on seasonal demand.",
+    text: "Bulk production begins after the sample and specifications are approved and commercial arrangements are agreed. Orders start at 12 pairs per design/article and colour, with mixed sizes permitted. Indicative production lead time is approximately 2–4 weeks, depending on seasonal demand, starting once the required advance and agreed production specifications are in place.",
     footnote: "Approx. 2–4 Weeks",
   },
   {
     icon: "fact_check",
-    title: "Production Checks & Final Review",
-    text: "The workshop checks each pair as production progresses. Before dispatch, the workshop and Mahikaar review the completed order against your approved sample and agreed specifications.",
-    footnote: "Workshop & Mahikaar",
+    title: "Production Supervision & Quality Inspection",
+    text: "Our team remains involved throughout production, reviewing the work from pattern cutting to final finishing. Both our team and our workshop review the completed order against the approved sample and agreed specifications.",
+    footnote: "Throughout Production",
     href: `${routes.manufacturing}#quality-review`,
   },
   {
     icon: "local_shipping",
-    title: "Dispatch",
-    text: "Once the final review is complete, the order is prepared for dispatch. Shipping arrangements and timings are discussed and agreed for each order.",
+    title: "Final Review & Dispatch",
+    text: "The completed order undergoes its final review, after which shipping and dispatch arrangements are confirmed.",
     footnote: "Arranged per Order",
   },
 ];
@@ -61,8 +61,8 @@ export function OrderingJourney() {
             From Enquiry to Dispatch
           </h1>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
-            Client branding, agreed customisation and made-to-order production, in seven clear
-            stages for menswear labels and boutique brands.
+            Client branding, agreed customisation and made-to-order production in seven
+            clear stages, for menswear labels and boutique brands.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export function OrderingJourney() {
                     href={stage.href}
                     className="mt-4 inline-flex items-center gap-1 type-label-sm uppercase tracking-widest text-secondary hover:text-on-surface transition-colors"
                   >
-                    How we review
+                    Our quality inspection
                     <Icon name="arrow_forward" className="text-[14px]" />
                   </Link>
                 )}
@@ -99,8 +99,8 @@ export function OrderingJourney() {
         </ol>
 
         <p className="mt-10 text-center type-body-sm text-outline max-w-3xl mx-auto leading-relaxed">
-          Timelines are indicative and are confirmed for each order. They depend on the style,
-          material availability and seasonal demand, and are not guaranteed delivery dates.
+          Timelines are approximate and depend on the design, material availability and
+          seasonal demand. Shipping and delivery are agreed for each order.
         </p>
       </Container>
     </section>
