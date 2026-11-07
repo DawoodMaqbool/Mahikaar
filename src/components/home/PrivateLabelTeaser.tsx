@@ -6,27 +6,27 @@ import { routes } from "@/lib/site";
 const steps = [
   {
     icon: "draw",
-    title: "Design & Fit Development",
-    text: "Share your design reference, sizing, and customisation requirements. We develop the pattern and fit details with you so the finished pair reflects your brand.",
+    title: "Requirements & Materials",
+    text: "Share your design reference, sizing, and customisation requirements. Leathers, finishes, and branding are selected and agreed with you before sampling.",
     footnote: "Made to Your Specification",
-  },
-  {
-    icon: "palette",
-    title: "Curated Material Sourcing",
-    text: "Access to local leather suppliers, with calf, suede, patent, embossed, and specialty finishes discussed around your project. Availability is confirmed before an order is finalised.",
-    footnote: "Availability Confirmed per Order",
   },
   {
     icon: "verified",
     title: "Sample Approval",
-    text: "Before production, a sample is prepared so your team can approve fit, leather, and finishing. Selected styles can be sampled in as little as 2 days; fully custom prototypes typically take 2–4 weeks.",
-    footnote: "2 Days to 4 Weeks",
+    text: "A sample is developed so your team can approve fit, leather, and finishing before production begins.",
+    footnote: "Approx. 2–3 Weeks",
   },
   {
     icon: "local_shipping",
-    title: "Scaled Made-to-Order",
-    text: "Production begins once the sample, specifications, and commercial terms are agreed. Bulk orders usually take 4–8 weeks depending on order size, with agreed branding and packaging.",
-    footnote: "Typically 4–8 Weeks",
+    title: "Made-to-Order Production",
+    text: "Production proceeds once the sample, specifications, and commercial arrangements are agreed. Bulk production takes approximately 2–4 weeks, depending on seasonal demand.",
+    footnote: "Approx. 2–4 Weeks",
+  },
+  {
+    icon: "fact_check",
+    title: "Quality Review & Dispatch",
+    text: "The workshop checks each pair during production, and the workshop and Mahikaar review the completed order before it is dispatched.",
+    footnote: "Reviewed Before Dispatch",
   },
 ];
 
@@ -52,8 +52,8 @@ export function PrivateLabelTeaser({
           </Heading>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
             From client branding and agreed customisation to made-to-order production, we
-            work with you on your specification in our Lahore atelier for menswear labels and
-            boutique brands.
+            work with you from first enquiry to dispatch, for menswear labels and boutique
+            brands.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export function PrivateLabelTeaser({
               href={routes.privateLabel}
               className="px-8 py-3.5 bg-primary text-surface type-label-md uppercase tracking-[0.2em] hover:bg-secondary transition-colors"
             >
-              Explore Private Label
+              See the Full Ordering Journey
             </Link>
             <Link
               href={routes.contact}

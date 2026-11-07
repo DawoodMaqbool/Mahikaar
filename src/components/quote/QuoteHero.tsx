@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 
 const highlights = [
-  { label: "Minimum Order", value: "12 Pairs", note: "Per style" },
+  { label: "Minimum Order", value: "12 Pairs", note: "Per design & colour" },
   { label: "Standard", value: "Goodyear", note: "Welted, made by hand" },
   { label: "Discretion", value: "Confidential", note: "Brand confidentiality respected", wide: true },
 ];

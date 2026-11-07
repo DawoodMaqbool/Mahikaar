@@ -4,13 +4,9 @@ import { Icon } from "@/components/ui/Icon";
 import { routes } from "@/lib/site";
 
 const phases = [
-  {
-    label: "Sample: selected styles (e.g. Oxfords, brogues)",
-    days: "2-7 Days",
-  },
-  { label: "Sample: fully custom prototype", days: "2–4 weeks" },
+  { label: "Sample development", days: "Approx. 2–3 weeks" },
   { label: "Sample, fit & leather approval", days: "By your team" },
-  { label: "Bulk production after approval", days: "4–8 weeks" },
+  { label: "Bulk production after approval", days: "Approx. 2–4 weeks" },
 ];
 
 export function PrototypeCta() {
@@ -44,8 +40,8 @@ export function PrototypeCta() {
               <p className="type-body-lg text-inverse-primary max-w-xl">
                 Sampling allows designers, creative directors, and private
                 labels to test fit, leather, and finishing before commissioning
-                production. Timelines depend on the style and on material
-                availability.
+                production. Timelines are indicative and depend on the style,
+                material availability and seasonal demand.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <Link
@@ -77,7 +73,7 @@ export function PrototypeCta() {
                   Typical Timelines
                 </h3>
                 <span className="type-label-sm text-inverse-primary">
-                  Subject to Materials
+                  Indicative
                 </span>
               </div>
               <dl className="space-y-4 type-body-sm">

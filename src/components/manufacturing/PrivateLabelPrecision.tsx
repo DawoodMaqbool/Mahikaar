@@ -40,7 +40,7 @@ const capabilities = [
   {
     icon: "tune",
     title: "Minimum Orders",
-    text: "Orders start at 12 pairs per style, in standard UK 6 to 12 size curves or tailored to your custom sizing.",
+    text: "Orders start at 12 pairs per design and colour, with mixed sizes allowed, in standard UK 6 to 12 size curves or tailored to your custom sizing.",
   },
 ];
 
@@ -61,8 +61,8 @@ export function PrivateLabelPrecision() {
               international labels to create their own footwear lines.
             </p>
             <p className="type-body-md text-on-surface-variant">
-              Mahikaar works with you on your specifications and orders in our Lahore atelier,
-              supporting both small capsule collections and recurring seasonal orders.
+              Mahikaar coordinates your specifications and orders with an established Lahore
+              workshop, supporting both small capsule collections and recurring seasonal orders.
             </p>
           </div>
 

@@ -12,7 +12,7 @@ const commitments = [
   },
   {
     title: "Sample Approval",
-    text: "Production begins only after your sample and specifications are approved. Selected styles can be sampled in as little as 2 days; fully custom prototypes typically take 2–4 weeks.",
+    text: "Production begins only after your sample and specifications are approved. Sample development typically takes approximately 2–3 weeks, followed by approximately 2–4 weeks for bulk production.",
   },
   {
     title: "Specification Review",
@@ -81,10 +81,11 @@ export function ContactDetails({ className = "" }: { className?: string }) {
         </p>
       </div>
       <div id="visits" className="pt-4 bg-surface p-4 shadow-xs space-y-2 scroll-mt-24">
-        <h3 className="type-label-md uppercase tracking-wider text-secondary">Atelier Visits</h3>
+        <h3 className="type-label-md uppercase tracking-wider text-secondary">Workshop Visits</h3>
         <p className="type-body-sm text-on-surface-variant">
-          Visits to our Lahore atelier can be arranged by prior appointment for buyers
-          considering a project.
+          Workshop visits may be considered by prior arrangement, subject to availability and
+          the workshop owner&apos;s permission. Video calls and physical samples are also
+          available ways to review footwear.
         </p>
       </div>
     </div>

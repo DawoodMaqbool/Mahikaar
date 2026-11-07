@@ -52,10 +52,10 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     specs: [
       { label: "Upper", value: "Calf leather, colour to specification" },
       { label: "Sole", value: "Leather sole" },
-      { label: "Minimum Order", value: "12 Pairs per Style" },
+      { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
     reference: "MKR-OX-042",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "02",
@@ -74,7 +74,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Hardware Accent", value: "Milled Solid Brass Toe Cleat" },
     ],
     reference: "MKR-LF-104",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "03",
@@ -93,7 +93,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Edge Finish", value: "Burnished edge, colour to specification" },
     ],
     reference: "MKR-BR-088",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "04",
@@ -112,7 +112,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Structure", value: "Single-piece blocked upper" },
     ],
     reference: "MKR-BT-119",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "05",
@@ -131,7 +131,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Finishing Method", value: "Hand-applied layered finish" },
     ],
     reference: "MKR-AD-073",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
   {
     number: "06",
@@ -150,6 +150,6 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
       { label: "Heel Counter", value: "Form-Pressed Solid Leather Stiffener" },
     ],
     reference: "MKR-CK-095",
-    leadTime: "4–8 Weeks",
+    leadTime: "2–4 Weeks",
   },
 ];

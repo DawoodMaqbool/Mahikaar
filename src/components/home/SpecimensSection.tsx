@@ -26,7 +26,7 @@ const specimens: Specimen[] = [
     name: "The Belgrave Oxford",
     description:
       "Antique cognac calf leather, hand-bevelled waist, leather sole with recessed brass toe plate.",
-    leadTime: "4–8 Wks",
+    leadTime: "2–4 Wks",
   },
   {
     number: "02",
@@ -37,7 +37,7 @@ const specimens: Specimen[] = [
     name: "The Montgomery Penny Loafer",
     description:
       "Espresso calf leather, flush brass toe reinforcement, stacked leather heel.",
-    leadTime: "4–8 Wks",
+    leadTime: "2–4 Wks",
   },
   {
     number: "03",
@@ -48,7 +48,7 @@ const specimens: Specimen[] = [
     name: "The Anarkali Full Brogue",
     description:
       "Burgundy leather, traditional gimping and intricate toe punching, storm welt construction.",
-    leadTime: "4–8 Wks",
+    leadTime: "2–4 Wks",
   },
   {
     number: "04",
@@ -59,7 +59,7 @@ const specimens: Specimen[] = [
     name: "The Ravi Chelsea Boot",
     description:
       "Dark chocolate suede, seamless one-piece blocked upper, woven pull loops, hand-sculpted waist profile.",
-    leadTime: "4–8 Wks",
+    leadTime: "2–4 Wks",
   },
 ];
 

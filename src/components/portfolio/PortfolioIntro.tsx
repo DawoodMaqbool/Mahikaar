@@ -1,9 +1,9 @@
 import { Container } from "@/components/ui/Container";
 
 const counters = [
-  { value: "12 Pairs", label: "Minimum per Style" },
+  { value: "12 Pairs", label: "Minimum per Design & Colour" },
   { value: "UK 6–12", label: "Standard Size Run" },
-  { value: "4–8 Wks", label: "Bulk Production" },
+  { value: "2–4 Wks", label: "Bulk Production" },
 ];
 
 export function PortfolioIntro() {

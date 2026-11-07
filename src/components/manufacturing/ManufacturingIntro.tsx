@@ -2,8 +2,8 @@ import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 
 const capacity = [
-  { label: "Minimum Order", value: "12 Pairs", note: "Per style" },
-  { label: "Bulk Production", value: "4–8 Weeks", note: "After sample approval" },
+  { label: "Minimum Order", value: "12 Pairs", note: "Per design & colour" },
+  { label: "Bulk Production", value: "2–4 Weeks", note: "After sample approval" },
 ];
 
 const blueprint = [
@@ -19,8 +19,8 @@ const blueprint = [
   },
   {
     icon: "history_edu",
-    title: "Lahore Atelier",
-    text: "Your specifications are developed with you in our Lahore atelier.",
+    title: "Lahore Workshop",
+    text: "Made by an established local workshop, with Mahikaar coordinating your specifications.",
   },
   {
     icon: "diamond",
@@ -48,7 +48,7 @@ export function ManufacturingIntro() {
               The Anatomy of Hand-Welted Footwear
             </h1>
             <p className="type-body-lg text-on-surface-variant max-w-2xl pt-2">
-              Mahikaar works with an established Lahore atelier, where footwear is cut, lasted,
+              Mahikaar works with an established Lahore workshop, where footwear is cut, lasted,
               and welted by hand to your agreed specifications.
             </p>
           </div>

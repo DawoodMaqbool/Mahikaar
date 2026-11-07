@@ -224,7 +224,7 @@ export function QuoteForm() {
           <div className="space-y-4">
             <SectionHeading number="03" tag="Order Scale" title="Batch Volume" />
             <p className="type-body-sm text-on-surface-variant">
-              Minimum order is 12 pairs per style. Pricing is confirmed after we review your brief:
+              Minimum order is 12 pairs per design and colour, with mixed sizes allowed. Pricing is confirmed after we review your brief:
             </p>
             <SelectField
               id="quantityScale"
