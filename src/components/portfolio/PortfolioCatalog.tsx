@@ -13,55 +13,51 @@ import {
 } from "@/data/portfolio";
 import { useInquiryModal } from "./InquiryModal";
 
-const enquiryButton =
-  "py-3.5 px-6 bg-primary text-on-primary hover:bg-secondary transition-colors duration-200 text-center type-label-md uppercase tracking-[0.18em] flex items-center justify-center gap-2";
+const enquiryButton = "action-primary";
 
 function CategoryTile({
   category,
   count,
   image,
   alt,
-  whiteBackdrop,
-  fill,
+  preview,
   onOpen,
 }: {
   category: StyleCategory;
   count: number;
   image: string;
   alt: string;
-  whiteBackdrop?: boolean;
-  /** Edge-to-edge picture (digital previews have their own backdrop). */
-  fill?: boolean;
+  /** Whether the category cover is a digital preview. */
+  preview?: boolean;
   onOpen: () => void;
 }) {
   return (
     <button
       type="button"
       onClick={onOpen}
-      className="group flex flex-col text-left bg-surface-container-lowest shadow-xs hover:shadow-md transition-shadow duration-300"
+      className="flex min-h-12 min-w-0 flex-col text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
     >
-      <div className={`relative bg-surface-container-low aspect-[4/3] overflow-hidden ${fill || whiteBackdrop ? "" : "p-6"}`}>
+      <div className="relative w-full bg-surface-container-low aspect-[4/3] overflow-hidden">
         <div className="relative w-full h-full">
           <Image
             src={image}
             alt={alt}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            className={`${fill ? "object-cover" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.03] ${
-              whiteBackdrop ? "mix-blend-multiply" : ""
-            }`}
+            className="object-contain"
           />
         </div>
       </div>
-      <div className="p-7 space-y-2">
+      <div className="pt-5 space-y-3">
         <h2 className="type-headline-md text-on-surface tracking-tight">{category.label}</h2>
         <p className="type-body-md text-on-surface-variant leading-relaxed">{category.blurb}</p>
-        <p className="type-label-md uppercase tracking-[0.18em] text-secondary flex items-center gap-2 pt-2">
+        <p className="type-body-sm text-on-surface-variant">
           <span>
             {count} {count === 1 ? "Reference Style" : "Reference Styles"}
           </span>
-          <Icon name="arrow_forward" className="text-[16px]" />
         </p>
+        {preview && <p className="type-body-sm text-on-surface-variant">Digital preview</p>}
+        <span className="editorial-link type-body-sm inline-flex min-h-12 items-center">Explore category</span>
       </div>
     </button>
   );
@@ -78,38 +74,29 @@ function VariantTile({ variant, onOpen }: { variant: CatalogueVariant; onOpen: (
       type="button"
       onClick={onOpen}
       aria-label={`View ${variant.code}: ${variant.name}`}
-      className="group block w-full text-left bg-surface-container-lowest shadow-xs hover:shadow-md transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink"
+      className="block w-full min-w-0 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
     >
       <div
-        className={`relative w-full ${
-          lead.portrait ? "aspect-[3/4]" : "aspect-[4/3]"
-        } bg-surface-container-low overflow-hidden`}
+        className="relative w-full aspect-[4/3] bg-surface-container-low overflow-hidden"
       >
-        <div className={`absolute inset-0 ${preview || variant.whiteBackdrop ? "" : "p-6"}`}>
+        <div className="absolute inset-0">
           <div className="relative w-full h-full">
             <Image
               src={lead.src}
               alt={lead.alt}
               fill
-              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-              className={`${preview ? "object-cover" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.03] ${
-                variant.whiteBackdrop ? "mix-blend-multiply" : ""
-              }`}
+              sizes="(min-width: 1440px) 318px, (min-width: 1280px) 25vw, (min-width: 768px) 50vw, calc(100vw - 48px)"
+              className="object-contain"
             />
           </div>
         </div>
-        <span className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-surface type-label-sm uppercase tracking-wider text-secondary">
-          {variant.code}
-        </span>
-        {preview && (
-          <span className="absolute bottom-3 left-3 z-10 px-2 py-0.5 bg-surface type-label-sm uppercase tracking-wider text-on-surface-variant">
-            Digital preview
-          </span>
-        )}
       </div>
-      <div className="px-4 py-3 space-y-0.5">
-        <p className="type-label-md uppercase tracking-wider text-on-surface">{variant.name}</p>
+      <div className="pt-5 space-y-2">
+        <p className="type-eyebrow text-secondary">{variant.code}</p>
+        <p className="type-headline-sm text-on-surface">{variant.name}</p>
         {showColour && <p className="type-body-sm text-on-surface-variant">{variant.colour}</p>}
+        {preview && <p className="type-body-sm text-on-surface-variant">Digital preview</p>}
+        <span className="editorial-link type-body-sm inline-flex min-h-12 items-center">View style</span>
       </div>
     </button>
   );
@@ -119,30 +106,26 @@ function VariantTile({ variant, onOpen }: { variant: CatalogueVariant; onOpen: (
 function VariantBody({ variant, onEnquire }: { variant: CatalogueVariant; onEnquire: () => void }) {
   // One lead photograph per listing; further views stay in the data but are not offered as a gallery.
   const image = variant.images[0];
-  const blend = variant.whiteBackdrop ? "mix-blend-multiply" : "";
 
   return (
     <>
       <div
-        className={`relative bg-surface-container-low overflow-hidden ${
-          image.portrait ? "h-[62vh] max-w-full aspect-[3/4] mx-auto" : "aspect-[4/3] p-4"
-        }`}
+        className="relative aspect-[4/3] max-h-[60dvh] bg-surface-container-low overflow-hidden"
       >
-        <div className="relative w-full h-full">
           <Image
             src={image.src}
             alt={image.alt}
             fill
             sizes="(min-width: 1024px) 800px, 100vw"
-            className={`${image.portrait ? "object-cover" : "object-contain"} ${blend}`}
+            className="object-contain"
           />
-        </div>
+
       </div>
 
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div className="space-y-1">
-          <p className="type-label-sm uppercase tracking-[0.22em] text-secondary font-semibold">Ref {variant.code}</p>
-          <p className="type-label-md uppercase tracking-wider text-on-surface">{variant.name}</p>
+      <div className="space-y-6 min-w-0">
+        <div className="space-y-3 min-w-0">
+          <p className="type-eyebrow text-secondary">Ref {variant.code}</p>
+          <h2 className="type-headline-md text-on-surface">{variant.name}</h2>
           {variant.colour && <p className="type-body-sm text-on-surface-variant">{variant.colour}</p>}
           {image.kind === "ai-concept" ? (
             <p className="type-body-sm text-on-surface-variant">
@@ -157,7 +140,6 @@ function VariantBody({ variant, onEnquire }: { variant: CatalogueVariant; onEnqu
         </div>
         <button type="button" onClick={onEnquire} className={enquiryButton}>
           <span>Enquire About This Style</span>
-          <Icon name="arrow_forward" className="text-[16px]" />
         </button>
       </div>
     </>
@@ -191,14 +173,14 @@ function VariantDialog({
       onClick={(event) => {
         if (event.target === event.currentTarget) close();
       }}
-      className="m-auto w-[calc(100%-2rem)] max-w-4xl max-h-[92vh] overflow-y-auto bg-surface text-on-surface shadow-xl backdrop:bg-black/70 backdrop:backdrop-blur-[4px]"
+      className="m-auto w-[calc(100%-2rem)] max-w-4xl max-h-[92dvh] overflow-y-auto overscroll-contain bg-surface text-on-surface backdrop:bg-ink/70"
     >
-      <div className="p-6 sm:p-8 relative space-y-5">
+      <div className="p-5 pt-20 sm:p-10 sm:pt-20 relative space-y-8">
         <button
           type="button"
           onClick={close}
           aria-label="Close"
-          className="absolute top-4 right-4 z-10 text-on-surface-variant hover:text-on-surface transition-colors p-2"
+          className="absolute top-3 right-3 z-10 min-h-12 min-w-12 flex items-center justify-center bg-surface text-on-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
         >
           <Icon name="close" className="text-[24px]" />
         </button>
@@ -232,9 +214,9 @@ export function PortfolioCatalog() {
       {view === null ? (
         <section
           aria-label="Footwear categories"
-          className="w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-4 pb-24"
+          className="w-full max-w-[1440px] mx-auto page-gutters pb-16 md:pb-20 lg:pb-24"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {tiles.map(({ category, cards }) => {
               // Landscape tile: use a landscape picture when the lead one is portrait, so the shoes fill it.
               const looks = variantsForCategory(category.id);
@@ -248,8 +230,7 @@ export function PortfolioCatalog() {
                   count={category.numbers.length}
                   image={useCard ? cards[0].image : cover.src}
                   alt={useCard ? cards[0].alt : cover.alt}
-                  whiteBackdrop={cards[0].whiteBackdrop}
-                  fill={cover.kind === "ai-concept"}
+                  preview={cover.kind === "ai-concept"}
                   onOpen={() => setView(category)}
                 />
               );
@@ -263,12 +244,12 @@ export function PortfolioCatalog() {
               <button
                 type="button"
                 onClick={() => setView(null)}
-                className="px-4 py-2 bg-surface-container-low text-on-surface hover:bg-surface-container type-label-md uppercase tracking-[0.16em] flex items-center gap-2"
+                className="action-secondary gap-2"
               >
                 <Icon name="arrow_back" className="text-[16px]" />
                 <span>All Categories</span>
               </button>
-              <h2 className="type-headline-md text-on-surface tracking-tight">{view.label}</h2>
+              <h2 className="type-headline-lg text-on-surface">{view.label}</h2>
             </div>
             <p className="type-body-md text-on-surface-variant mt-4 max-w-3xl">
               Reference styles shown in example colours. Photographs show finished samples; images marked
@@ -277,8 +258,8 @@ export function PortfolioCatalog() {
             </p>
           </Container>
 
-          <section aria-label={`${view.label} reference styles`} className="w-full max-w-[1440px] mx-auto px-6 lg:px-12 pb-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <section aria-label={`${view.label} reference styles`} className="w-full max-w-[1440px] mx-auto page-gutters pb-16 md:pb-20 lg:pb-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-10">
               {variants.map((variant) => (
                 <VariantTile key={variant.code} variant={variant} onOpen={() => showVariant(variant)} />
               ))}
@@ -290,7 +271,6 @@ export function PortfolioCatalog() {
                 className={enquiryButton}
               >
                 <span>Enquire About {view.label}</span>
-                <Icon name="arrow_forward" className="text-[16px]" />
               </button>
             </div>
           </section>

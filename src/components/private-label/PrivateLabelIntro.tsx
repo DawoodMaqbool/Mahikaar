@@ -2,16 +2,16 @@ import { Container } from "@/components/ui/Container";
 
 export function PrivateLabelIntro() {
   return (
-    <section className="w-full bg-surface pt-20 lg:pt-32 pb-8 lg:pb-12">
+    <section className="w-full bg-surface section-standard">
       <Container>
-        <div className="text-center max-w-3xl mx-auto space-y-5">
-          <p className="type-label-md uppercase tracking-[0.25em] text-secondary">
+        <div className="measure-body space-y-6">
+          <p className="type-eyebrow uppercase text-secondary">
             Private Label
           </p>
-          <h1 className="type-headline-lg lg:type-headline-xl text-on-surface tracking-tight">
-            Private Label Manufacturing
+          <h1 className="type-headline-xl text-on-surface measure-headline">
+            Footwear for Your Brand
           </h1>
-          <p className="type-body-lg text-on-surface-variant leading-relaxed">
+          <p className="type-body-lg text-on-surface-variant measure-intro">
             We make Goodyear welted footwear to order for international menswear labels and
             boutique brands. Our shoemaking team constructs each pair by hand, to your design,
             materials and branding.

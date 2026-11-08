@@ -36,7 +36,7 @@ const fieldLabel = "type-label-sm uppercase tracking-wider text-secondary block 
 const fieldInput =
   "w-full p-3 bg-surface-container-low text-on-surface type-body-sm focus:outline-none focus:bg-surface-container focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ink transition-colors";
 
-export function InquiryModalProvider({ children }: { children: ReactNode }) {
+export function InquiryModalProvider({ children, editorial = false }: { children: ReactNode; editorial?: boolean }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [target, setTarget] = useState<InquiryTarget>({
     title: "Enquiry",
@@ -73,19 +73,19 @@ export function InquiryModalProvider({ children }: { children: ReactNode }) {
       <dialog
         ref={dialogRef}
         aria-labelledby={`${id}-title`}
-        className="m-auto w-[calc(100%-2rem)] max-w-2xl max-h-[92vh] overflow-y-auto bg-surface text-on-surface shadow-xl backdrop:bg-black/70 backdrop:backdrop-blur-[4px]"
+        className={editorial ? "m-auto w-[calc(100%-2rem)] max-w-2xl max-h-[92dvh] overflow-y-auto overscroll-contain bg-surface text-on-surface backdrop:bg-ink/70" : "m-auto w-[calc(100%-2rem)] max-w-2xl max-h-[92vh] overflow-y-auto bg-surface text-on-surface shadow-xl backdrop:bg-black/70 backdrop:backdrop-blur-[4px]"}
       >
-        <div className="p-8 sm:p-10 space-y-6 relative">
+        <div className={editorial ? "p-5 pt-20 sm:p-10 sm:pt-20 space-y-6 relative" : "p-8 sm:p-10 space-y-6 relative"}>
           <button
             type="button"
             onClick={close}
             aria-label="Close"
-            className="absolute top-6 right-6 text-on-surface-variant hover:text-on-surface transition-colors p-2"
+            className={editorial ? "absolute top-3 right-3 min-h-12 min-w-12 flex items-center justify-center text-on-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary" : "absolute top-6 right-6 text-on-surface-variant hover:text-on-surface transition-colors p-2"}
           >
             <Icon name="close" className="text-[24px]" />
           </button>
 
-          <div className="space-y-2">
+          <div className={editorial ? "space-y-2 min-w-0 break-words" : "space-y-2"}>
             <span className="type-label-sm uppercase tracking-[0.22em] text-secondary font-semibold">
               Mahikaar • Enquiry
             </span>
@@ -183,13 +183,13 @@ export function InquiryModalProvider({ children }: { children: ReactNode }) {
                 <button
                   type="button"
                   onClick={close}
-                  className="py-3 px-6 bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors type-label-md uppercase tracking-wider"
+                  className={editorial ? "action-secondary" : "py-3 px-6 bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors type-label-md uppercase tracking-wider"}
                 >
                   Dismiss
                 </button>
                 <button
                   type="submit"
-                  className="py-3 px-8 bg-primary text-on-primary hover:bg-secondary transition-colors type-label-md uppercase tracking-[0.18em] shadow-xs"
+                  className={editorial ? "action-primary" : "py-3 px-8 bg-primary text-on-primary hover:bg-secondary transition-colors type-label-md uppercase tracking-[0.18em] shadow-xs"}
                 >
                   Send Enquiry
                 </button>

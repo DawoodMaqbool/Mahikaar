@@ -25,10 +25,10 @@ const terms = [
 
 export function CommercialTerms() {
   return (
-    <section id="minimum-orders" className="w-full bg-surface-container-low py-20 scroll-mt-20">
+    <section id="minimum-orders" className="w-full bg-surface-container-low section-standard scroll-mt-20">
       <Container className="space-y-12">
-        <div className="max-w-3xl space-y-3">
-          <span className="type-label-sm uppercase tracking-[0.2em] text-secondary">
+        <div className="measure-body space-y-4">
+          <span className="type-eyebrow uppercase text-secondary">
             Order Terms
           </span>
           <h2 className="type-headline-lg text-on-surface">
@@ -36,10 +36,10 @@ export function CommercialTerms() {
           </h2>
         </div>
 
-        <dl className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <dl className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-10">
           {terms.map((term) => (
-            <div key={term.label} className="bg-surface p-6 shadow-xs space-y-2">
-              <dt className="type-label-sm uppercase tracking-widest text-secondary">
+            <div key={term.label} className="min-w-0 border-t border-outline-variant pt-6 space-y-3">
+              <dt className="type-eyebrow uppercase text-secondary">
                 {term.label}
               </dt>
               <dd className="space-y-2">
@@ -52,7 +52,7 @@ export function CommercialTerms() {
           ))}
         </dl>
 
-        <div className="max-w-3xl space-y-2 type-body-sm text-on-surface-variant leading-relaxed">
+        <div className="measure-body space-y-3 type-body-sm text-on-surface-variant leading-relaxed">
           <p>
             Bulk production begins after the sample and specifications are approved, the commercial
             arrangements are agreed and the required advance is received.

@@ -16,10 +16,10 @@ export type NavLink = {
 
 export const mainNav: NavLink[] = [
   { label: "Home", href: routes.home },
-  { label: "Footwear Portfolio", href: routes.portfolio },
+  { label: "Footwear", href: routes.portfolio },
   { label: "Private Label", href: routes.privateLabel },
-  { label: "Manufacturing & Craft", href: routes.manufacturing },
-  { label: "About Us", href: routes.about },
+  { label: "Manufacturing", href: routes.manufacturing },
+  { label: "About", href: routes.about },
   { label: "Contact", href: routes.contact },
 ];
 
