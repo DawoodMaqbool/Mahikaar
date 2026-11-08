@@ -47,9 +47,9 @@ const stages = [
 
 export function QualityReview() {
   return (
-    <section id="quality-review" className="w-full bg-surface py-20 scroll-mt-24">
+    <section id="quality-review" className="w-full bg-surface section-standard scroll-mt-24">
       <Container className="space-y-12">
-        <div className="max-w-3xl space-y-3">
+        <div className="measure-body space-y-4">
           <Eyebrow>Our Quality Inspection</Eyebrow>
           <h2 className="type-headline-lg text-on-surface">Inspected at Every Stage.</h2>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
@@ -60,11 +60,11 @@ export function QualityReview() {
           </p>
         </div>
 
-        <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ol className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-12">
           {stages.map((stage, index) => (
             <li
               key={stage.title}
-              className="bg-surface-container-low p-8 shadow-xs space-y-4"
+              className="min-w-0 border-t border-outline-variant pt-6 space-y-4"
             >
               <span className="type-headline-md text-secondary">
                 {String(index + 1).padStart(2, "0")}

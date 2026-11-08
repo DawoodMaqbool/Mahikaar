@@ -17,12 +17,8 @@ export function InquiryCta({
   showContactLink = true,
 }: InquiryCtaProps) {
   return (
-    <section className="w-full bg-ink text-surface py-24 relative overflow-hidden border-t border-outline-variant/20">
-      <div
-        aria-hidden="true"
-        className="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none"
-      />
-      <Container className="relative z-10">
+    <section className="w-full bg-ink text-surface section-standard border-t border-outline-variant/20">
+      <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-8 space-y-6">
             <Eyebrow tone="dark">B2B Enquiries</Eyebrow>

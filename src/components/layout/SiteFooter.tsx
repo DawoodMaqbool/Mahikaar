@@ -24,78 +24,66 @@ const inquiryLinks = [
   { label: "Contact Us", href: routes.contact },
 ];
 
-const columnHeading =
-  "type-label-sm uppercase tracking-[0.2em] text-secondary-container block";
+const footerLink =
+  "inline-flex min-h-11 max-w-full items-center py-2 text-outline-variant hover:text-surface hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-surface";
 
 export function SiteFooter() {
   return (
-    <footer className="w-full bg-ink text-surface border-t border-outline-variant/20 pt-16 pb-12">
+    <footer className="w-full bg-ink text-surface pt-16 pb-10">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-[#2d2c2a]">
-          <div className="lg:col-span-4 space-y-4">
-            <p className="type-headline-md tracking-normal text-surface">Mahikaar</p>
-            <p className="type-body-sm text-outline-variant leading-relaxed max-w-sm">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-x-10 gap-y-10 pb-10">
+          <div className="md:col-span-6 lg:col-span-3 min-w-0 space-y-4">
+            <p className="type-headline-md text-surface">Mahikaar</p>
+            <p className="type-body-sm text-outline-variant max-w-sm">
               Premium, made-to-order Goodyear welted leather footwear for B2B buyers.
             </p>
-            <p className="pt-2 type-body-sm text-outline-variant/80">Lahore, Pakistan</p>
+            <p className="type-body-sm text-outline-variant">Lahore, Pakistan</p>
           </div>
 
-          <div className="lg:col-span-3 space-y-4">
-            <h2 className={columnHeading}>B2B Capabilities</h2>
-            <ul className="space-y-2.5 type-body-sm text-outline-variant">
-              {capabilities.map((item) => (
-                <li key={item} className="hover:text-surface transition-colors">
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <div className="md:col-span-4 lg:col-span-6 min-w-0 space-y-5">
+            <h2 className="type-headline-sm text-surface">Footwear &amp; Capabilities</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+              <nav aria-label="Footwear and capabilities" className="min-w-0">
+                <ul className="type-body-sm">
+                  {specimenLinks.map((label) => (
+                    <li key={label}>
+                      <Link href={routes.portfolio} className={footerLink}>{label}</Link>
+                    </li>
+                  ))}
+                  {inquiryLinks.filter((link) => link.href !== routes.contact).map((link) => (
+                    <li key={link.label}>
+                      <Link href={link.href} className={footerLink}>{link.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <ul aria-label="B2B capabilities" className="min-w-0 space-y-3 type-body-sm text-outline-variant">
+                {capabilities.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
           </div>
 
-          <nav aria-label="Footwear" className="lg:col-span-2 space-y-4">
-            <h2 className={columnHeading}>Footwear</h2>
-            <ul className="space-y-2.5 type-body-sm text-outline-variant">
-              {specimenLinks.map((label) => (
-                <li key={label}>
-                  <Link href={routes.portfolio} className="hover:text-surface transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Enquiries" className="lg:col-span-3 space-y-4">
-            <h2 className={columnHeading}>Enquiries</h2>
-            <ul className="space-y-2.5 type-body-sm text-outline-variant">
+          <nav aria-label="Enquiries" className="md:col-span-2 lg:col-span-3 min-w-0 space-y-5">
+            <h2 className="type-headline-sm text-surface">Enquiries</h2>
+            <ul className="type-body-sm">
               <li>
-                <Link
-                  href={routes.quote}
-                  className="text-surface font-medium hover:text-secondary-container transition-colors"
-                >
-                  Request a Quote →
+                <Link href={routes.quote} className={`${footerLink} text-surface font-medium underline`}>
+                  Request a Quote
                 </Link>
               </li>
-              {inquiryLinks.map((link) => (
+              {inquiryLinks.filter((link) => link.href === routes.contact).map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="hover:text-surface transition-colors">
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className={footerLink}>{link.label}</Link>
                 </li>
               ))}
             </ul>
-            <div className="pt-3">
-              <div className="inline-block px-3 py-1.5 border border-outline-variant/30 text-outline-variant type-label-sm uppercase tracking-widest">
-                Shipping Arranged per Order
-              </div>
-            </div>
+            <p className="type-body-sm text-outline-variant">Shipping Arranged per Order</p>
           </nav>
         </div>
 
-        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 type-body-sm text-outline-variant/70">
-          <p>
-            © 2026 Mahikaar. Made-to-order leather footwear.
-          </p>
-          <div className="flex items-center gap-6 type-label-sm uppercase tracking-widest">
+        <div className="border-t border-outline-variant/30 pt-6 flex flex-col md:flex-row md:items-start justify-between gap-4 type-body-sm text-outline-variant">
+          <p>© 2026 Mahikaar. Made-to-order leather footwear.</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <span>Goodyear Welted</span>
             <span>Made to Order</span>
           </div>
