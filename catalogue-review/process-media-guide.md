@@ -33,12 +33,15 @@ craftsmen at work go in the folder of the stage they show, e.g.
 ## Adding media to a stage
 
 Edit the stage's `media` array in `src/data/manufacturing.ts`. The first item is the lead;
-any further items show as a smaller row beneath it.
+any further items show as a smaller row beneath it. Every item needs a `kind`: use
+`"workshop"` only for genuine Mahikaar workshop photographs or clips. `"illustration"` shows an
+"Illustration" label, so it is never presented as real production. Captions should say what the
+stage involves.
 
 ```ts
 media: [
-  { type: "image", src: "/images/process/lasting/hand-lasting.jpg", alt: "Craftsman drawing an upper over the last with lasting pincers", caption: "Hand Lasting" },
-  { type: "video", src: "/videos/process/lasting/pull-over.mp4", poster: "/videos/process/lasting/pull-over-poster.jpg", alt: "Short clip of an upper being lasted by hand" },
+  { type: "image", kind: "workshop", src: "/images/process/lasting/hand-lasting.jpg", alt: "Craftsman drawing an upper over the last with lasting pincers", caption: "Hand Lasting" },
+  { type: "video", kind: "workshop", src: "/videos/process/lasting/pull-over.mp4", poster: "/videos/process/lasting/pull-over-poster.jpg", alt: "Short clip of an upper being lasted by hand" },
 ]
 ```
 

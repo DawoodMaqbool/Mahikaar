@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Icon } from "@/components/ui/Icon";
 import { portfolioSpecimens } from "@/data/portfolio";
 import { routes } from "@/lib/site";
 
@@ -42,7 +41,7 @@ const featured: Featured[] = [
   {
     number: "03",
     portfolioNumber: "09",
-    tags: ["Welted", "Burgundy"],
+    tags: ["Goodyear Welted", "Burgundy"],
     name: "Woven Penny Loafer",
     description:
       "A penny loafer with a woven leather vamp and a smooth leather strap, shown in burgundy.",
@@ -54,7 +53,7 @@ const featured: Featured[] = [
     tags: ["Goodyear Welted", "Dark Brown"],
     name: "Wingtip Zip Boot",
     description:
-      "A side-zip ankle boot with a wing-shaped toe cap and decorative perforation, shown in dark brown grained leather.",
+      "A side-zip wingtip ankle boot with a chiselled toe and decorative perforation, shown in dark brown grained leather.",
     leadTime: "2–4 Wks",
   },
 ];
@@ -109,7 +108,7 @@ function SpecimenCard({ specimen }: { specimen: Specimen }) {
           href={routes.portfolio}
           className="type-label-sm uppercase tracking-widest text-secondary hover:text-on-surface font-semibold inline-flex items-center gap-1"
         >
-          View Design →<span className="sr-only">: {specimen.name} in the portfolio</span>
+          View Style →<span className="sr-only">: {specimen.name} in the portfolio</span>
         </Link>
       </div>
     </article>
@@ -122,14 +121,13 @@ export function SpecimensSection() {
       <Container>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <Eyebrow className="mb-3">Footwear Styles</Eyebrow>
+            <Eyebrow className="mb-3">Reference Styles</Eyebrow>
             <h2 className="type-headline-lg text-on-surface tracking-tight">
-              Curated Footwear Styles
+              Footwear Portfolio
             </h2>
             <p className="type-body-md text-on-surface-variant max-w-xl mt-2">
-              Reference styles for custom private-label production. All articles are made to order;
-              materials, colours, and customisation are confirmed with you before an order is
-              finalised.
+              Reference styles for custom private-label production. Materials, colours and
+              customisation are confirmed with you before an order is finalised.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -147,24 +145,6 @@ export function SpecimensSection() {
             <SpecimenCard key={specimen.number} specimen={specimen} />
           ))}
         </div>
-
-        <aside className="mt-12 p-6 bg-surface-container-high border-l-2 border-secondary flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex items-start gap-3">
-            <Icon name="info" className="text-secondary text-xl" />
-            <p className="type-body-sm text-on-surface-variant">
-              <strong className="text-on-surface font-medium">B2B Customisation:</strong>{" "}
-              The styles shown are reference designs. Agreed customisation, such as pattern
-              adjustments, branded insoles, and sole markings, can be discussed for each project,
-              with feasibility and any additional costs confirmed before an order is finalised.
-            </p>
-          </div>
-          <Link
-            href={routes.privateLabel}
-            className="whitespace-nowrap type-label-sm uppercase tracking-[0.16em] text-primary hover:text-secondary font-semibold"
-          >
-            Private Label →
-          </Link>
-        </aside>
       </Container>
     </section>
   );

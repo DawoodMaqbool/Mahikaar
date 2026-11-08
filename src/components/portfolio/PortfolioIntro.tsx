@@ -3,7 +3,7 @@ import { customizationNote } from "@/data/portfolio";
 
 const counters = [
   { value: "12 Pairs", label: "Minimum per Design & Colour" },
-  { value: "UK 6–12", label: "Standard Size Run" },
+  { value: "UK 6–12", label: "Standard UK Sizes" },
   { value: "2–4 Wks", label: "Bulk Production" },
 ];
 
@@ -19,16 +19,16 @@ export function PortfolioIntro() {
             </p>
           </div>
           <h1 className="type-headline-xl text-on-surface tracking-tight leading-[1.08]">
-            Curated Footwear Portfolio — Made-to-Order Specimens
+            Reference Styles, Made to Order
           </h1>
           <p className="type-body-lg text-on-surface-variant max-w-2xl leading-relaxed pt-1">
-            A selection of reference styles, made to order. Available for private-label
-            commissioning and custom development, with materials and customisation confirmed for
-            each project.
+            A selection of reference styles for private-label commissioning and custom development.
+            Colours shown are examples, and digital previews are labelled as such. Materials and
+            customisation are confirmed for each project.
           </p>
           <div className="border-l-2 border-secondary pl-4 mt-2">
             <h2 className="type-label-md uppercase tracking-[0.18em] text-on-surface font-semibold mb-1">
-              Made to Order. Made for Your Brand.
+              Branding &amp; Customisation
             </h2>
             <p className="type-body-sm text-on-surface-variant leading-normal">{customizationNote}</p>
           </div>

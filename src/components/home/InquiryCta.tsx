@@ -1,18 +1,20 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Icon } from "@/components/ui/Icon";
 import { routes } from "@/lib/site";
 
 type InquiryCtaProps = {
   headingLevel?: "h1" | "h2";
-  /** Target of "Discuss Your Project"; the Contact page points it at its own visit details. */
+  /** Target of the Contact Us button. */
   consultationHref?: string;
+  /** The Contact page already shows its details directly below, so it hides the Contact Us button. */
+  showContactLink?: boolean;
 };
 
 export function InquiryCta({
   headingLevel: Heading = "h2",
   consultationHref = routes.contact,
+  showContactLink = true,
 }: InquiryCtaProps) {
   return (
     <section className="w-full bg-ink text-surface py-24 relative overflow-hidden border-t border-outline-variant/20">
@@ -23,14 +25,13 @@ export function InquiryCta({
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-8 space-y-6">
-            <Eyebrow tone="dark">Enquiries &amp; Consultations</Eyebrow>
+            <Eyebrow tone="dark">B2B Enquiries</Eyebrow>
             <Heading className="type-headline-lg tracking-tight text-surface">
-              Commission Your First Order or Request a Quote.
+              Start Your Enquiry.
             </Heading>
             <p className="type-body-md text-outline-variant max-w-2xl leading-relaxed">
-              We work with independent brands, boutiques, and footwear retailers seeking
-              premium made-to-order Goodyear welted footwear. Get in touch to discuss styles,
-              materials, customisation, and quantities for your range.
+              Tell us about your range. We will discuss styles, materials, customisation and
+              quantities with you.
             </p>
           </div>
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4">
@@ -40,26 +41,23 @@ export function InquiryCta({
             >
               Request a Quote
             </Link>
-            <Link
-              href={consultationHref}
-              className="w-full text-center px-8 py-4 bg-transparent text-surface border border-outline-variant/40 hover:border-surface type-label-md uppercase tracking-[0.2em] transition-colors"
-            >
-              Discuss Your Project
-            </Link>
+            {showContactLink && (
+              <Link
+                href={consultationHref}
+                className="w-full text-center px-8 py-4 bg-transparent text-surface border border-outline-variant/40 hover:border-surface type-label-md uppercase tracking-[0.2em] transition-colors"
+              >
+                Contact Us
+              </Link>
+            )}
+            <p className="type-body-sm text-outline-variant leading-relaxed">
+              Not ready with a technical pack? Start with a design reference or a short description.
+            </p>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-surface/10 flex flex-wrap items-center justify-between gap-6 text-outline-variant type-body-sm">
-          <div className="flex items-center gap-2">
-            <Icon name="verified_user" className="text-secondary-fixed text-[18px]" />
-            <span>Goodyear welted construction, made to order</span>
-          </div>
-          <div className="flex items-center gap-6 type-label-sm uppercase tracking-widest text-outline-variant/80">
-            <span>Made by Our Shoemaking Team</span>
-            <span aria-hidden="true">•</span>
-            <span>Shipping Arranged per Order</span>
-          </div>
-        </div>
+        <p className="mt-16 pt-8 border-t border-surface/10 text-outline-variant type-body-sm">
+          Shipping is arranged per order.
+        </p>
       </Container>
     </section>
   );

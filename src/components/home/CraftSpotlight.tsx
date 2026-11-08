@@ -28,7 +28,7 @@ export function CraftSpotlight() {
           <figure className="lg:col-span-6 relative bg-surface p-3 border border-outline-variant/40 shadow-lg">
             <Image
               src="/images/process/welt-hand-stitching.png"
-              alt="Craftsman hand-stitching the Goodyear welt rib with an awl and waxed thread in our workshop"
+              alt="Illustration of a craftsman hand-stitching the leather welt on a shoe with an awl and waxed thread"
               width={1200}
               height={896}
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -36,10 +36,10 @@ export function CraftSpotlight() {
             />
             <figcaption className="absolute bottom-6 right-6 bg-ink/90 text-surface p-4 max-w-xs backdrop-blur-xs border border-surface/20">
               <span className="type-label-sm uppercase tracking-widest text-secondary-container block mb-1">
-                Hand Welting
+                Hand Welting • Illustration
               </span>
               <span className="type-body-sm text-surface-container font-light block">
-                Hand-stitching the leather welt through the holdfast rib of the insole.
+                Hand-stitching the leather welt as part of Goodyear welted construction.
               </span>
             </figcaption>
           </figure>
@@ -52,9 +52,9 @@ export function CraftSpotlight() {
               </h2>
             </div>
             <p className="type-body-md text-on-surface-variant leading-relaxed">
-              Mahikaar footwear is built with Goodyear welted construction, carried out by hand
-              throughout by our craftsmen. The upper, insole rib, and welt are stitched together
-              to form a structured, durable shoe.
+              In Goodyear welted construction, the upper is stitched to a leather welt, and the
+              welt is then stitched to the sole. Our craftsmen carry out each of these stages by
+              hand.
             </p>
 
             <ol className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-outline-variant/30">
@@ -76,7 +76,7 @@ export function CraftSpotlight() {
                 href={routes.manufacturing}
                 className="px-7 py-3.5 bg-primary text-surface type-label-md uppercase tracking-[0.2em] hover:bg-secondary transition-colors inline-flex items-center gap-2 group"
               >
-                <span>Explore Our Craft</span>
+                <span>View Manufacturing Process</span>
                 <Icon name="arrow_forward" className="text-[16px] group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

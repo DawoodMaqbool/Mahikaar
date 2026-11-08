@@ -19,13 +19,13 @@ export function QuoteHero() {
             </span>
           </div>
           <h1 className="type-headline-xl text-on-surface leading-[1.08] tracking-tight">
-            Commission &amp; <br />
-            <span className="italic font-normal text-secondary">Quote Request</span>
+            Request a <br />
+            <span className="italic font-normal text-secondary">Quote</span>
           </h1>
           <p className="type-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
-            Tell us what you are looking to make. We will review your designs, quantities, sizes,
-            materials, and branding requirements, then confirm feasibility, material availability,
-            pricing, and estimated timelines before an order is finalised.
+            Tell us a little about your footwear requirements. You do not need a complete
+            technical pack to get started. Our team can discuss your design, quantity and
+            production requirements with you.
           </p>
           <dl className="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 text-on-surface">
             {highlights.map((item) => (
@@ -55,7 +55,7 @@ export function QuoteHero() {
           </div>
           <figcaption className="pt-4 pb-2 px-3 flex items-center justify-between gap-4">
             <span>
-              <span className="type-label-sm uppercase tracking-widest text-secondary block">Bench Specimen</span>
+              <span className="type-label-sm uppercase tracking-widest text-secondary block">Illustration</span>
               <span className="type-body-sm text-on-surface font-medium">
                 Oxford • Constructed by Hand
               </span>

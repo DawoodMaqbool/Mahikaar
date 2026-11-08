@@ -28,7 +28,7 @@ export function CustomDevelopmentBanner() {
             <div className="p-8 bg-[#252422] shadow-md space-y-6">
               <div className="space-y-2">
                 <p className="type-label-sm uppercase tracking-widest text-secondary-fixed">
-                  Direct B2B Channel
+                  Private Label Enquiries
                 </p>
                 <h3 className="type-headline-sm text-surface">Starting Your Design</h3>
                 <p className="type-body-sm text-outline-variant leading-relaxed">

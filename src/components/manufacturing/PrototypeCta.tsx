@@ -61,7 +61,7 @@ export function PrototypeCta() {
                   className="inline-flex items-center justify-center px-6 py-4 bg-transparent text-on-primary hover:bg-surface-container-highest/10 transition-colors"
                 >
                   <span className="type-label-md uppercase tracking-[0.18em]">
-                    Contact Mahikaar
+                    Contact Us
                   </span>
                 </Link>
               </div>

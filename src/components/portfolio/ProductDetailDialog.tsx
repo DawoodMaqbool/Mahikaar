@@ -172,7 +172,7 @@ function DetailBody({ titleId, specimen, colourways, onEnquire }: DetailBodyProp
             onClick={() => onEnquire(hasChoice ? colourway.name : null)}
             className="w-full py-3.5 px-4 bg-primary text-on-primary hover:bg-secondary transition-colors duration-200 text-center type-label-md uppercase tracking-[0.18em] flex items-center justify-center gap-2"
           >
-            <span>Enquire About This Design</span>
+            <span>Enquire About This Style</span>
             <span className="sr-only">: {specimen.name}</span>
             <Icon name="arrow_forward" className="text-[16px]" />
           </button>

@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <ProvenanceSection />
+      <ProvenanceSection compact />
       <SpecimensSection />
       <CraftSpotlight />
       <PrivateLabelTeaser />

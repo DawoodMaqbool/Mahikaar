@@ -9,7 +9,7 @@ export function PrivateLabelIntro() {
             Private Label
           </p>
           <h1 className="type-headline-lg lg:type-headline-xl text-on-surface tracking-tight">
-            Premium Made-to-Order Footwear for Your Brand
+            Private Label Manufacturing
           </h1>
           <p className="type-body-lg text-on-surface-variant leading-relaxed">
             We make Goodyear welted footwear to order for international menswear labels and

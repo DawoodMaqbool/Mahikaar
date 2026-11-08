@@ -1,35 +1,53 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { benchStages, type BenchStage, type StageMedia } from "@/data/manufacturing";
+import {
+  benchStages,
+  type BenchStage,
+  type StageMedia,
+} from "@/data/manufacturing";
 
-function MediaFrame({ item, className }: { item: StageMedia; className: string }) {
+function MediaFrame({
+  item,
+  className,
+}: {
+  item: StageMedia;
+  className: string;
+}) {
+  const isIllustration = item.kind === "illustration";
   return (
-    <figure className={`relative w-full overflow-hidden bg-surface-container shadow-inner ${className}`}>
-      {item.type === "image" ? (
-        <Image
-          src={item.src}
-          alt={item.alt}
-          fill
-          sizes="(min-width: 1024px) 55vw, 100vw"
-          className="object-cover"
-        />
-      ) : (
-        // Short, muted workshop clips: the viewer starts playback, nothing autoplays.
-        <video
-          controls
-          muted
-          playsInline
-          preload="metadata"
-          poster={item.poster}
-          aria-label={item.alt}
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={item.src} />
-        </video>
-      )}
-      {item.caption && (
-        <figcaption className="absolute bottom-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1.5 shadow-xs type-label-sm uppercase tracking-widest text-on-surface pointer-events-none">
-          {item.caption}
+    <figure className="space-y-2">
+      <div
+        className={`relative w-full overflow-hidden bg-surface-container shadow-inner ${className}`}
+      >
+        {item.type === "image" ? (
+          <Image
+            src={item.src}
+            alt={isIllustration ? `Illustration: ${item.alt}` : item.alt}
+            fill
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            className="object-cover"
+          />
+        ) : (
+          // Short, muted workshop clips: the viewer starts playback, nothing autoplays.
+          <video
+            controls
+            muted
+            playsInline
+            preload="metadata"
+            poster={item.poster}
+            aria-label={isIllustration ? `Illustration: ${item.alt}` : item.alt}
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={item.src} />
+          </video>
+        )}
+      </div>
+      {(item.caption || isIllustration) && (
+        <figcaption className="type-body-sm text-on-surface-variant flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className="type-label-sm uppercase tracking-widest text-secondary">
+            {isIllustration ? "Illustration" : "Workshop"}
+          </span>
+          {item.caption && <span>{item.caption}</span>}
         </figcaption>
       )}
     </figure>
@@ -62,8 +80,13 @@ function StageRow({
         }`}
       >
         <div className="flex items-center gap-3">
-          <span className="type-headline-md text-secondary">{stage.number}</span>
-          <span aria-hidden="true" className="w-6 h-px bg-secondary-container" />
+          <span className="type-headline-md text-secondary">
+            {stage.number}
+          </span>
+          <span
+            aria-hidden="true"
+            className="w-6 h-px bg-secondary-container"
+          />
           <span className="type-label-sm uppercase tracking-widest text-on-surface-variant">
             {featured ? "Key Stage" : stage.phase}
           </span>
@@ -77,8 +100,12 @@ function StageRow({
         >
           {stage.title}
         </h3>
-        <p className="type-label-md uppercase tracking-[0.18em] text-secondary">{stage.subtitle}</p>
-        <p className="type-body-md text-on-surface-variant leading-relaxed">{stage.text}</p>
+        <p className="type-label-md uppercase tracking-[0.18em] text-secondary">
+          {stage.subtitle}
+        </p>
+        <p className="type-body-md text-on-surface-variant leading-relaxed">
+          {stage.text}
+        </p>
         <ul className="pt-2 flex flex-wrap gap-2">
           {stage.tags.map((tag) => (
             <li
@@ -92,12 +119,21 @@ function StageRow({
       </div>
 
       {lead && (
-        <div className={`lg:col-span-7 space-y-4 ${imageFirst ? "lg:order-1" : ""}`}>
-          <MediaFrame item={lead} className={featured ? "h-[460px]" : "h-[360px]"} />
+        <div
+          className={`lg:col-span-7 space-y-4 ${imageFirst ? "lg:order-1" : ""}`}
+        >
+          <MediaFrame
+            item={lead}
+            className={featured ? "h-[460px]" : "h-[360px]"}
+          />
           {more.length > 0 && (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {more.map((item) => (
-                <MediaFrame key={item.src} item={item} className="aspect-[4/3]" />
+                <MediaFrame
+                  key={item.src}
+                  item={item}
+                  className="aspect-[4/3]"
+                />
               ))}
             </div>
           )}
@@ -115,11 +151,18 @@ export function BenchProtocol() {
           <span className="type-label-sm uppercase tracking-[0.2em] text-secondary">
             Our Manufacturing Process
           </span>
-          <h2 className="type-headline-lg text-on-surface">From Pattern to Finished Shoe</h2>
+          <h2 className="type-headline-lg text-on-surface">
+            From Pattern to Finished Shoe
+          </h2>
           <p className="type-body-md text-on-surface-variant">
             Our shoemaking team works through seven stages in our workshop, with
-            Goodyear welted construction carried out by hand and each stage overseen by our
-            team.
+            Goodyear welted construction carried out by hand and each stage
+            overseen by our team.
+          </p>
+          <p className="type-body-sm text-on-surface-variant">
+            The images below are illustrations of each stage. Photographs and
+            videos from our workshop, including your own order in progress, can be provided on
+            request.
           </p>
         </div>
 

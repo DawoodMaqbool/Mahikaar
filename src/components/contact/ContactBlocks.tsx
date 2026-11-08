@@ -41,21 +41,28 @@ export function InstitutionalCommitments({ className = "" }: { className?: strin
   );
 }
 
-export function ContactDetails({ className = "" }: { className?: string }) {
+export function ContactDetails({
+  className = "",
+  showLocation = false,
+}: {
+  className?: string;
+  /** The Contact page states where the workshop is; the quote sidebar does not repeat it. */
+  showLocation?: boolean;
+}) {
   return (
     <div className={`bg-surface-container-high p-8 space-y-6 shadow-xs ${className}`}>
       <span className="type-label-sm uppercase tracking-[0.2em] text-secondary block">
         Get in Touch
       </span>
       <div className="space-y-3">
-        <h2 className="type-headline-sm text-on-surface">Our Private-Label Desk</h2>
+        <h2 className="type-headline-sm text-on-surface">Private Label Enquiries</h2>
         <p className="type-body-sm text-on-surface-variant leading-relaxed">
-          Enquiries are handled directly by our private-label desk.
+          Enquiries are handled directly by our private-label desk.{showLocation && " Our workshop is in Lahore, Pakistan."}
         </p>
       </div>
       <div className="space-y-2 pt-2">
         <span className="type-label-sm uppercase tracking-widest text-outline block">
-          Direct Private Label Desk
+          Email &amp; Phone
         </span>
         <p className="type-body-md text-on-surface font-medium">
           <a href="mailto:b2b@mahikaratelier.com" className="hover:text-secondary transition-colors">

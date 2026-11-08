@@ -33,7 +33,7 @@ export function PrivateLabelCta() {
               href={routes.contact}
               className="inline-flex items-center justify-center px-6 py-4 bg-transparent text-on-primary hover:bg-surface-container-highest/10 transition-colors"
             >
-              <span className="type-label-md uppercase tracking-[0.18em]">Discuss a Project</span>
+              <span className="type-label-md uppercase tracking-[0.18em]">Contact Us</span>
             </Link>
           </div>
         </div>
