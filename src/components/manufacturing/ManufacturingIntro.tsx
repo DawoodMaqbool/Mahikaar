@@ -1,5 +1,4 @@
 import { Container } from "@/components/ui/Container";
-import { Icon } from "@/components/ui/Icon";
 
 const capacity = [
   { label: "Minimum Order", value: "12 Pairs", note: "Per design & colour" },
@@ -31,32 +30,32 @@ const blueprint = [
 
 export function ManufacturingIntro() {
   return (
-    <section className="w-full bg-surface py-16 lg:py-24">
+    <section className="w-full bg-surface section-standard">
       <Container>
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-12">
-          <div className="max-w-3xl space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pb-12">
+          <div className="lg:col-span-8 min-w-0 space-y-6">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="type-label-sm uppercase tracking-[0.25em] text-secondary">
+              <span className="type-eyebrow uppercase text-secondary">
                 Manufacturing &amp; Craft
               </span>
             </div>
-            <h1 className="type-headline-xl text-on-surface tracking-tight leading-[1.05]">
+            <h1 className="type-headline-xl text-on-surface measure-headline">
               How We Make Goodyear Welted Footwear
             </h1>
-            <p className="type-body-lg text-on-surface-variant max-w-2xl pt-2">
+            <p className="type-body-lg text-on-surface-variant measure-intro">
               In our Lahore workshop, our craftsmen cut, prepare, last and construct footwear by hand.
               Our team remains involved throughout the process, from the initial pattern to final
               inspection.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 lg:self-end">
+          <div className="lg:col-span-4 min-w-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 lg:self-end">
             {capacity.map((item) => (
               <div
                 key={item.label}
-                className="p-4 bg-surface-container-low shadow-xs flex flex-col gap-1 min-w-[200px]"
+                className="border-t border-outline-variant pt-5 min-w-0 flex flex-col gap-2"
               >
-                <span className="type-label-sm uppercase text-secondary tracking-widest">{item.label}</span>
+                <span className="type-eyebrow uppercase text-secondary">{item.label}</span>
                 <span className="type-headline-sm text-on-surface">{item.value}</span>
                 <span className="type-body-sm text-on-surface-variant">{item.note}</span>
               </div>
@@ -64,10 +63,9 @@ export function ManufacturingIntro() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-10 pt-6">
           {blueprint.map((item) => (
-            <div key={item.title} className="bg-surface-container-lowest p-6 shadow-xs space-y-3">
-              <Icon name={item.icon} className="text-secondary text-2xl" />
+            <div key={item.title} className="min-w-0 border-t border-outline-variant pt-6 space-y-3">
               <h2 className="type-headline-sm text-on-surface">{item.title}</h2>
               <p className="type-body-sm text-on-surface-variant">{item.text}</p>
             </div>

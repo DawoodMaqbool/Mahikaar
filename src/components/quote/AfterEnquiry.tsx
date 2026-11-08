@@ -4,9 +4,9 @@ import { routes } from "@/lib/site";
 
 export function AfterEnquiry() {
   return (
-    <section className="w-full bg-surface-container py-16">
+    <section className="w-full bg-surface-container-low section-standard">
       <Container>
-        <div className="max-w-3xl space-y-4">
+        <div className="measure-body space-y-5">
           <h2 className="type-headline-lg text-on-surface">
             What Happens After Your Enquiry?
           </h2>
@@ -20,7 +20,7 @@ export function AfterEnquiry() {
             Questions about minimum quantities, lead times or materials?{" "}
             <Link
               href={routes.contact}
-              className="text-secondary underline underline-offset-4"
+              className="editorial-link"
             >
               See our FAQ on the Contact page
             </Link>

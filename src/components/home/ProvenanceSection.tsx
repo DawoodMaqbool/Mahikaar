@@ -1,6 +1,5 @@
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Icon } from "@/components/ui/Icon";
 
 const qualityMatrix = [
   {
@@ -69,73 +68,54 @@ export function ProvenanceSection({
     );
   }
   return (
-    <section className="w-full bg-surface py-20 lg:py-32 border-b border-outline-variant/30">
+    <section className="w-full bg-surface section-standard">
       <Container>
-        <Eyebrow rule="long" className="mb-8">
-          About Mahikaar
-        </Eyebrow>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div
-            className={`${compact ? "lg:col-span-8" : "lg:col-span-7"} space-y-6`}
-          >
-            <Heading className="type-headline-lg text-on-surface tracking-tight leading-[1.15]">
-              Made by Our Own Shoemaking Team.
-            </Heading>
-            <p className="type-body-lg text-on-surface-variant leading-relaxed">
-              Mahikaar is a made-to-order footwear workshop in Lahore, Pakistan, serving B2B buyers.
-              Our shoemaking team makes each pair by hand in our workshop, with
-              clear communication at every step.
-            </p>
-            <p className="type-body-md text-outline leading-relaxed">
-              Our team stays involved from pattern cutting to the finished shoe.
-              Each order is made to the agreed specification, with materials,
-              finishes and customisation confirmed before production begins.
-            </p>
-          </div>
-
-          {!compact && (
-            <div className="lg:col-span-5 bg-surface-container-low p-8 lg:p-10 border border-outline-variant/40 shadow-xs relative">
-              <div className="absolute -top-3 left-8 px-3 py-0.5 bg-secondary text-surface type-label-sm uppercase tracking-widest">
-                Craft Details
-              </div>
-              <h3 className="type-label-md uppercase tracking-[0.2em] text-on-surface mb-6">
-                What Defines Our Footwear
-              </h3>
-              <dl className="space-y-6 divide-y divide-outline-variant/40">
-                {qualityMatrix.map((item, index) => (
-                  <div key={item.term} className={index === 0 ? "" : "pt-6"}>
-                    <dt className="type-headline-sm text-on-surface">
-                      <Icon
-                        name={item.icon}
-                        className="float-right ml-4 text-secondary text-2xl pt-1"
-                      />
-                      {item.term}
-                    </dt>
-                    <dd className="type-body-sm text-on-surface-variant">
-                      {item.detail}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          )}
+        <div className="measure-body space-y-6">
+          <Eyebrow>About Mahikaar</Eyebrow>
+          <Heading className="type-headline-xl text-on-surface measure-headline">
+            A Workshop Approach to Footwear.
+          </Heading>
+          <p className="type-body-lg text-on-surface-variant measure-intro">
+            Mahikaar is a made-to-order footwear business in Lahore, Pakistan, serving
+            international B2B buyers. Our craftsmen make Goodyear welted leather footwear
+            by hand in our workshop.
+          </p>
+          <p className="type-body-md text-on-surface-variant">
+            Our team stays involved from pattern cutting to the finished shoe. Materials,
+            finishes and customisation are confirmed before production begins, with clear
+            communication throughout your order.
+          </p>
         </div>
 
-        {!compact && (
-          <dl className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-outline-variant/30">
-            {metrics.map((metric) => (
-              <div key={metric.label} className="flex flex-col-reverse">
-                <dt className="type-label-sm leading-6 uppercase tracking-widest text-outline">
-                  {metric.label}
-                </dt>
-                <dd className="type-headline-md text-on-surface">
-                  {metric.value}
-                </dd>
+        <div className="mt-12 lg:mt-16 space-y-6">
+          <h2 className="type-headline-md text-on-surface">What Defines Our Footwear</h2>
+          <dl className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-8">
+            {qualityMatrix.map((item) => (
+              <div key={item.term} className="min-w-0 border-t border-outline-variant pt-5 space-y-3">
+                <dt className="type-headline-sm text-on-surface">{item.term}</dt>
+                <dd className="type-body-sm text-on-surface-variant">{item.detail}</dd>
               </div>
             ))}
           </dl>
-        )}
+        </div>
+
+        <div className="mt-12 lg:mt-16 space-y-6">
+          <h2 className="type-headline-md text-on-surface">Planning Your Order</h2>
+          <dl className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-8">
+            {metrics.map((metric) => (
+              <div key={metric.label} className="min-w-0 space-y-2">
+                <dt className="type-body-sm text-on-surface-variant">{metric.label}</dt>
+                <dd className="type-headline-sm text-on-surface">{metric.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="type-body-sm text-on-surface-variant measure-body">
+            Timelines are approximate. Sample development follows agreement of the design and
+            materials; bulk production follows sample approval and agreed specifications and
+            commercial arrangements. Timing depends on the design, material availability and
+            seasonal demand.
+          </p>
+        </div>
       </Container>
     </section>
   );

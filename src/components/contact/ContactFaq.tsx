@@ -35,14 +35,11 @@ const faqs = [
 
 export function ContactFaq() {
   return (
-    <section className="w-full bg-surface-container py-16">
-      <Container className="space-y-8">
+    <section className="w-full bg-surface-container-low section-standard">
+      <Container className="space-y-10 lg:space-y-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="type-label-sm uppercase tracking-[0.25em] text-secondary">
-              Before You Enquire
-            </span>
-            <h2 className="type-headline-lg text-on-surface mt-1">
+            <h2 className="type-headline-lg text-on-surface">
               Frequently Asked Questions
             </h2>
           </div>
@@ -51,21 +48,23 @@ export function ContactFaq() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+        <div className="space-y-0">
           {faqs.map((faq, index) => (
             <article
               key={faq.question}
-              className="bg-surface p-6 shadow-xs space-y-3"
+              className="min-w-0 border-t border-outline-variant py-8 md:py-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10"
             >
-              <span className="type-label-sm uppercase tracking-widest text-secondary">
+              <span className="lg:col-span-3 type-eyebrow uppercase text-secondary">
                 {String(index + 1).padStart(2, "0")} • {faq.topic}
               </span>
+              <div className="lg:col-span-9 min-w-0 space-y-4 measure-body">
               <h3 className="type-headline-sm text-on-surface">
                 {faq.question}
               </h3>
-              <p className="type-body-sm text-on-surface-variant leading-relaxed">
+              <p className="type-body-md text-on-surface-variant">
                 {faq.answer}
               </p>
+              </div>
             </article>
           ))}
         </div>

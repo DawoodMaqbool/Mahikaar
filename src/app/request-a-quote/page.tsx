@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { Icon } from "@/components/ui/Icon";
 import { AfterEnquiry } from "@/components/quote/AfterEnquiry";
 import { QuoteForm } from "@/components/quote/QuoteForm";
 import { QuoteHero } from "@/components/quote/QuoteHero";
@@ -17,18 +16,9 @@ export default function RequestQuotePage() {
     <>
       <QuoteHero />
 
-      <section className="w-full bg-surface py-16 lg:py-24">
-        <Container className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          <div className="lg:col-span-8 bg-surface-container-lowest p-8 lg:p-12 shadow-xs">
-            <div className="mb-10 pb-6 bg-surface-container-low px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <Icon name="verified" className="text-secondary text-[22px]" />
-                <span className="type-label-md uppercase tracking-wider text-on-surface">
-                  Direct Enquiry
-                </span>
-              </div>
-              <span className="type-label-sm uppercase tracking-widest text-outline">B2B Enquiry</span>
-            </div>
+      <section className="w-full bg-surface section-standard">
+        <Container className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="lg:col-span-8 min-w-0">
             <QuoteForm />
           </div>
 

@@ -17,7 +17,7 @@ function MediaFrame({
   return (
     <figure className="space-y-2">
       <div
-        className={`relative w-full overflow-hidden bg-surface-container shadow-inner ${className}`}
+        className={`relative w-full overflow-hidden bg-surface-container-lowest ${className}`}
       >
         {item.type === "image" ? (
           <Image
@@ -25,7 +25,7 @@ function MediaFrame({
             alt={isIllustration ? `Illustration: ${item.alt}` : item.alt}
             fill
             sizes="(min-width: 1024px) 55vw, 100vw"
-            className="object-cover"
+            className="object-contain"
           />
         ) : (
           // Short, muted workshop clips: the viewer starts playback, nothing autoplays.
@@ -36,7 +36,7 @@ function MediaFrame({
             preload="metadata"
             poster={item.poster}
             aria-label={isIllustration ? `Illustration: ${item.alt}` : item.alt}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-contain"
           >
             <source src={item.src} />
           </video>
@@ -44,7 +44,7 @@ function MediaFrame({
       </div>
       {(item.caption || isIllustration) && (
         <figcaption className="type-body-sm text-on-surface-variant flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="type-label-sm uppercase tracking-widest text-secondary">
+          <span className="type-eyebrow uppercase text-secondary">
             {isIllustration ? "Illustration" : "Workshop"}
           </span>
           {item.caption && <span>{item.caption}</span>}
@@ -67,15 +67,11 @@ function StageRow({
 
   return (
     <li
-      className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
-        featured
-          ? "bg-surface-container-highest p-8 lg:p-14 shadow-md"
-          : "bg-surface-container-lowest p-8 lg:p-12 shadow-xs"
-      }`}
+      className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center border-t border-outline-variant pt-10 lg:pt-12"
     >
       {/* Text always comes first on mobile; on desktop the media alternates sides. */}
       <div
-        className={`space-y-4 ${lead ? "lg:col-span-5" : "lg:col-span-12 max-w-3xl"} ${
+        className={`min-w-0 space-y-5 ${lead ? "lg:col-span-5" : "lg:col-span-12 measure-body"} ${
           lead && imageFirst ? "lg:order-2" : ""
         }`}
       >
@@ -83,34 +79,30 @@ function StageRow({
           <span className="type-headline-md text-secondary">
             {stage.number}
           </span>
-          <span
-            aria-hidden="true"
-            className="w-6 h-px bg-secondary-container"
-          />
-          <span className="type-label-sm uppercase tracking-widest text-on-surface-variant">
+          <span className="type-eyebrow uppercase text-on-surface-variant">
             {featured ? "Key Stage" : stage.phase}
           </span>
         </div>
         <h3
           className={
             featured
-              ? "type-headline-lg text-on-surface leading-tight"
+              ? "type-headline-lg text-on-surface"
               : "type-headline-md text-on-surface"
           }
         >
           {stage.title}
         </h3>
-        <p className="type-label-md uppercase tracking-[0.18em] text-secondary">
+        <p className="type-body-sm text-secondary">
           {stage.subtitle}
         </p>
         <p className="type-body-md text-on-surface-variant leading-relaxed">
           {stage.text}
         </p>
-        <ul className="pt-2 flex flex-wrap gap-2">
+        <ul className="pt-2 flex flex-wrap gap-x-5 gap-y-2">
           {stage.tags.map((tag) => (
             <li
               key={tag}
-              className="px-3 py-1 bg-surface-container text-on-surface type-label-sm uppercase tracking-wider"
+              className="type-body-sm text-on-surface-variant"
             >
               {tag}
             </li>
@@ -120,14 +112,14 @@ function StageRow({
 
       {lead && (
         <div
-          className={`lg:col-span-7 space-y-4 ${imageFirst ? "lg:order-1" : ""}`}
+          className={`lg:col-span-7 min-w-0 space-y-4 ${imageFirst ? "lg:order-1" : ""}`}
         >
           <MediaFrame
             item={lead}
-            className={featured ? "h-[460px]" : "h-[360px]"}
+            className="aspect-[4/3]"
           />
           {more.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
               {more.map((item) => (
                 <MediaFrame
                   key={item.src}
@@ -145,10 +137,10 @@ function StageRow({
 
 export function BenchProtocol() {
   return (
-    <section className="w-full bg-surface-container-low py-20">
+    <section className="w-full bg-surface-container-low section-standard">
       <Container className="space-y-16">
-        <div className="max-w-2xl space-y-3">
-          <span className="type-label-sm uppercase tracking-[0.2em] text-secondary">
+        <div className="measure-body space-y-4">
+          <span className="type-eyebrow uppercase text-secondary">
             Our Manufacturing Process
           </span>
           <h2 className="type-headline-lg text-on-surface">
@@ -166,7 +158,7 @@ export function BenchProtocol() {
           </p>
         </div>
 
-        <ol className="space-y-12">
+        <ol className="space-y-12 lg:space-y-20">
           {benchStages.map((stage, index) => (
             <StageRow
               key={stage.number}

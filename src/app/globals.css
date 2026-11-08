@@ -207,6 +207,40 @@
   display: none;
 }
 
+/* Preserve page scrollbar styling; expose overflow in dialogs and the expanded menu. */
+dialog,
+#mobile-nav {
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-outline) var(--color-surface-container-low);
+  scrollbar-gutter: stable;
+}
+
+dialog::-webkit-scrollbar,
+#mobile-nav::-webkit-scrollbar {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+dialog::-webkit-scrollbar-track,
+#mobile-nav::-webkit-scrollbar-track {
+  background: var(--color-surface-container-low);
+}
+
+dialog::-webkit-scrollbar-thumb,
+#mobile-nav::-webkit-scrollbar-thumb {
+  background: var(--color-outline);
+  border: 3px solid var(--color-surface-container-low);
+  border-radius: 6px;
+}
+
+/* Override only the root smooth-scroll utility when motion reduction is requested. */
+@media (prefers-reduced-motion: reduce) {
+  html.scroll-smooth {
+    scroll-behavior: auto;
+  }
+}
+
 /* Opt-in editorial layout conventions; existing section padding is unchanged. */
 @utility page-gutters {
   padding-inline: 24px;

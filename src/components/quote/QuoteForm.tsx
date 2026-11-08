@@ -4,15 +4,15 @@ import { useEffect, useRef, useState, type DragEvent, type FormEvent, type React
 import { Icon } from "@/components/ui/Icon";
 
 const inputClass =
-  "w-full px-4 py-3 bg-surface-container-low text-on-surface type-body-md focus:bg-surface focus:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ink transition-colors";
-const labelClass = "block type-label-sm uppercase tracking-widest text-on-surface-variant";
+  "w-full min-w-0 min-h-12 px-4 py-3 border border-outline bg-surface-container-low text-on-surface placeholder:text-on-surface-variant placeholder:opacity-100 type-body-md focus:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ink";
+const labelClass = "block type-body-sm font-medium text-on-surface";
 
 function SectionHeading({ tag, title, description }: { tag: string; title: string; description?: string }) {
   return (
     <div className="space-y-2">
-      <div className="flex items-baseline justify-between gap-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
         <h2 className="type-headline-md text-on-surface">{title}</h2>
-        <span className="type-label-sm text-secondary uppercase tracking-widest shrink-0">{tag}</span>
+        <span className="type-eyebrow text-secondary uppercase shrink-0">{tag}</span>
       </div>
       {description && <p className="type-body-sm text-on-surface-variant">{description}</p>}
     </div>
@@ -62,7 +62,7 @@ function SelectField({ id, label, placeholder, icon, options, required }: Select
           name={id}
           required={required}
           defaultValue=""
-          className={`${inputClass} py-3.5 appearance-none cursor-pointer`}
+          className={`${inputClass} py-3.5 pr-12 appearance-none cursor-pointer`}
         >
           <option value="" disabled>
             {placeholder}
@@ -92,16 +92,16 @@ type OptionCardProps = {
 
 function OptionCard({ name, value, title, description, defaultChecked }: OptionCardProps) {
   return (
-    <label className="relative flex items-start gap-3 p-4 bg-surface-container-low cursor-pointer transition-colors hover:bg-surface-container has-focus-visible:ring-1 has-focus-visible:ring-ink">
+    <label className="relative min-h-12 min-w-0 flex items-start gap-3 p-4 border border-outline bg-surface-container-low cursor-pointer hover:bg-surface-container has-checked:border-secondary has-focus-visible:ring-2 has-focus-visible:ring-ink">
       <input
         type="checkbox"
         name={name}
         value={value}
         defaultChecked={defaultChecked}
-        className="mt-1 accent-primary w-4 h-4 focus:outline-none"
+        className="mt-1 accent-ink w-4 h-4 shrink-0 focus:outline-none"
       />
       <span>
-        <span className="type-label-md text-on-surface block uppercase tracking-wider">{title}</span>
+        <span className="type-body-sm font-medium text-on-surface block">{title}</span>
         <span className="type-body-sm text-on-surface-variant block mt-0.5">{description}</span>
       </span>
     </label>
@@ -164,7 +164,13 @@ export function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    if (submitted) confirmationRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (submitted) {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      confirmationRef.current?.scrollIntoView({
+        behavior: reduceMotion ? "instant" : "smooth",
+        block: "center",
+      });
+    }
   }, [submitted]);
 
   function handleDrop(event: DragEvent<HTMLLabelElement>) {
@@ -200,7 +206,7 @@ export function QuoteForm() {
           </div>
         </div>
 
-        <div className="space-y-6 pt-6">
+        <div className="space-y-6 pt-8 border-t border-outline-variant">
           <SectionHeading
             tag="Optional"
             title="Your Enquiry"
@@ -208,7 +214,7 @@ export function QuoteForm() {
           />
           <fieldset className="min-w-0 space-y-3">
             <legend className={labelClass}>Styles you are interested in (optional)</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               {typologies.map((option) => (
                 <OptionCard key={option.value} name="footwearType" {...option} />
               ))}
@@ -247,8 +253,8 @@ export function QuoteForm() {
           </div>
         </div>
 
-        <details className="group bg-surface-container-low">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ink [&::-webkit-details-marker]:hidden">
+        <details className="group border-y border-outline-variant">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ink [&::-webkit-details-marker]:hidden">
             <span>
               <span className="type-label-md uppercase tracking-wider text-on-surface block">
                 Already have more details?
@@ -259,11 +265,11 @@ export function QuoteForm() {
             </span>
             <Icon
               name="expand_more"
-              className="text-[22px] text-on-surface-variant shrink-0 transition-transform group-open:rotate-180"
+              className="text-[22px] text-on-surface-variant shrink-0 group-open:rotate-180"
             />
           </summary>
 
-          <div className="p-5 pt-2 space-y-10">
+          <div className="pt-2 pb-8 space-y-10">
             <div className="space-y-6">
               <SectionHeading tag="Optional" title="Timing" />
               <SelectField
@@ -330,11 +336,11 @@ export function QuoteForm() {
                   }}
                   onDragLeave={() => setDragging(false)}
                   onDrop={handleDrop}
-                  className={`p-8 text-center cursor-pointer transition-all hover:bg-surface-container flex flex-col items-center justify-center space-y-3 has-focus-visible:ring-1 has-focus-visible:ring-ink ${
+                  className={`min-w-0 border border-dashed border-outline px-4 py-8 sm:px-8 text-center cursor-pointer hover:bg-surface-container flex flex-col items-center justify-center space-y-3 has-focus-visible:ring-2 has-focus-visible:ring-ink ${
                     dragging ? "bg-surface-container-high" : "bg-surface"
                   }`}
                 >
-                  <span className="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-secondary shadow-xs">
+                  <span className="w-12 h-12 flex items-center justify-center text-secondary">
                     <Icon name="folder_zip" className="text-[24px]" />
                   </span>
                   <span className="space-y-1 block">
@@ -358,7 +364,7 @@ export function QuoteForm() {
                       if (files && files.length > 0) setFileStatus(describeFiles(files));
                     }}
                   />
-                  <span id="fileStatus" aria-live="polite" className="type-label-sm text-secondary uppercase tracking-widest">
+                  <span id="fileStatus" aria-live="polite" className="type-body-sm text-secondary max-w-full break-all">
                     {fileStatus}
                   </span>
                 </label>
@@ -370,7 +376,7 @@ export function QuoteForm() {
         <div className="pt-2 space-y-4">
           <button
             type="submit"
-            className="w-full py-5 bg-primary text-on-primary hover:bg-secondary transition-colors duration-200 uppercase type-label-md tracking-[0.25em] flex items-center justify-center gap-3 shadow-md"
+            className="action-primary w-full gap-3"
           >
             <span>Send Enquiry</span>
             <Icon name="arrow_forward" className="text-[18px]" />
@@ -382,7 +388,7 @@ export function QuoteForm() {
       </form>
 
       {submitted && (
-        <div ref={confirmationRef} role="status" className="mt-8 p-8 bg-surface-container text-on-surface space-y-4">
+        <div ref={confirmationRef} role="status" className="mt-8 p-6 bg-surface-container-low text-on-surface space-y-4">
           <div className="flex items-center gap-3 text-secondary">
             <Icon name="task_alt" className="text-[28px]" />
             <span className="type-headline-sm">Enquiry Received</span>
