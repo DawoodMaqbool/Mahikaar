@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
-import { QuoteFaq } from "@/components/quote/QuoteFaq";
+import { AfterEnquiry } from "@/components/quote/AfterEnquiry";
 import { QuoteForm } from "@/components/quote/QuoteForm";
 import { QuoteHero } from "@/components/quote/QuoteHero";
 import { QuoteSidebar } from "@/components/quote/QuoteSidebar";
@@ -36,7 +36,7 @@ export default function RequestQuotePage() {
         </Container>
       </section>
 
-      <QuoteFaq />
+      <AfterEnquiry />
     </>
   );
 }

@@ -8,8 +8,8 @@ const terms = [
   },
   {
     label: "Sizes",
-    value: "Mixed sizes",
-    text: "Permitted within an order. The size assortment is discussed for each order.",
+    value: "UK 6–12 standard",
+    text: "Mixed and half sizes are permitted within an order. Other sizing can be discussed for individual projects.",
   },
   {
     label: "Sample Development",

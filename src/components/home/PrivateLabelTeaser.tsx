@@ -25,7 +25,7 @@ const steps = [
   {
     icon: "fact_check",
     title: "Quality Oversight",
-    text: "Our team reviews each stage from pattern cutting to final finishing, and checks every completed pair before dispatch.",
+    text: "Every completed pair is checked by our team before dispatch.",
     footnote: "Inspected Throughout",
   },
 ];
@@ -48,12 +48,10 @@ export function PrivateLabelTeaser({
             Private Label Services
           </p>
           <Heading className="type-headline-lg text-on-surface tracking-tight">
-            Build Footwear Around Your Brand
+            How We Work With Your Brand
           </Heading>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
-            From client branding and agreed customisation to made-to-order production, we
-            work with you from first enquiry to dispatch, for menswear labels and boutique
-            brands.
+            How buyers work with us, from first enquiry to dispatch.
           </p>
         </div>
 
@@ -92,7 +90,7 @@ export function PrivateLabelTeaser({
               href={routes.contact}
               className="px-8 py-3.5 bg-transparent text-on-surface type-label-md uppercase tracking-[0.2em] border border-outline-variant hover:border-on-surface transition-colors"
             >
-              Discuss Your Project
+              Contact Us
             </Link>
           </div>
         )}

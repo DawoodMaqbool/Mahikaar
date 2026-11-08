@@ -20,7 +20,7 @@ const benchmarks = [
   {
     icon: "palette",
     title: "Hand Finishing",
-    text: "Each pair is finished and burnished by hand for depth of colour and a refined finish.",
+    text: "Each pair is finished by hand before dispatch.",
   },
 ];
 
@@ -34,7 +34,7 @@ export function BenchmarksSection() {
               Craft Details
             </span>
             <h2 className="type-headline-lg text-on-surface tracking-tight leading-tight">
-              Crafted by Hand, Made to Order
+              Construction Details
             </h2>
             <p className="type-body-md text-on-surface-variant leading-relaxed">
               Each order is made to your agreed specification, with construction carried out by

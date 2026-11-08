@@ -21,7 +21,7 @@ export function CustomDevelopmentButton() {
       }
       className="w-full py-4 px-6 bg-secondary hover:bg-on-secondary-fixed text-on-secondary transition-colors duration-200 text-center type-label-md uppercase tracking-[0.2em] shadow-xs flex items-center justify-center gap-2"
     >
-      <span>Discuss Custom Footwear Development</span>
+      <span>Enquire About Your Design</span>
       <Icon name="engineering" className="text-[18px]" />
     </button>
   );

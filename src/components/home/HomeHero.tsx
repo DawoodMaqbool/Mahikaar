@@ -4,8 +4,6 @@ import { Icon } from "@/components/ui/Icon";
 import { routes } from "@/lib/site";
 
 const credo = [
-  { label: "Standard", value: "Goodyear Welted, Made by Hand" },
-  { label: "Sourcing", value: "Our Material Network" },
   { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
   { label: "Manufacture", value: "Our Own Workshop" },
 ];
@@ -32,7 +30,7 @@ export function HomeHero() {
       <div className="relative w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-36 pb-24 lg:pt-44 lg:pb-32 flex flex-col justify-between min-h-[90vh]">
         <div className="flex flex-wrap items-center gap-3 mb-10">
           <span className={`${badgeBase} bg-surface/10 backdrop-blur-md text-secondary-container border border-secondary-container/30`}>
-            Premium B2B Footwear
+            B2B Footwear
           </span>
           <span className={`${badgeBase} hidden sm:inline-flex bg-surface/5 backdrop-blur-xs text-surface-variant`}>
             Made to Order
@@ -45,9 +43,10 @@ export function HomeHero() {
             <span className="italic font-normal text-secondary-fixed">Made for Your Brand.</span>
           </h1>
           <p className="type-body-lg text-surface-container max-w-2xl leading-relaxed font-light">
-            Made-to-order leather footwear for international brands, heritage boutiques, and
-            discerning private labels. Goodyear welted by our craftsmen in our
-            workshop, with materials and branding tailored to your requirements.
+            We make made-to-order leather footwear for independent brands, boutiques and private
+            labels. Develop your own designs or select from our reference styles, with hand-executed
+            Goodyear welted construction, client branding and production from 12 pairs per design
+            and colour.
           </p>
         </div>
 
@@ -64,11 +63,14 @@ export function HomeHero() {
               href="#specimens"
               className="px-7 py-4 bg-transparent text-surface hover:text-secondary-fixed type-label-md uppercase tracking-[0.2em] border border-surface/30 hover:border-secondary-fixed transition-all duration-200 backdrop-blur-xs"
             >
-              Explore Footwear Styles
+              Explore Footwear
             </a>
+            <p className="basis-full type-body-sm text-surface-variant">
+              Not ready with a technical pack? Start with a design reference or a short description.
+            </p>
           </div>
 
-          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8 max-w-2xl text-surface-variant">
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 max-w-lg text-surface-variant">
             {credo.map((item) => (
               <div key={item.label} className="space-y-1">
                 <dt className="block type-label-sm uppercase tracking-widest text-secondary-container">

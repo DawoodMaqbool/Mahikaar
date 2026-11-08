@@ -4,7 +4,7 @@ import { routes } from "@/lib/site";
 
 const capabilities = [
   "Goodyear Welted Construction",
-  "Artisanal Hand-Lasting & Hand-Welting",
+  "Hand-Lasting & Hand-Welting",
   "Private Label & Client Branding",
   "Made-to-Order Leather Footwear",
   "Material Selection & Customisation",
@@ -13,15 +13,15 @@ const capabilities = [
 const specimenLinks = [
   "Full & Semi Brogues",
   "Calf Leather Oxfords",
-  "Hand-Blocked Chelsea Boots",
+  "Chelsea Boots",
   "Unlined Penny Loafers",
   "Double & Single Monkstraps",
 ];
 
 const inquiryLinks = [
-  { label: "Contact Mahikaar", href: routes.contact },
-  { label: "Materials & Customisation", href: routes.manufacturing },
-  { label: "Minimum Orders & Private Label", href: routes.privateLabel },
+  { label: "Minimum Orders & Customisation", href: routes.privateLabel },
+  { label: "Leather & Material Options", href: routes.manufacturing },
+  { label: "Contact Us", href: routes.contact },
 ];
 
 const columnHeading =
@@ -51,8 +51,8 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          <nav aria-label="Specimens" className="lg:col-span-2 space-y-4">
-            <h2 className={columnHeading}>Specimens</h2>
+          <nav aria-label="Footwear" className="lg:col-span-2 space-y-4">
+            <h2 className={columnHeading}>Footwear</h2>
             <ul className="space-y-2.5 type-body-sm text-outline-variant">
               {specimenLinks.map((label) => (
                 <li key={label}>
@@ -64,8 +64,8 @@ export function SiteFooter() {
             </ul>
           </nav>
 
-          <nav aria-label="Commission and inquiries" className="lg:col-span-3 space-y-4">
-            <h2 className={columnHeading}>Commission &amp; Inquiries</h2>
+          <nav aria-label="Enquiries" className="lg:col-span-3 space-y-4">
+            <h2 className={columnHeading}>Enquiries</h2>
             <ul className="space-y-2.5 type-body-sm text-outline-variant">
               <li>
                 <Link

@@ -10,11 +10,11 @@ const blueprint = [
   {
     icon: "architecture",
     title: "Sizing & Fit",
-    text: "Standard UK 6 to 12 size curves, or tailored to your custom sizing and fit requirements.",
+    text: "Standard UK size references from 6–12. Other sizing and fit requirements can be discussed for individual projects.",
   },
   {
     icon: "verified",
-    title: "Hand-Sewn Welt",
+    title: "Hand-Stitched Welt",
     text: "Goodyear welted construction, carried out by hand throughout.",
   },
   {
@@ -25,7 +25,7 @@ const blueprint = [
   {
     icon: "diamond",
     title: "Material Selection",
-    text: "A range of leathers and finishes through our sourcing network, discussed per project.",
+    text: "A range of leathers and finishes, discussed per project.",
   },
 ];
 
@@ -41,11 +41,12 @@ export function ManufacturingIntro() {
               </span>
             </div>
             <h1 className="type-headline-xl text-on-surface tracking-tight leading-[1.05]">
-              The Anatomy of Hand-Welted Footwear
+              How We Make Goodyear Welted Footwear
             </h1>
             <p className="type-body-lg text-on-surface-variant max-w-2xl pt-2">
-              In our workshop, our craftsmen cut, last, and weld footwear by hand to your
-              agreed specifications, with our team involved at every stage.
+              In our Lahore workshop, our craftsmen cut, prepare, last and construct footwear by hand.
+              Our team remains involved throughout the process, from the initial pattern to final
+              inspection.
             </p>
           </div>
 

@@ -108,6 +108,20 @@ export function InquiryModalProvider({ children }: { children: ReactNode }) {
             </div>
           ) : (
             <form className="space-y-5 pt-2" onSubmit={handleSubmit}>
+              <div className="space-y-1">
+                <label htmlFor={`${id}-style`} className={fieldLabel}>
+                  Style of Interest
+                </label>
+                <input
+                  id={`${id}-style`}
+                  name="style"
+                  type="text"
+                  readOnly
+                  value={`${target.title} • ${target.subtitle}`}
+                  className={`${fieldInput} text-on-surface-variant`}
+                />
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label htmlFor={`${id}-name`} className={fieldLabel}>

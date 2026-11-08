@@ -61,7 +61,7 @@ export const portfolioFilters: PortfolioFilter[] = [
 ];
 
 export const customizationNote =
-  "Leather, colour, sole options, and branding can be tailored to your brief. Availability and any additional costs are confirmed before an order is finalised. Final specifications are agreed during sampling, and bulk production proceeds after sample approval.";
+  "Client branding and selected customisation options can be arranged for each project. Availability, feasibility and any additional costs are confirmed before production begins. Final specifications are agreed during sampling, and bulk production proceeds after sample approval.";
 
 export const portfolioSpecimens: PortfolioSpecimen[] = [
   {
@@ -71,7 +71,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     last: "Last No. 042 — Classic Almond",
     image: "/images/products/cap-toe-oxford.jpg",
     alt: "Cognac calf leather cap-toe oxford resting on a travertine plinth",
-    construction: "Hand-Welted Goodyear 270°",
+    construction: "Handmade Goodyear Welted",
     materials: "Cognac Calf • Leather Sole",
     description:
       "A classic almond silhouette with tight arch support, hand-pitched heels, and neatly skived quarter seams. Finished by hand.",
@@ -89,15 +89,14 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Gulberg Penny Loafer",
     last: "Last No. 104 — Round Curvature",
     image: "/images/products/penny-loafer.png",
-    alt: "The Gulberg Penny Loafer in deep espresso calf leather with bevelled waist and brass flush toe plate",
-    construction: "Hand-Welted 360° • Fiddleback",
-    materials: "Deep Espresso Calf • Bevelled Waist",
+    alt: "The Gulberg Penny Loafer in deep espresso calf leather",
+    construction: "Handmade Goodyear Welted",
+    materials: "Deep Espresso Calf • Leather Sole",
     description:
-      "Features an articulated hand-stitched apron (pie crust technique) and a sunk flush brass toe protection plate. Heel cup shaped for comfortable sockless wear or formal dress.",
+      "A classic penny loafer in deep espresso calf leather, with a hand-stitched apron. Heel cup shaped for comfortable sockless wear or formal dress.",
     specs: [
       { label: "Upper", value: "Calf leather, colour to specification" },
       { label: "Sole", value: "Leather sole" },
-      { label: "Hardware Accent", value: "Milled Solid Brass Toe Cleat" },
     ],
     reference: "MKR-LF-104",
     leadTime: "2–4 Weeks",
@@ -109,7 +108,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Shalimar Full Brogue",
     image: "/images/products/full-brogue-wingtip/brown-hero.webp",
     alt: "Pair of dark brown textured leather full brogue wingtip shoes, three-quarter view",
-    construction: "Goodyear Welted",
+    construction: "Handmade Goodyear Welted",
     materials: "Dark Brown • Textured Leather",
     description:
       "A classic full brogue with a wing-shaped toe cap and decorative perforation, constructed by hand using the Goodyear welt method. Leather, colour, and finish are tailored to your brief.",
@@ -154,7 +153,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     last: "Last No. 119 — Tapered High-Instep",
     image: "/images/products/chelsea-boot.png",
     alt: "The Mall Road Chelsea Boot in dark chocolate suede on raw limestone pedestal",
-    construction: "Hand-Blocked Wholecut • 270° Welt",
+    construction: "Wholecut • Handmade Goodyear Welted",
     materials: "Dark Chocolate Suede • Rubber or Leather Sole",
     description:
       "Single-piece upper blocked for a seamless wrap along the ankle, with elastic side gussets and hand-looped woven pull tabs.",
@@ -173,13 +172,12 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     last: "Last No. 073 — Sharp Chisel",
     image: "/images/products/adelaide-oxford.jpg",
     alt: "Antique chestnut Adelaide oxford with U-throat broguing on a vintage workbench",
-    construction: "Hand-Welted Goodyear",
+    construction: "Handmade Goodyear Welted",
     materials: "Antique Chestnut Hand-Patina • Chiseled Toe",
     description:
-      "Distinguished by its seamless U-throat brogue framing and a layered, hand-applied patina finish. Hand-chamfered fiddleback waist.",
+      "Distinguished by its seamless U-throat brogue framing and a layered, hand-applied patina finish.",
     specs: [
       { label: "Upper", value: "Calf leather, patina to specification" },
-      { label: "Waist Construction", value: "Concealed Fiddleback with Brass Pegs" },
       { label: "Finishing Method", value: "Hand-applied layered finish" },
     ],
     reference: "MKR-AD-073",
@@ -192,10 +190,10 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     last: "Last No. 095 — Anatomical Round",
     image: "/images/products/chukka-boot.jpg",
     alt: "Snuff suede two-eyelet chukka boot on a studded rubber sole",
-    construction: "Hand-Welted Goodyear 360°",
+    construction: "Handmade Goodyear Welted",
     materials: "Snuff Suede • Studded Rubber Sole",
     description:
-      "Designed for travel, with dual brass blind eyelets, a leather lining, and a studded rubber outsole option for varied conditions.",
+      "Designed for travel, with blind eyelets, a leather lining, and a studded rubber outsole option for varied conditions.",
     specs: [
       { label: "Upper", value: "Suede, colour to specification" },
       { label: "Sole", value: "Studded rubber sole option" },
@@ -211,7 +209,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Gymkhana Spectator Brogue",
     image: "/images/products/spectator-brogue/white-black-hero.webp",
     alt: "Pair of white and black two-tone spectator brogue wingtip shoes, three-quarter view",
-    construction: "Goodyear Welted",
+    construction: "Handmade Goodyear Welted",
     materials: "White / Black • White / Brown Examples",
     description:
       "A two-tone wingtip brogue with contrasting panels and decorative perforation, shown in two example colourways. Colour combinations, leathers, and finishes are discussed against your brief.",
@@ -273,12 +271,12 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Lohari Wingtip Zip Boot",
     image: "/images/products/wingtip-zip-boot/brown-side-hero.webp",
     alt: "Dark brown grained leather side-zip ankle boot with a perforated wingtip toe, side view",
-    construction: "Goodyear Welted",
+    construction: "Handmade Goodyear Welted",
     materials: "Dark Brown • Grained Leather",
     description:
-      "A side-zip ankle boot with a wing-shaped toe cap and decorative perforation, shown in dark brown grained leather. Leather, colour, sole, and finish are tailored to your brief.",
+      "A side-zip wingtip ankle boot with a chiselled toe, wing-shaped toe cap and decorative perforation, shown in dark brown grained leather. Leather, colour, sole, and finish are tailored to your brief.",
     specs: [
-      { label: "Style", value: "Side-zip wingtip ankle boot" },
+      { label: "Style", value: "Side-zip wingtip ankle boot, chiselled toe" },
       { label: "Upper", value: "Leather and colour to specification" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
       { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
@@ -317,7 +315,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Liberty Woven Penny Loafer",
     image: "/images/products/woven-loafer/burgundy-hero.png",
     alt: "Pair of burgundy woven leather penny loafers, three-quarter view",
-    construction: "Welted",
+    construction: "Handmade Goodyear Welted",
     materials: "Burgundy • Woven Leather",
     description:
       "A penny loafer with a woven leather vamp, a smooth leather strap and a rounded toe, shown in burgundy. Leather, colour, sole, and finish are tailored to your brief.",
@@ -355,7 +353,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Kohl Full Brogue",
     image: "/images/products/black-brogue/black-three-quarter.jpg",
     alt: "Digital preview of a pair of black full brogue shoes with a cream welt, three-quarter view",
-    construction: "Goodyear Welted",
+    construction: "Handmade Goodyear Welted",
     materials: "Black • Antiqued Leather",
     description:
       "A full brogue with a medallion toe, decorative perforation and a contrast welt, shown in black. The images are digital previews made from our display sample. Leather, colour, sole, and finish are tailored to your brief.",
@@ -399,14 +397,14 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Heritage Wingtip",
     image: "/images/products/heritage-wingtip/brown-three-quarter.jpg",
     alt: "Digital preview of a pair of dark brown full wingtip Oxford shoes with a tan welt, three-quarter view",
-    construction: "Goodyear Welted",
+    construction: "Handmade Goodyear Welted",
     materials: "Dark Brown • Full Grain Leather",
     description:
-      "A full wingtip Oxford with five-eyelet lacing, a W-shaped wing seam and a scatter of perforations across the toe cap, hand-welted with a full 360° Goodyear welt. Two images are digital previews made from our display sample; the third is a photograph of the sample with an edited background. Leather, colour, sole, and finish are tailored to your brief.",
+      "A full wingtip Oxford with five-eyelet lacing, a W-shaped wing seam and a scatter of perforations across the toe cap, handmade with a Goodyear welt hand-stitched fully around the sole. Two images are digital previews made from our display sample; the third is a photograph of the sample with an edited background. Leather, colour, sole, and finish are tailored to your brief.",
     specs: [
       { label: "Style", value: "Full wingtip Oxford, five-eyelet lacing" },
       { label: "Upper", value: "Full grain leather; colour to specification" },
-      { label: "Welt", value: "Hand-welted, 360° around the sole" },
+      { label: "Welt", value: "Hand-welted Goodyear, stitched fully around the sole" },
       { label: "Sole", value: "Leather; colour and finish to specification" },
       { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
     ],
@@ -444,7 +442,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Resort Spectator Brogue",
     image: "/images/products/spectator-colours/olive-three-quarter.jpg",
     alt: "Digital preview of a pair of olive green and white spectator brogue wingtip shoes, three-quarter view",
-    construction: "Goodyear Welted",
+    construction: "Handmade Goodyear Welted",
     materials: "Olive / White • Navy / White Previews",
     description:
       "The same two-tone wingtip brogue shown in further colourways. All images are digital previews of how the look changes with the colour of the panels; final leather, colour and sole are agreed against your brief.",
@@ -511,7 +509,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     name: "The Semi-Brogue Cap-Toe",
     image: "/images/products/semi-brogue/white-black-three-quarter.jpg",
     alt: "Digital preview of a pair of white and black semi-brogue cap-toe Oxford shoes, three-quarter view",
-    construction: "Goodyear Welted",
+    construction: "Handmade Goodyear Welted",
     materials: "White / Black • White / Brown Previews",
     description:
       "A cap-toe Oxford with a perforated toe cap and quarter brogueing, shown in two-tone colourways. All images are digital previews of how the look changes with colour; final leather, colour and sole are agreed against your brief.",

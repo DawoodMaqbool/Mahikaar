@@ -58,7 +58,7 @@ function CategoryTile({
         <p className="type-body-md text-on-surface-variant leading-relaxed">{category.blurb}</p>
         <p className="type-label-md uppercase tracking-[0.18em] text-secondary flex items-center gap-2 pt-2">
           <span>
-            {count} {count === 1 ? "Look" : "Looks"}
+            {count} {count === 1 ? "Reference Style" : "Reference Styles"}
           </span>
           <Icon name="arrow_forward" className="text-[16px]" />
         </p>
@@ -70,49 +70,55 @@ function CategoryTile({
 function VariantTile({ variant, onOpen }: { variant: CatalogueVariant; onOpen: () => void }) {
   const lead = variant.images[0];
   const preview = lead.kind === "ai-concept";
+  // Colourway cards already carry the colour in their name; avoid saying it twice.
+  const showColour =
+    variant.colour && !variant.name.toLowerCase().includes(variant.colour.replace(" / ", " & ").toLowerCase());
   return (
     <button
       type="button"
       onClick={onOpen}
       aria-label={`View ${variant.code}: ${variant.name}`}
-      className={`group relative block w-full ${
-        lead.portrait ? "aspect-[3/4]" : "aspect-[4/3]"
-      } bg-surface-container-low overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink`}
+      className="group block w-full text-left bg-surface-container-lowest shadow-xs hover:shadow-md transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink"
     >
-      <div className={`absolute inset-0 ${preview || variant.whiteBackdrop ? "" : "p-6"}`}>
-        <div className="relative w-full h-full">
-          <Image
-            src={lead.src}
-            alt={lead.alt}
-            fill
-            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-            className={`${preview ? "object-cover" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.03] ${
-              variant.whiteBackdrop ? "mix-blend-multiply" : ""
-            }`}
-          />
+      <div
+        className={`relative w-full ${
+          lead.portrait ? "aspect-[3/4]" : "aspect-[4/3]"
+        } bg-surface-container-low overflow-hidden`}
+      >
+        <div className={`absolute inset-0 ${preview || variant.whiteBackdrop ? "" : "p-6"}`}>
+          <div className="relative w-full h-full">
+            <Image
+              src={lead.src}
+              alt={lead.alt}
+              fill
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              className={`${preview ? "object-cover" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.03] ${
+                variant.whiteBackdrop ? "mix-blend-multiply" : ""
+              }`}
+            />
+          </div>
         </div>
+        <span className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-surface type-label-sm uppercase tracking-wider text-secondary">
+          {variant.code}
+        </span>
+        {preview && (
+          <span className="absolute bottom-3 left-3 z-10 px-2 py-0.5 bg-surface type-label-sm uppercase tracking-wider text-on-surface-variant">
+            Digital preview
+          </span>
+        )}
       </div>
-      <span className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-surface type-label-sm uppercase tracking-wider text-secondary">
-        {variant.code}
-      </span>
-      {variant.images.length > 1 && (
-        <span className="absolute bottom-3 right-3 z-10 px-2 py-0.5 bg-surface type-label-sm uppercase tracking-wider text-on-surface">
-          {variant.images.length} views
-        </span>
-      )}
-      {preview && (
-        <span className="absolute bottom-3 left-3 z-10 px-2 py-0.5 bg-surface type-label-sm uppercase tracking-wider text-on-surface-variant">
-          Digital preview
-        </span>
-      )}
+      <div className="px-4 py-3 space-y-0.5">
+        <p className="type-label-md uppercase tracking-wider text-on-surface">{variant.name}</p>
+        {showColour && <p className="type-body-sm text-on-surface-variant">{variant.colour}</p>}
+      </div>
     </button>
   );
 }
 
 /** Remounted per look (keyed) so each one opens on its lead view. */
 function VariantBody({ variant, onEnquire }: { variant: CatalogueVariant; onEnquire: () => void }) {
-  const [index, setIndex] = useState(0);
-  const image = variant.images[index];
+  // One lead photograph per listing; further views stay in the data but are not offered as a gallery.
+  const image = variant.images[0];
   const blend = variant.whiteBackdrop ? "mix-blend-multiply" : "";
 
   return (
@@ -124,7 +130,6 @@ function VariantBody({ variant, onEnquire }: { variant: CatalogueVariant; onEnqu
       >
         <div className="relative w-full h-full">
           <Image
-            key={image.src}
             src={image.src}
             alt={image.alt}
             fill
@@ -134,41 +139,24 @@ function VariantBody({ variant, onEnquire }: { variant: CatalogueVariant; onEnqu
         </div>
       </div>
 
-      {variant.images.length > 1 && (
-        <ul aria-label="Views" className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-          {variant.images.map((view, i) => (
-            <li key={view.src}>
-              <button
-                type="button"
-                aria-pressed={i === index}
-                aria-label={`Show view: ${view.label}`}
-                onClick={() => setIndex(i)}
-                className={`relative block w-full aspect-[4/3] bg-surface-container-low overflow-hidden ring-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink ${
-                  i === index ? "ring-secondary ring-2" : "ring-transparent hover:ring-outline-variant"
-                }`}
-              >
-                <Image src={view.src} alt="" fill sizes="160px" className={`object-contain p-1.5 ${blend}`} />
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="space-y-1">
           <p className="type-label-sm uppercase tracking-[0.22em] text-secondary font-semibold">Ref {variant.code}</p>
-          <p className="type-label-md uppercase tracking-wider text-on-surface-variant">
-            {variant.colour ?? variant.name}
-            {variant.images.length > 1 && ` • ${image.label}`}
-          </p>
-          {image.kind === "ai-concept" && (
+          <p className="type-label-md uppercase tracking-wider text-on-surface">{variant.name}</p>
+          {variant.colour && <p className="type-body-sm text-on-surface-variant">{variant.colour}</p>}
+          {image.kind === "ai-concept" ? (
             <p className="type-body-sm text-on-surface-variant">
-              Digital preview, shown to illustrate the look. Final leather, colour and sole are agreed per project.
+              Digital preview of a possible colour option, not a photograph of a finished sample. Final leather,
+              colour and sole are agreed per project.
+            </p>
+          ) : (
+            <p className="type-body-sm text-on-surface-variant">
+              Reference style. Leather, colour and sole are agreed per project.
             </p>
           )}
         </div>
         <button type="button" onClick={onEnquire} className={enquiryButton}>
-          <span>Enquire About {variant.code}</span>
+          <span>Enquire About This Style</span>
           <Icon name="arrow_forward" className="text-[16px]" />
         </button>
       </div>
@@ -192,7 +180,7 @@ function VariantDialog({
   function enquire() {
     if (!variant) return;
     close();
-    openInquiry({ title: variant.code, subtitle: variant.colour ? `${variant.name} • ${variant.colour}` : variant.name });
+    openInquiry({ title: variant.name, subtitle: variant.colour ? `${variant.code} • ${variant.colour}` : variant.code });
   }
 
   return (
@@ -257,7 +245,7 @@ export function PortfolioCatalog() {
                 <CategoryTile
                   key={category.id}
                   category={category}
-                  count={looks.length}
+                  count={category.numbers.length}
                   image={useCard ? cards[0].image : cover.src}
                   alt={useCard ? cards[0].alt : cover.alt}
                   whiteBackdrop={cards[0].whiteBackdrop}
@@ -283,13 +271,13 @@ export function PortfolioCatalog() {
               <h2 className="type-headline-md text-on-surface tracking-tight">{view.label}</h2>
             </div>
             <p className="type-body-md text-on-surface-variant mt-4 max-w-3xl">
-              Examples of the looks possible on this silhouette. Perforation pattern, leather, colour and sole
-              are tailored to your brief, and some images are digital previews. Goodyear welted, 12 pairs per
-              design and colour, approximately 2–4 weeks for bulk production.
+              Reference styles shown in example colours. Photographs show finished samples; images marked
+              &ldquo;Digital preview&rdquo; only illustrate possible colour options. Leather, colour, sole and
+              finish are confirmed for each project.
             </p>
           </Container>
 
-          <section aria-label={`${view.label} looks`} className="w-full max-w-[1440px] mx-auto px-6 lg:px-12 pb-12">
+          <section aria-label={`${view.label} reference styles`} className="w-full max-w-[1440px] mx-auto px-6 lg:px-12 pb-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {variants.map((variant) => (
                 <VariantTile key={variant.code} variant={variant} onOpen={() => showVariant(variant)} />
