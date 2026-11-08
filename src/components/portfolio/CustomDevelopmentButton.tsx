@@ -7,7 +7,7 @@ import { useInquiryModal } from "./InquiryModal";
  * Kept as its own tiny client component so the surrounding banner can stay
  * a server component; only this button needs browser-side interactivity.
  */
-export function CustomDevelopmentButton() {
+export function CustomDevelopmentButton({ editorial = false }: { editorial?: boolean }) {
   const openInquiry = useInquiryModal();
 
   return (
@@ -19,10 +19,10 @@ export function CustomDevelopmentButton() {
           subtitle: "Share Your Design Brief",
         })
       }
-      className="w-full py-4 px-6 bg-secondary hover:bg-on-secondary-fixed text-on-secondary transition-colors duration-200 text-center type-label-md uppercase tracking-[0.2em] shadow-xs flex items-center justify-center gap-2"
+      className={editorial ? "action-primary action-inverse w-full" : "w-full py-4 px-6 bg-secondary hover:bg-on-secondary-fixed text-on-secondary transition-colors duration-200 text-center type-label-md uppercase tracking-[0.2em] shadow-xs flex items-center justify-center gap-2"}
     >
       <span>Enquire About Your Design</span>
-      <Icon name="engineering" className="text-[18px]" />
+      {!editorial && <Icon name="engineering" className="text-[18px]" />}
     </button>
   );
 }

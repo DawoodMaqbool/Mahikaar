@@ -37,14 +37,14 @@ export function InquiryCta({
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4">
             <Link
               href={routes.quote}
-              className="w-full text-center px-8 py-4 bg-surface text-primary type-label-md uppercase tracking-[0.2em] hover:bg-secondary-fixed hover:text-primary transition-all duration-200 shadow-xl"
+              className="action-primary action-inverse w-full"
             >
               Request a Quote
             </Link>
             {showContactLink && (
               <Link
                 href={consultationHref}
-                className="w-full text-center px-8 py-4 bg-transparent text-surface border border-outline-variant/40 hover:border-surface type-label-md uppercase tracking-[0.2em] transition-colors"
+                className="action-secondary action-inverse w-full"
               >
                 Contact Us
               </Link>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Icon } from "@/components/ui/Icon";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { routes } from "@/lib/site";
 
 const steps = [
@@ -41,12 +41,10 @@ export function PrivateLabelTeaser({
   showActions = true,
 }: PrivateLabelTeaserProps) {
   return (
-    <section className="w-full bg-surface py-20 lg:py-32">
+    <section className="w-full bg-surface-container-low section-standard">
       <Container>
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <p className="type-label-md uppercase tracking-[0.25em] text-secondary">
-            Private Label Services
-          </p>
+        <div className="measure-body mb-10 lg:mb-12 space-y-4">
+          <Eyebrow>Private Label Services</Eyebrow>
           <Heading className="type-headline-lg text-on-surface tracking-tight">
             How We Work With Your Brand
           </Heading>
@@ -55,23 +53,22 @@ export function PrivateLabelTeaser({
           </p>
         </div>
 
-        <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ol className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-10">
           {steps.map((step, index) => (
             <li
               key={step.title}
-              className="bg-surface-container-low p-8 border border-outline-variant/30 hover:border-secondary transition-colors flex flex-col justify-between h-full"
+              className="min-w-0 border-t border-outline-variant pt-6 flex flex-col justify-between h-full"
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
                   <span className="type-headline-md text-secondary">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <Icon name={step.icon} className="text-outline text-2xl" />
                 </div>
                 <h3 className="type-headline-sm text-on-surface mb-3">{step.title}</h3>
                 <p className="type-body-sm text-on-surface-variant leading-relaxed">{step.text}</p>
               </div>
-              <div className="pt-6 mt-6 border-t border-outline-variant/20 type-label-sm uppercase tracking-widest text-outline">
+              <div className="pt-4 mt-4 type-body-sm text-secondary">
                 {step.footnote}
               </div>
             </li>
@@ -79,16 +76,16 @@ export function PrivateLabelTeaser({
         </ol>
 
         {showActions && (
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="mt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-6">
             <Link
               href={routes.privateLabel}
-              className="px-8 py-3.5 bg-primary text-surface type-label-md uppercase tracking-[0.2em] hover:bg-secondary transition-colors"
+              className="action-primary"
             >
               See the Full Ordering Journey
             </Link>
             <Link
               href={routes.contact}
-              className="px-8 py-3.5 bg-transparent text-on-surface type-label-md uppercase tracking-[0.2em] border border-outline-variant hover:border-on-surface transition-colors"
+              className="editorial-link type-body-sm inline-flex min-h-12 items-center justify-center"
             >
               Contact Us
             </Link>

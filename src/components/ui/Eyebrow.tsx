@@ -24,8 +24,8 @@ export function Eyebrow({
     <div
       className={`flex items-center ${rule === "long" ? "gap-4" : "gap-3"} ${className}`}
     >
-      <span aria-hidden="true" className={`${ruleWidth} h-px ${ruleColor}`} />
-      <span className={`type-label-md uppercase tracking-[0.25em] ${color}`}>
+      <span aria-hidden="true" className={`${ruleWidth} h-px shrink-0 ${ruleColor}`} />
+      <span className={`type-eyebrow uppercase ${color}`}>
         {children}
       </span>
     </div>

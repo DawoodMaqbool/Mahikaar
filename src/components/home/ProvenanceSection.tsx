@@ -42,7 +42,32 @@ type ProvenanceSectionProps = {
 export function ProvenanceSection({
   headingLevel: Heading = "h2",
   compact = false,
-}: ProvenanceSectionProps) {
+}: ProvenanceSectionProps ) {
+  if (compact) {
+    return (
+      <section className="w-full bg-surface-container-low section-standard">
+        <Container className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+          <div className="lg:col-span-5 space-y-5 min-w-0">
+            <Eyebrow>Our Workshop</Eyebrow>
+            <Heading className="type-headline-lg text-on-surface measure-headline">
+              Made by Our Own Shoemaking Team.
+            </Heading>
+          </div>
+          <div className="lg:col-span-7 space-y-5 min-w-0">
+            <p className="type-body-lg text-on-surface-variant measure-intro">
+              Mahikaar is a footwear workshop in Lahore, Pakistan. Our own shoemaking team
+              stays involved from pattern cutting to the finished shoe.
+            </p>
+            <p className="type-body-md text-on-surface-variant measure-body">
+              Each pair is made by hand to the agreed specification. We confirm materials,
+              finishes and customisation before production begins, with clear communication
+              throughout your order.
+            </p>
+          </div>
+        </Container>
+      </section>
+    );
+  }
   return (
     <section className="w-full bg-surface py-20 lg:py-32 border-b border-outline-variant/30">
       <Container>

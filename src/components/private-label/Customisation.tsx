@@ -1,5 +1,4 @@
 import { Container } from "@/components/ui/Container";
-import { Icon } from "@/components/ui/Icon";
 
 const additionalOptions = [
   {
@@ -38,11 +37,11 @@ export function Customisation() {
   return (
     <section
       id="customisation"
-      className="w-full bg-surface py-20 scroll-mt-20"
+      className="w-full bg-surface section-standard scroll-mt-20"
     >
       <Container className="space-y-12">
-        <div className="max-w-3xl space-y-3">
-          <span className="type-label-sm uppercase tracking-[0.2em] text-secondary">
+        <div className="measure-body space-y-4">
+          <span className="type-eyebrow uppercase text-secondary">
             Branding &amp; Design
           </span>
           <h2 className="type-headline-lg text-on-surface">
@@ -55,10 +54,9 @@ export function Customisation() {
           </p>
         </div>
 
-        <div className="bg-surface-container-low p-6 lg:p-8 border-l-2 border-secondary flex items-start gap-4">
-          <Icon name="branding_watermark" className="text-secondary text-2xl" />
+        <div className="border-t border-outline-variant pt-6 measure-body">
           <div className="space-y-1">
-            <span className="type-label-sm uppercase tracking-widest text-secondary block">
+            <span className="type-eyebrow uppercase text-secondary block">
               Included in the Usual Price
             </span>
             <h3 className="type-headline-sm text-on-surface">
@@ -72,21 +70,21 @@ export function Customisation() {
         </div>
 
         <div className="space-y-6">
-          <h3 className="type-label-md uppercase tracking-[0.2em] text-on-surface">
+          <h3 className="type-body-md font-medium text-on-surface">
             Additional Options, Confirmed per Project
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-10">
             {additionalOptions.map((item) => (
               <div
                 key={item.title}
-                className="bg-surface-container-lowest p-6 shadow-xs space-y-3"
+                className="border-t border-outline-variant pt-6 min-w-0 space-y-3"
               >
-                <div className="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center">
-                  <Icon name={item.icon} className="text-secondary text-lg" />
-                </div>
-                <h3 className="type-headline-sm text-on-surface">
+                <p className="type-eyebrow uppercase text-secondary">
+                  {item.title === "Branded Packaging" ? "Branding" : item.title === "Leather & Colour Choices" ? "Materials" : "Footwear Design"}
+                </p>
+                <h4 className="type-headline-sm text-on-surface">
                   {item.title}
-                </h3>
+                </h4>
                 <p className="type-body-sm text-on-surface-variant leading-relaxed">
                   {item.text}
                 </p>
@@ -95,7 +93,7 @@ export function Customisation() {
           </div>
         </div>
 
-        <p className="max-w-3xl type-body-sm text-on-surface-variant leading-relaxed">
+        <p className="measure-body type-body-sm text-on-surface-variant leading-relaxed">
           Not every option is available for every design. Special materials and
           extraordinary requirements may involve additional costs, which are
           agreed with you before production.
