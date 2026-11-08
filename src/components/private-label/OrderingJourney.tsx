@@ -19,8 +19,8 @@ const stages = [
   {
     icon: "content_cut",
     title: "Sample Development",
-    text: "A physical sample is developed for your review. Indicative sample lead time is approximately 2–3 weeks.",
-    footnote: "Approx. 2–3 Weeks",
+    text: "Our workshop develops a physical sample to the agreed design and specifications for your review.",
+    footnote: "Your Sample",
   },
   {
     icon: "verified",
@@ -31,13 +31,13 @@ const stages = [
   {
     icon: "inventory_2",
     title: "Made-to-Order Production",
-    text: "Bulk production begins after the sample and specifications are approved and commercial arrangements are agreed. Orders start at 12 pairs per design/article and colour, with mixed sizes permitted. Indicative production lead time is approximately 2–4 weeks, depending on seasonal demand, starting once the required advance and agreed production specifications are in place.",
-    footnote: "Approx. 2–4 Weeks",
+    text: "Once the sample and specifications are approved and the commercial arrangements are in place, our craftsmen produce your order by hand, using Goodyear welted construction.",
+    footnote: "Made to Order",
   },
   {
     icon: "fact_check",
     title: "Production Supervision & Quality Inspection",
-    text: "Our team remains involved throughout production, reviewing the work from pattern cutting to final finishing. Both our team and our workshop review the completed order against the approved sample and agreed specifications.",
+    text: "Our team oversees production throughout, from pattern cutting to final finishing. Both our team and our workshop review the completed order against the approved sample and agreed specifications.",
     footnote: "Throughout Production",
     href: `${routes.manufacturing}#quality-review`,
   },
@@ -51,18 +51,16 @@ const stages = [
 
 export function OrderingJourney() {
   return (
-    <section className="w-full bg-surface py-20 lg:py-32">
+    <section id="how-it-works" className="w-full bg-surface py-16 lg:py-24 scroll-mt-20">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <p className="type-label-md uppercase tracking-[0.25em] text-secondary">
-            Private Label Services
-          </p>
-          <h1 className="type-headline-lg text-on-surface tracking-tight">
+          <p className="type-label-md uppercase tracking-[0.25em] text-secondary">How It Works</p>
+          <h2 className="type-headline-lg text-on-surface tracking-tight">
             From Enquiry to Dispatch
-          </h1>
+          </h2>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
-            Client branding, agreed customisation and made-to-order production in seven
-            clear stages, for menswear labels and boutique brands.
+            One clear process in seven stages. Order quantities, sampling and production
+            timelines are set out under Minimum Orders &amp; Production Timelines below.
           </p>
         </div>
 
@@ -79,7 +77,7 @@ export function OrderingJourney() {
                   </span>
                   <Icon name={stage.icon} className="text-outline text-2xl" />
                 </div>
-                <h2 className="type-headline-sm text-on-surface mb-3">{stage.title}</h2>
+                <h3 className="type-headline-sm text-on-surface mb-3">{stage.title}</h3>
                 <p className="type-body-sm text-on-surface-variant leading-relaxed">{stage.text}</p>
                 {stage.href && (
                   <Link
@@ -97,11 +95,6 @@ export function OrderingJourney() {
             </li>
           ))}
         </ol>
-
-        <p className="mt-10 text-center type-body-sm text-outline max-w-3xl mx-auto leading-relaxed">
-          Timelines are approximate and depend on the design, material availability and
-          seasonal demand. Shipping and delivery are agreed for each order.
-        </p>
       </Container>
     </section>
   );

@@ -13,7 +13,7 @@ const metrics = [
   { value: "12 Pairs", label: "Minimum per Design & Colour" },
   { value: "2–3 Weeks", label: "Sample Development" },
   { value: "2–4 Weeks", label: "Bulk Production" },
-  { value: "Made to Order", label: "Lahore, Pakistan" },
+  { value: "Made to Order", label: "Goodyear Welted by Hand" },
 ];
 
 type ProvenanceSectionProps = {
@@ -35,10 +35,9 @@ export function ProvenanceSection({ headingLevel: Heading = "h2" }: ProvenanceSe
               Premium Made-to-Order Footwear for Discerning Brands.
             </Heading>
             <p className="type-body-lg text-on-surface-variant leading-relaxed">
-              Mahikaar is a Lahore-based business offering premium, made-to-order Goodyear welted
-              footwear to B2B buyers. Our shoemaking team makes
-              each pair by hand in our workshop in Lahore, drawing on our material sourcing
-              network in Pakistan, with clear communication at every step.
+              Mahikaar offers premium, made-to-order Goodyear welted footwear to B2B buyers. Our
+              shoemaking team makes each pair by hand in our workshop, drawing on our material
+              sourcing network, with clear communication at every step.
             </p>
             <p className="type-body-md text-outline leading-relaxed">
               Construction is carried out by hand throughout. Our team stays involved from

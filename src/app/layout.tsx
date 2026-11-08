@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s • Mahikaar`,
   },
   description:
-    "Premium, made-to-order Goodyear welted leather footwear for B2B buyers, crafted for your brand in Lahore, Pakistan.",
+    "Premium, made-to-order Goodyear welted leather footwear for B2B buyers.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

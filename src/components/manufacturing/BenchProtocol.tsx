@@ -117,7 +117,7 @@ export function BenchProtocol() {
           </span>
           <h2 className="type-headline-lg text-on-surface">From Pattern to Finished Shoe</h2>
           <p className="type-body-md text-on-surface-variant">
-            Our shoemaking team works through seven stages in our workshop in Lahore, with
+            Our shoemaking team works through seven stages in our workshop, with
             Goodyear welted construction carried out by hand and each stage overseen by our
             team.
           </p>

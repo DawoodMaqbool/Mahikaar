@@ -5,9 +5,9 @@ import { routes } from "@/lib/site";
 
 const credo = [
   { label: "Standard", value: "Goodyear Welted, Made by Hand" },
-  { label: "Sourcing", value: "Pakistan Leather Network" },
+  { label: "Sourcing", value: "Our Material Network" },
   { label: "Minimum Order", value: "12 Pairs per Design & Colour" },
-  { label: "Manufacture", value: "Lahore, Pakistan" },
+  { label: "Manufacture", value: "Our Own Workshop" },
 ];
 
 const badgeBase = "px-3.5 py-1.5 type-label-sm uppercase tracking-[0.2em]";
@@ -31,9 +31,6 @@ export function HomeHero() {
 
       <div className="relative w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-36 pb-24 lg:pt-44 lg:pb-32 flex flex-col justify-between min-h-[90vh]">
         <div className="flex flex-wrap items-center gap-3 mb-10">
-          <span className={`${badgeBase} bg-surface/10 backdrop-blur-md text-surface border border-surface/20`}>
-            Lahore, Pakistan
-          </span>
           <span className={`${badgeBase} bg-surface/10 backdrop-blur-md text-secondary-container border border-secondary-container/30`}>
             Premium B2B Footwear
           </span>
@@ -49,7 +46,7 @@ export function HomeHero() {
           </h1>
           <p className="type-body-lg text-surface-container max-w-2xl leading-relaxed font-light">
             Made-to-order leather footwear for international brands, heritage boutiques, and
-            discerning private labels. Goodyear welted by our craftsmen in our Lahore, Pakistan
+            discerning private labels. Goodyear welted by our craftsmen in our
             workshop, with materials and branding tailored to your requirements.
           </p>
         </div>

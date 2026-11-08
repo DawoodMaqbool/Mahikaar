@@ -5,8 +5,8 @@ import { routes } from "@/lib/site";
 
 const points = [
   {
-    title: "Based in Pakistan",
-    text: "Mahikaar is a Pakistan-based business making premium, made-to-order leather footwear for B2B buyers, with our shoemaking set-up in Lahore.",
+    title: "Our Business",
+    text: "Mahikaar makes premium, made-to-order leather footwear for B2B buyers, with our own workshop and shoemaking team.",
   },
   {
     title: "Our Shoemaking Team",
@@ -24,7 +24,7 @@ export function BusinessModel() {
       <Container className="space-y-12">
         <div className="max-w-2xl space-y-3">
           <Eyebrow>Our Workshop &amp; Our Team</Eyebrow>
-          <h2 className="type-headline-lg text-on-surface">Made by Our Own Hands, in Lahore</h2>
+          <h2 className="type-headline-lg text-on-surface">Made by Our Own Hands</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

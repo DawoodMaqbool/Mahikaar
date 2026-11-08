@@ -48,7 +48,7 @@ export function ContactDetails({ className = "" }: { className?: string }) {
         Get in Touch
       </span>
       <div className="space-y-3">
-        <h2 className="type-headline-sm text-on-surface">Based in Lahore, Pakistan</h2>
+        <h2 className="type-headline-sm text-on-surface">Our Private-Label Desk</h2>
         <p className="type-body-sm text-on-surface-variant leading-relaxed">
           Enquiries are handled directly by our private-label desk.
         </p>

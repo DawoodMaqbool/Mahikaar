@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
 import { MaterialsSection } from "@/components/manufacturing/MaterialsSection";
-import { PrivateLabelPrecision } from "@/components/manufacturing/PrivateLabelPrecision";
-import { PrototypeCta } from "@/components/manufacturing/PrototypeCta";
-import { CustomDevelopmentBanner } from "@/components/portfolio/CustomDevelopmentBanner";
 import { InquiryModalProvider } from "@/components/portfolio/InquiryModal";
+import { CommercialTerms } from "@/components/private-label/CommercialTerms";
+import { Customisation } from "@/components/private-label/Customisation";
 import { OrderingJourney } from "@/components/private-label/OrderingJourney";
+import { PrivateLabelCta } from "@/components/private-label/PrivateLabelCta";
+import { PrivateLabelIntro } from "@/components/private-label/PrivateLabelIntro";
 
 export const metadata: Metadata = {
   title: "Private Label",
   description:
-    "Client branding, agreed customisation and material selection for made-to-order Goodyear welted footwear. The complete ordering journey from enquiry to dispatch, with leather and material selection, made in our Lahore workshop.",
+    "Premium made-to-order Goodyear welted footwear for international brands: the seven-stage journey from enquiry to dispatch, leather options, branding and customisation, minimum orders and timelines.",
 };
 
 export default function PrivateLabelPage() {
   return (
-    // The custom development banner opens the shared enquiry dialog, so it needs the provider.
+    // The design-reference button opens the shared enquiry dialog, so it needs the provider.
     <InquiryModalProvider>
+      <PrivateLabelIntro />
       <OrderingJourney />
       <MaterialsSection />
-      <PrivateLabelPrecision />
-      <CustomDevelopmentBanner />
-      <PrototypeCta />
+      <Customisation />
+      <CommercialTerms />
+      <PrivateLabelCta />
     </InquiryModalProvider>
   );
 }

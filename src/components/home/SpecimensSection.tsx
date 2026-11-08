@@ -3,11 +3,13 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Icon } from "@/components/ui/Icon";
+import { portfolioSpecimens } from "@/data/portfolio";
 import { routes } from "@/lib/site";
 
 type Specimen = {
   number: string;
-  last: string;
+  /** Portfolio specimen whose photograph is reused, so the homepage and portfolio never drift apart. */
+  portfolioNumber: string;
   image: string;
   alt: string;
   tags: [string, string];
@@ -16,52 +18,52 @@ type Specimen = {
   leadTime: string;
 };
 
-const specimens: Specimen[] = [
+type Featured = Omit<Specimen, "image" | "alt">;
+
+const featured: Featured[] = [
   {
     number: "01",
-    last: "AT-084 (Almond)",
-    image: "/images/atelier/workshop-cap-toe-oxford.png",
-    alt: "The Belgrave Cap-Toe Oxford in antique cognac calf leather",
-    tags: ["Goodyear Welted 270°", "Hand-Stitched Cap"],
-    name: "The Belgrave Oxford",
+    portfolioNumber: "07",
+    tags: ["Goodyear Welted", "White & Black"],
+    name: "Spectator Brogue",
     description:
-      "Antique cognac calf leather, hand-bevelled waist, leather sole with recessed brass toe plate.",
+      "A two-tone wingtip brogue with contrasting panels and decorative perforation, shown in white and black.",
     leadTime: "2–4 Wks",
   },
   {
     number: "02",
-    last: "AT-062 (Round)",
-    image: "/images/products/penny-loafer.png",
-    alt: "The Montgomery Penny Loafer in espresso calf leather on stone pedestal",
-    tags: ["Hand-Sewn Apron", "Brass Toe Tap"],
-    name: "The Montgomery Penny Loafer",
+    portfolioNumber: "03",
+    tags: ["Goodyear Welted", "Dark Brown"],
+    name: "Full Brogue Wingtip",
     description:
-      "Espresso calf leather, flush brass toe reinforcement, stacked leather heel.",
+      "A classic full brogue with a wing-shaped toe cap and decorative perforation, shown in dark brown.",
     leadTime: "2–4 Wks",
   },
   {
     number: "03",
-    last: "AT-091 (Soft Chisel)",
-    image: "/images/products/full-brogue-wingtip.png",
-    alt: "The Anarkali Full Brogue Wingtip in burgundy leather",
-    tags: ["Norwegian Storm Welt", "Hand Medallion"],
-    name: "The Anarkali Full Brogue",
+    portfolioNumber: "09",
+    tags: ["Welted", "Burgundy"],
+    name: "Woven Penny Loafer",
     description:
-      "Burgundy leather, traditional gimping and intricate toe punching, storm welt construction.",
+      "A penny loafer with a woven leather vamp and a smooth leather strap, shown in burgundy.",
     leadTime: "2–4 Wks",
   },
   {
     number: "04",
-    last: "AT-075 (Boot Chisel)",
-    image: "/images/products/chelsea-boot.png",
-    alt: "The Ravi Wholecut Chelsea Boot in dark chocolate suede",
-    tags: ["Hand-Blocked Single Cut", "Fiddleback Waist"],
-    name: "The Ravi Chelsea Boot",
+    portfolioNumber: "08",
+    tags: ["Goodyear Welted", "Dark Brown"],
+    name: "Wingtip Zip Boot",
     description:
-      "Dark chocolate suede, seamless one-piece blocked upper, woven pull loops, hand-sculpted waist profile.",
+      "A side-zip ankle boot with a wing-shaped toe cap and decorative perforation, shown in dark brown grained leather.",
     leadTime: "2–4 Wks",
   },
 ];
+
+/** Photograph and alt text come straight from the Footwear Portfolio records. */
+const specimens: Specimen[] = featured.flatMap((item) => {
+  const source = portfolioSpecimens.find((entry) => entry.number === item.portfolioNumber);
+  return source ? [{ ...item, image: source.image, alt: source.alt }] : [];
+});
 
 function SpecimenCard({ specimen }: { specimen: Specimen }) {
   return (
@@ -80,13 +82,10 @@ function SpecimenCard({ specimen }: { specimen: Specimen }) {
           <span className="absolute top-4 left-4 type-label-sm tracking-widest text-outline uppercase bg-surface/90 px-2 py-0.5 border border-outline-variant/40">
             Specimen {specimen.number}
           </span>
-          <span className="absolute top-4 right-4 type-label-sm tracking-widest text-secondary uppercase font-semibold">
-            Last: {specimen.last}
-          </span>
         </div>
 
         <div className="p-6 space-y-3">
-          <div className="flex items-center justify-between text-outline">
+          <div className="flex items-center justify-between gap-3 text-outline">
             {specimen.tags.map((tag) => (
               <span key={tag} className="type-label-sm uppercase tracking-wider">
                 {tag}
@@ -107,10 +106,10 @@ function SpecimenCard({ specimen }: { specimen: Specimen }) {
           Bulk Lead Time: {specimen.leadTime}
         </span>
         <Link
-          href={routes.quote}
+          href={routes.portfolio}
           className="type-label-sm uppercase tracking-widest text-secondary hover:text-on-surface font-semibold inline-flex items-center gap-1"
         >
-          Enquire →<span className="sr-only"> for {specimen.name}</span>
+          View Design →<span className="sr-only">: {specimen.name} in the portfolio</span>
         </Link>
       </div>
     </article>
