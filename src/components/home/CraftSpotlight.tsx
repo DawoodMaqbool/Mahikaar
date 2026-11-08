@@ -28,7 +28,7 @@ export function CraftSpotlight() {
           <figure className="lg:col-span-6 relative bg-surface p-3 border border-outline-variant/40 shadow-lg">
             <Image
               src="/images/process/welt-hand-stitching.png"
-              alt="Craftsman hand-stitching the Goodyear welt rib with an awl and waxed thread in a Lahore atelier"
+              alt="Craftsman hand-stitching the Goodyear welt rib with an awl and waxed thread in our workshop"
               width={1200}
               height={896}
               sizes="(min-width: 1024px) 50vw, 100vw"

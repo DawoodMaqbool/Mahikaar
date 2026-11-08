@@ -6,7 +6,7 @@ import { ProvenanceSection } from "@/components/home/ProvenanceSection";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Mahikaar is a Lahore-based business offering premium, made-to-order Goodyear welted footwear to B2B buyers, by our own shoemaking team in our Lahore workshop.",
+    "Mahikaar offers premium, made-to-order Goodyear welted footwear to B2B buyers, made by our own shoemaking team in our workshop.",
 };
 
 export default function AboutPage() {

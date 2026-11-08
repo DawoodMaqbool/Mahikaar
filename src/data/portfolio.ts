@@ -74,7 +74,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     construction: "Hand-Welted Goodyear 270°",
     materials: "Cognac Calf • Leather Sole",
     description:
-      "A classic almond silhouette with tight arch support, hand-pitched heels, and neatly skived quarter seams. Finished by hand in Lahore.",
+      "A classic almond silhouette with tight arch support, hand-pitched heels, and neatly skived quarter seams. Finished by hand.",
     specs: [
       { label: "Upper", value: "Calf leather, colour to specification" },
       { label: "Sole", value: "Leather sole" },

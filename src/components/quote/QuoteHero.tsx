@@ -15,7 +15,7 @@ export function QuoteHero() {
           <div className="flex items-center gap-3">
             <span aria-hidden="true" className="inline-flex w-2 h-2 rounded-full bg-secondary" />
             <span className="type-label-sm uppercase tracking-[0.25em] text-secondary">
-              B2B Enquiries • Lahore
+              B2B Enquiries
             </span>
           </div>
           <h1 className="type-headline-xl text-on-surface leading-[1.08] tracking-tight">
@@ -57,10 +57,9 @@ export function QuoteHero() {
             <span>
               <span className="type-label-sm uppercase tracking-widest text-secondary block">Bench Specimen</span>
               <span className="type-body-sm text-on-surface font-medium">
-                Oxford • Constructed by Hand in Lahore
+                Oxford • Constructed by Hand
               </span>
             </span>
-            <span className="type-label-sm uppercase tracking-widest text-outline">Lahore</span>
           </figcaption>
         </figure>
       </Container>

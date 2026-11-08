@@ -20,12 +20,12 @@ const blueprint = [
   {
     icon: "history_edu",
     title: "Our Workshop",
-    text: "Our shoemaking team makes your footwear in our Lahore workshop, overseen throughout.",
+    text: "Our shoemaking team makes your footwear in our workshop, overseen throughout.",
   },
   {
     icon: "diamond",
     title: "Material Selection",
-    text: "A range of leathers and finishes through our sourcing network in Pakistan, discussed per project.",
+    text: "A range of leathers and finishes through our sourcing network, discussed per project.",
   },
 ];
 
@@ -39,16 +39,12 @@ export function ManufacturingIntro() {
               <span className="type-label-sm uppercase tracking-[0.25em] text-secondary">
                 Manufacturing &amp; Craft
               </span>
-              <span aria-hidden="true" className="w-8 h-px bg-secondary-container" />
-              <span className="type-label-sm text-on-surface-variant uppercase tracking-widest">
-                Lahore, Pakistan
-              </span>
             </div>
             <h1 className="type-headline-xl text-on-surface tracking-tight leading-[1.05]">
               The Anatomy of Hand-Welted Footwear
             </h1>
             <p className="type-body-lg text-on-surface-variant max-w-2xl pt-2">
-              In our Lahore workshop, our craftsmen cut, last, and weld footwear by hand to your
+              In our workshop, our craftsmen cut, last, and weld footwear by hand to your
               agreed specifications, with our team involved at every stage.
             </p>
           </div>

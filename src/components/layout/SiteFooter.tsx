@@ -35,8 +35,7 @@ export function SiteFooter() {
           <div className="lg:col-span-4 space-y-4">
             <p className="type-headline-md tracking-normal text-surface">Mahikaar</p>
             <p className="type-body-sm text-outline-variant leading-relaxed max-w-sm">
-              Premium, made-to-order Goodyear welted leather footwear for B2B buyers, made
-              by our shoemaking team in Lahore, Pakistan.
+              Premium, made-to-order Goodyear welted leather footwear for B2B buyers.
             </p>
             <p className="pt-2 type-body-sm text-outline-variant/80">Lahore, Pakistan</p>
           </div>
@@ -94,7 +93,7 @@ export function SiteFooter() {
 
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 type-body-sm text-outline-variant/70">
           <p>
-            © 2026 Mahikaar. Made-to-order leather footwear from Lahore, Pakistan.
+            © 2026 Mahikaar. Made-to-order leather footwear.
           </p>
           <div className="flex items-center gap-6 type-label-sm uppercase tracking-widest">
             <span>Goodyear Welted</span>

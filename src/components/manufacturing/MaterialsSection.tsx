@@ -3,19 +3,18 @@ import { materialGroups } from "@/data/manufacturing";
 
 export function MaterialsSection() {
   return (
-    <section className="w-full bg-surface py-20">
+    <section id="materials" className="w-full bg-surface-container-low py-20 scroll-mt-20">
       <Container className="space-y-12">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6">
           <div className="space-y-3 max-w-2xl">
             <span className="type-label-sm uppercase tracking-[0.2em] text-secondary">
-              Our Material Sourcing
+              Materials & Leather Selection
             </span>
             <h2 className="type-headline-lg text-on-surface">A Considered Range of Leathers</h2>
             <p className="type-body-md text-on-surface-variant">
-              Explore a range of leather types, textures, colours and finishes. Material
-              selection is discussed according to the design and intended use, with availability,
-              specification and pricing confirmed against the order quantity and sourcing
-              requirements.
+              Leather types, textures, colours and finishes are discussed for each design and its
+              intended use. The options available depend on sourcing requirements and order
+              quantity, and are confirmed for each order.
             </p>
           </div>
           <div className="flex items-center gap-2 text-on-surface-variant type-label-sm uppercase tracking-wider">
@@ -28,7 +27,7 @@ export function MaterialsSection() {
           {materialGroups.map((group) => (
             <article
               key={group.title}
-              className="bg-surface-container-lowest p-6 shadow-xs flex flex-col justify-between space-y-6 min-w-0"
+              className="bg-surface p-6 shadow-xs flex flex-col justify-between space-y-6 min-w-0"
             >
               <div className="space-y-3">
                 <span className="type-label-sm uppercase tracking-widest text-secondary block">
@@ -41,7 +40,7 @@ export function MaterialsSection() {
                 {group.options.map((option) => (
                   <li
                     key={option}
-                    className="px-3 py-1 bg-surface-container-low text-on-surface type-label-sm uppercase tracking-wider"
+                    className="px-3 py-1 bg-surface-container text-on-surface type-label-sm uppercase tracking-wider"
                   >
                     {option}
                   </li>
