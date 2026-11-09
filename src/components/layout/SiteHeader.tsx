@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { mainNav, routes } from "@/lib/site";
 
@@ -15,6 +15,19 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  // Escape closes the open panel and returns focus to its trigger.
+  useEffect(() => {
+    if (!menuOpen) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      setMenuOpen(false);
+      toggleRef.current?.focus();
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-surface border-b border-outline-variant/40">
@@ -71,6 +84,7 @@ export function SiteHeader() {
             <span className="type-body-sm font-medium">Request a Quote</span>
           </Link>
           <button
+            ref={toggleRef}
             type="button"
             className="wide:hidden -mr-2 min-h-12 min-w-12 flex items-center justify-center text-on-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
             aria-expanded={menuOpen}

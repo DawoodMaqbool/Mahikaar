@@ -162,6 +162,17 @@ export function QuoteForm() {
   const [error, setError] = useState("");
   const busy = useRef(false);
   const attempt = useRef({ body: "", id: "" });
+  const formRef = useRef<HTMLFormElement>(null);
+
+  function startNewEnquiry() {
+    if (busy.current) return;
+    formRef.current?.reset();
+    attachments.clear();
+    attempt.current = { body: "", id: "" };
+    setError("");
+    setSubmitted(false);
+    formRef.current?.querySelector<HTMLInputElement>("#fullName")?.focus();
+  }
 
   useEffect(() => {
     if (submitted) {
@@ -175,8 +186,10 @@ export function QuoteForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (busy.current) return;
+    // A confirmed submission is final until the visitor starts a new enquiry.
+    if (busy.current || submitted) return;
     setError("");
+    setSubmitted(false);
     const fields = enquiryFields(event.currentTarget);
     busy.current = true;
     setPending(true);
@@ -195,6 +208,7 @@ export function QuoteForm() {
   return (
     <>
       <form
+        ref={formRef}
         className={`space-y-10 ${submitted ? "opacity-40 pointer-events-none" : ""}`}
         inert={submitted}
         aria-busy={pending}
@@ -335,12 +349,12 @@ export function QuoteForm() {
           </div>
         </details>
 
-        {error && <p role="alert" className="type-body-sm text-on-surface">{error}</p>}
+        {error && !submitted && <p role="alert" className="type-body-sm text-on-surface">{error}</p>}
         <p role="status" className="sr-only">{pending ? "Submitting enquiry…" : ""}</p>
         <div className="pt-2 space-y-4">
           <button
             type="submit"
-            disabled={pending}
+            disabled={pending || submitted}
             className="action-primary w-full gap-3"
           >
             <span>{pending ? "Submitting…" : "Send Enquiry"}</span>
@@ -363,6 +377,9 @@ export function QuoteForm() {
             your requirements and get back to you regarding feasibility, pricing and estimated
             timelines.
           </p>
+          <button type="button" onClick={startNewEnquiry} className="action-secondary">
+            Start New Enquiry
+          </button>
         </div>
       )}
     </>
