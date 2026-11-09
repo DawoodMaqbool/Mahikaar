@@ -1,6 +1,8 @@
 "use client";
 
 import Script from "next/script";
+import Link from "next/link";
+import { routes } from "@/lib/site";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import {
@@ -59,6 +61,7 @@ export function AnalyticsConsent() {
                 With your permission, Google Analytics uses cookies to measure website visits and successful enquiries.
                 Rejecting does not prevent enquiries. You can change your choice using Analytics preferences in the footer.
                 Withdrawing an earlier acceptance reloads this page to stop analytics.
+                {" "}<Link href={routes.privacyPolicy} className="editorial-link">Read our Privacy Policy</Link>.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

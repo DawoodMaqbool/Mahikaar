@@ -1,6 +1,6 @@
 # Technical SEO
 
-Canonical origin: https://www.mahikaar.com. Page metadata and verified business structured data live in `src/lib/seo.ts`. All seven public routes export their own metadata. The root layout sets metadataBase and the title template.
+Canonical origin: https://www.mahikaar.com. Page metadata and verified business structured data live in `src/lib/seo.ts`. All eight public routes export their own metadata. The root layout sets metadataBase and the title template.
 
 ## Portfolio indexing
 
@@ -8,13 +8,13 @@ Canonical origin: https://www.mahikaar.com. Page metadata and verified business 
 
 ## Discovery and structured data
 
-`/robots.txt` allows public pages, excludes API crawling and advertises `/sitemap.xml`. The sitemap includes exactly the seven public canonical routes, with no invented modification dates. API and private enquiry-file responses receive X-Robots-Tag: noindex, nofollow. This is indexing control, not access control.
+`/robots.txt` allows public pages, excludes API crawling and advertises `/sitemap.xml`. The sitemap includes exactly the eight public canonical routes (including `/privacy-policy`), with no invented modification dates. API and private enquiry-file responses receive X-Robots-Tag: noindex, nofollow. This is indexing control, not access control.
 
 Organization and WebSite JSON-LD describe only existing business facts. No prices, reviews, ratings, certifications, production capacity or retail offers are asserted. Social previews use an existing photograph of the full brogue sample. No external social profiles are claimed.
 
 ## Deployment checks
 
-After deployment, confirm all seven canonical URLs, robots.txt, sitemap.xml and the social image return successfully on the production domain. Confirm hosting permanently redirects HTTP and the non-www hostname to HTTPS www while preserving path and query parameters; hosting/domain configuration is not managed by this repository. Check that production has no platform-level noindex header or authentication barrier.
+After deployment, confirm all eight canonical URLs, robots.txt, sitemap.xml and the social image return successfully on the production domain. Confirm hosting permanently redirects HTTP and the non-www hostname to HTTPS www while preserving path and query parameters; hosting/domain configuration is not managed by this repository. Check that production has no platform-level noindex header or authentication barrier.
 
 Submit https://www.mahikaar.com/sitemap.xml in the verified Google Search Console property. Use URL Inspection on the homepage and portfolio, Google's Rich Results Test and Schema Markup Validator on the deployed site, and social preview inspectors if needed. Verification requires the owner's Search Console access; do not fabricate a verification token. Deployment and sitemap submission do not guarantee indexing or rankings.
 

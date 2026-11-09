@@ -32,6 +32,10 @@ export const pageSeo = {
     title: "Request a Footwear Manufacturing Quote",
     description: "Share your footwear brief with Mahikaar for a made-to-order or private label quote. Discuss quantities, materials, branding, feasibility and timelines.",
   },
+  privacyPolicy: {
+    title: "Privacy Policy",
+    description: "Read Mahikaar's draft privacy notice covering business enquiries, email delivery, optional analytics, cookie choices and how to contact us about privacy.",
+  },
 } as const;
 
 export function pageMetadata(page: keyof typeof pageSeo): Metadata {
