@@ -3,6 +3,7 @@ import { EB_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { siteName } from "@/lib/site";
+import { businessStructuredData, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
 // next/font downloads these at build time and serves them from our own domain.
@@ -18,9 +19,10 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: siteName,
-    template: `%s • Mahikaar`,
+    template: `%s | Mahikaar`,
   },
   description:
     "Premium, made-to-order Goodyear welted leather footwear for B2B buyers.",
@@ -46,6 +48,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="bg-surface font-sans-body text-on-surface antialiased selection:bg-secondary selection:text-on-secondary">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessStructuredData).replace(/</g, "\\u003c") }}
+        />
         <SiteHeader />
         <main className="flex flex-col w-full pt-20 bg-surface min-h-[calc(100vh-20rem)]">
           {children}

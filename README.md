@@ -87,10 +87,10 @@ References: [Resend domain verification](https://resend.com/docs/dashboard/domai
 
 ### Boundaries and launch requirements
 
-- **Attachments are deferred.** The picker remains present, but selected files
-  block submission with an explanatory error. No file bytes are uploaded or
-  emailed. Use **Clear selected files** to keep your typed details and submit without files. Multipart requests and unsupported fields are rejected server-side.
-  The previous unenforced 25MB promise is replaced with accurate limitation copy.
+- **Customer attachments are implemented behind a server flag, disabled by default.**
+  PDF/PNG uploads require private storage, real malware scanning and abuse controls.
+  See [the customer attachment setup and verification guide](docs/customer-attachments.md).
+  Email-only enquiries continue working when attachments are unavailable.
 - Success means Resend accepted the request and returned a message ID, not
   confirmed inbox delivery. Provider delivery/bounce monitoring remains necessary.
   There is no database, durable queue, automatic acknowledgement or delivery-status
@@ -120,7 +120,7 @@ References: [Resend domain verification](https://resend.com/docs/dashboard/domai
   integration and cannot silently fall back to unrestricted sending.
 - No enquiry content, credentials or provider error bodies are logged by this
   implementation. Restrict access to recipient mailboxes and Resend records and
-  establish a retention policy. No attachments or enquiries are saved locally.
+  establish a retention policy. No attachments or enquiries are saved locally. Private attachment manifests and verified files have the retention policy documented in the attachment guide.
 - Form presentation, labels, options, required fields, product selection and
   public contact information are preserved. New states use existing styles; the
   modal remains open after success so the confirmation can be read.
@@ -136,3 +136,10 @@ Production configuration, DNS verification, actual inbox receipt and browser
 interaction on Vercel must be checked separately after authorization. Until those
 checks are completed, the integration is implemented but **not operationally
 verified**.
+
+## Private Blob storage foundation
+
+The protected server-only upload foundation is documented in
+[docs/private-blob-foundation.md](docs/private-blob-foundation.md), including its
+OIDC configuration, signed grant contract, mocked coverage and the controlled
+storage-enforcement test procedure requiring approval. Customer attachments remain disabled until configured and verified. The complete customer workflow is documented in [docs/customer-attachments.md](docs/customer-attachments.md); Portfolio/Private Label and email-only delivery remain unchanged.

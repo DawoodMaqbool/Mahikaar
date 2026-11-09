@@ -1,3 +1,6 @@
+import { AttachmentError } from '../attachments/policy';
+import { parseReference } from '../attachments/service';
+import { enquiryAttachments } from '../attachments/http';
 /** Server entry point: imported only by the Route Handler. Never log request bodies. */
 const MAX_BODY = 32_768;
 const emailPattern = /^[^\s<>@,;\r\n]+@[^\s<>@,;\r\n]+\.[^\s<>@,;\r\n]+$/;
@@ -16,7 +19,7 @@ export function validateEnquiry(input: unknown) {
   const quote = data.source === 'Request a Quote';
   if (!quote && data.source !== 'Portfolio' && data.source !== 'Private Label') throw new InputError('Invalid enquiry source.');
   const keys = quote ? ['fullName','companyName','businessEmail','territory','footwearType','quantityScale','projectDescription','timeline','brandingOption','brandUrl','specNotes'] : ['fullName','companyName','businessEmail','style','volume','requirements'];
-  if (Object.keys(data).some(key => ![...keys, 'source', 'website', 'submissionId'].includes(key))) throw new InputError('Unsupported enquiry fields. Attachments are not yet supported.');
+  if (Object.keys(data).some(key => ![...keys, 'source', 'website', 'submissionId', ...(quote ? ['attachments'] : [])].includes(key))) throw new InputError('Unsupported enquiry fields or attachment references.');
   if (typeof data.website !== 'string' || data.website !== '') throw new InputError('Unable to submit this enquiry.');
   if (typeof data.submissionId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(data.submissionId)) throw new InputError('Invalid submission reference.');
   const required = ['fullName','companyName','businessEmail', ...(quote ? ['territory'] : ['style'])];
@@ -41,23 +44,26 @@ export function validateEnquiry(input: unknown) {
     }
     values[key] = choices[key]?.[value] ?? value;
   }
-  return { source: data.source as string, submissionId: data.submissionId, values };
+  return { source: data.source as string, submissionId: data.submissionId, values, ...(data.attachments !== undefined ? { attachmentReference: parseReference(data.attachments) } : {}) };
 }
 export function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]!);
 }
-export function composeEmail(enquiry: ReturnType<typeof validateEnquiry>) {
+export function composeEmail(enquiry: ReturnType<typeof validateEnquiry>, attachments?: { files: { name: string; size: number }[]; link: string }) {
   const rows = [['Source', enquiry.source], ...Object.entries(enquiry.values).map(([key,value]) => [labels[key],value])];
-  return { subject: `Mahikaar enquiry — ${enquiry.source}`, text: rows.map(([label,value]) => `${label}:\n${value}`).join('\n\n'), html: rows.map(([label,value]) => `<p><strong>${escapeHtml(label)}</strong><br>${escapeHtml(value).replace(/\n/g,'<br>')}</p>`).join('') };
+  if (attachments) { rows.push(['Attachments', attachments.files.map(file => `${file.name} (${file.size.toLocaleString('en-US')} bytes)`).join('\n')], ['Private file access (expires in 7 days)', attachments.link]); }
+  return { subject: `Mahikaar enquiry — ${enquiry.source}`, text: rows.map(([label,value]) => `${label}:\n${value}`).join('\n\n'), html: rows.map(([label,value]) => `<p><strong>${escapeHtml(label)}</strong><br>${attachments && label === 'Private file access (expires in 7 days)' ? `<a href="${escapeHtml(value)}">Open private enquiry files</a>` : escapeHtml(value).replace(/\n/g,'<br>')}</p>`).join('') };
 }
 const reply = (status: number, error?: string) => Response.json(error ? { error } : { ok: true }, { status, headers: { 'Cache-Control': 'no-store' } });
-export async function handleEnquiry(request: Request, dependencies: { env?: NodeJS.ProcessEnv; fetch?: typeof fetch; rateLimit?: (request: Request) => Promise<boolean> } = {}) {
+export async function handleEnquiry(request: Request, dependencies: { env?: NodeJS.ProcessEnv; fetch?: typeof fetch; rateLimit?: (request: Request) => Promise<boolean>; attachmentsFactory?: () => ReturnType<typeof enquiryAttachments> } = {}) {
   const env = dependencies.env ?? process.env;
   const send = dependencies.fetch ?? fetch;
+  let claimed: { context: ReturnType<typeof enquiryAttachments>; sessionId: string; submissionId: string } | undefined;
+  let committed = false;
   try {
     const origin = request.headers.get('origin');
     if (!origin || origin !== new URL(request.url).origin || request.headers.get('sec-fetch-site') === 'cross-site') return reply(403, 'Please submit from this website.');
-    if (request.headers.get('content-type')?.split(';')[0].trim() !== 'application/json') return reply(415, 'Only enquiry text is supported. Attachments are not yet supported.');
+    if (request.headers.get('content-type')?.split(';')[0].trim() !== 'application/json') return reply(415, 'Only enquiry metadata is accepted. Upload files separately.');
     if (Number(request.headers.get('content-length')) > MAX_BODY) return reply(413, 'Your enquiry is too large. Please shorten your notes.');
     // Bound bytes while reading, even when Content-Length is absent or inaccurate.
     const reader = request.body?.getReader();
@@ -85,17 +91,32 @@ export async function handleEnquiry(request: Request, dependencies: { env?: Node
     }
     const { RESEND_API_KEY: key, ENQUIRY_FROM_EMAIL: from, ENQUIRY_TO_EMAIL: to } = env;
     if (!key || !from || !to || !emailPattern.test(to) || /[\r\n]/.test(from)) return reply(503, 'Enquiry delivery is temporarily unavailable. Please try again later or use our contact page.');
+    let attachmentEmail: Parameters<typeof composeEmail>[1];
+    if (enquiry.attachmentReference) {
+      const context = dependencies.attachmentsFactory?.() ?? enquiryAttachments(request, env);
+      const result = await context.service.claim(enquiry.attachmentReference, context.owner, enquiry.submissionId, context.digest({ source: enquiry.source, values: enquiry.values, attachments: enquiry.attachmentReference }));
+      if (result.alreadyAccepted) return reply(200);
+      claimed = { context, sessionId: result.session.id, submissionId: enquiry.submissionId };
+      attachmentEmail = { files: result.session.files, link: context.service.businessLink(result.session, env) };
+    }
     const response = await send('https://api.resend.com/emails', {
       method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', 'Idempotency-Key': `enquiry/${enquiry.submissionId}` },
-      body: JSON.stringify({ from, to: [to], reply_to: enquiry.values.businessEmail, ...composeEmail(enquiry) }),
+      body: JSON.stringify({ from, to: [to], reply_to: enquiry.values.businessEmail, ...composeEmail(enquiry, attachmentEmail) }),
       signal: AbortSignal.timeout(15_000),
     });
     if (!response.ok) return reply(502, 'We could not submit your enquiry. Please retry; your details have been kept.');
     const result = await response.json();
     if (!result || typeof result.id !== 'string' || !result.id) return reply(502, 'We could not confirm submission. Please retry.');
+    if (claimed) await claimed.context.service.finish(claimed.sessionId, claimed.submissionId, result.id);
+    committed = true;
     return reply(200);
   } catch (error) {
     if (error instanceof InputError) return reply(400, error.message);
+    if (error instanceof AttachmentError) return reply(error.status, error.message);
     return reply(502, 'We could not confirm submission. Please retry; your details have been kept.');
+  } finally {
+    if (claimed && !committed) {
+      try { await claimed.context.service.finish(claimed.sessionId, claimed.submissionId); } catch { /* Retry remains bound to the original provider key; no customer data is logged. */ }
+    }
   }
 }

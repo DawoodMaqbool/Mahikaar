@@ -23,14 +23,16 @@ export type ProductImage = {
 
 /** One physically photographed colour of a design. The first image is its lead view. */
 export type Colourway = {
+  /** Permanent URL identifier for this colourway. */
+  id: string;
   name: string;
   images: ProductImage[];
 };
 
 export type PortfolioSpecimen = {
   number: string;
-  /** Internal identifier; not shown to visitors. */
-  slug?: string;
+  /** Permanent public URL identifier; keep stable when titles or ordering change. */
+  slug: string;
   category: PortfolioCategory;
   name: string;
   /** Omitted when the last has not been verified. */
@@ -66,6 +68,7 @@ export const customizationNote =
 export const portfolioSpecimens: PortfolioSpecimen[] = [
   {
     number: "01",
+    slug: "empress-cap-toe-oxford",
     category: "oxford",
     name: "The Empress Cap-Toe Oxford",
     last: "Last No. 042 — Classic Almond",
@@ -85,6 +88,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
   },
   {
     number: "02",
+    slug: "gulberg-penny-loafer",
     category: "loafer",
     name: "The Gulberg Penny Loafer",
     last: "Last No. 104 — Round Curvature",
@@ -122,6 +126,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     whiteBackdrop: true,
     colourways: [
       {
+        id: "dark-brown",
         name: "Dark Brown",
         images: [
           {
@@ -148,6 +153,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
   },
   {
     number: "04",
+    slug: "mall-road-chelsea-boot",
     category: "boots",
     name: "The Mall Road Chelsea Boot",
     last: "Last No. 119 — Tapered High-Instep",
@@ -167,6 +173,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
   },
   {
     number: "05",
+    slug: "diplomat-adelaide-oxford",
     category: "oxford",
     name: "The Diplomat Adelaide Oxford",
     last: "Last No. 073 — Sharp Chisel",
@@ -185,6 +192,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
   },
   {
     number: "06",
+    slug: "nomad-chukka-boot",
     category: "boots",
     name: "The Nomad Chukka Boot",
     last: "Last No. 095 — Anatomical Round",
@@ -223,6 +231,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     whiteBackdrop: true,
     colourways: [
       {
+        id: "white-black",
         name: "White / Black",
         images: [
           {
@@ -246,6 +255,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
         ],
       },
       {
+        id: "white-brown",
         name: "White / Brown",
         images: [
           {
@@ -284,6 +294,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     leadTime: "2–4 Weeks",
     colourways: [
       {
+        id: "dark-brown",
         name: "Dark Brown",
         images: [
           {
@@ -328,6 +339,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     leadTime: "2–4 Weeks",
     colourways: [
       {
+        id: "burgundy",
         name: "Burgundy",
         images: [
           {
@@ -366,6 +378,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     leadTime: "2–4 Weeks",
     colourways: [
       {
+        id: "black",
         name: "Black",
         images: [
           {
@@ -411,6 +424,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     leadTime: "2–4 Weeks",
     colourways: [
       {
+        id: "dark-brown",
         name: "Dark Brown",
         images: [
           {
@@ -455,6 +469,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     leadTime: "2–4 Weeks",
     colourways: [
       {
+        id: "olive-white",
         name: "Olive / White",
         images: [
           {
@@ -478,6 +493,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
         ],
       },
       {
+        id: "navy-white",
         name: "Navy / White",
         images: [
           {
@@ -522,6 +538,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
     leadTime: "2–4 Weeks",
     colourways: [
       {
+        id: "white-black",
         name: "White / Black",
         images: [
           {
@@ -541,6 +558,7 @@ export const portfolioSpecimens: PortfolioSpecimen[] = [
         ],
       },
       {
+        id: "white-brown",
         name: "White / Brown",
         images: [
           {
@@ -671,6 +689,8 @@ export const categorisedNumbers = styleCategories.flatMap((category) => category
 
 /** One photo in a category grid: a single look (design and colour) with a short code. */
 export type CatalogueVariant = {
+  product: string;
+  colourway?: string;
   code: string;
   name: string;
   colour?: string;
@@ -684,10 +704,10 @@ export function variantsForCategory(id: StyleCategoryId): CatalogueVariant[] {
   const category = styleCategories.find((entry) => entry.id === id);
   if (!category) return [];
 
-  type Look = { specimen: PortfolioSpecimen; colour?: string; images: ProductImage[] };
+  type Look = { specimen: PortfolioSpecimen; colour?: string; colourway?: string; images: ProductImage[] };
   const looks = specimensForCategory(id).flatMap((specimen): Look[] =>
     specimen.colourways?.length
-      ? specimen.colourways.map((colourway) => ({ specimen, colour: colourway.name, images: colourway.images }))
+      ? specimen.colourways.map((colourway) => ({ specimen, colour: colourway.name, colourway: colourway.id, images: colourway.images }))
       : [
           {
             specimen,
@@ -696,11 +716,35 @@ export function variantsForCategory(id: StyleCategoryId): CatalogueVariant[] {
         ],
   );
 
-  return looks.map(({ specimen, colour, images }, index) => ({
+  return looks.map(({ specimen, colour, colourway, images }, index) => ({
+    product: specimen.slug,
+    colourway,
     code: `${category.code}-${String(index + 1).padStart(2, "0")}`,
     name: specimen.name,
     colour,
     images,
     whiteBackdrop: specimen.whiteBackdrop,
   }));
+}
+
+/** Shareable catalogue state, independent of generated display reference codes. */
+export function catalogueHref(category?: StyleCategoryId, product?: string, colourway?: string) {
+  const params = new URLSearchParams();
+  if (category) params.set("category", category);
+  if (product) params.set("product", product);
+  if (colourway) params.set("colourway", colourway);
+  return `/portfolio${params.size ? `?${params}` : ""}`;
+}
+
+export function resolveCatalogueSelection(params: { get(name: string): string | null }) {
+  const product = params.get("product");
+  const category = styleCategories.find((entry) => entry.id === params.get("category") && entry.numbers.length > 0);
+  // A valid product determines its category, even if a shared URL has a stale category.
+  const productCategory = product ? styleCategories.find((entry) =>
+    variantsForCategory(entry.id).some((variant) => variant.product === product),
+  ) : undefined;
+  const view = productCategory ?? category ?? null;
+  const matches = view ? variantsForCategory(view.id).filter((variant) => variant.product === product) : [];
+  const selected = matches.find((variant) => variant.colourway === params.get("colourway")) ?? matches[0] ?? null;
+  return { view, selected };
 }

@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, type DragEvent, type FormEvent, type ReactNode } from "react";
-import { attachmentMessage, enquiryFields, submitEnquiry } from "@/lib/enquiries/client";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { enquiryFields, submitEnquiry } from "@/lib/enquiries/client";
+import { useQuoteAttachments } from "./useQuoteAttachments";
+import { QuoteAttachments } from "./QuoteAttachments";
 import { Icon } from "@/components/ui/Icon";
 
 const inputClass =
@@ -150,18 +152,9 @@ const brandingOptions = [
   },
 ];
 
-function describeFiles(files: FileList) {
-  if (files.length === 1) {
-    return `Attached: ${files[0].name} (${Math.round(files[0].size / 1024)} KB)`;
-  }
-  return `Attached: ${files.length} files`;
-}
-
 export function QuoteForm() {
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const attachments = useQuoteAttachments();
   const confirmationRef = useRef<HTMLDivElement>(null);
-  const [fileStatus, setFileStatus] = useState("No documents attached yet");
-  const [dragging, setDragging] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const [pending, setPending] = useState(false);
@@ -179,28 +172,19 @@ export function QuoteForm() {
     }
   }, [submitted]);
 
-  function handleDrop(event: DragEvent<HTMLLabelElement>) {
-    event.preventDefault();
-    setDragging(false);
-    const files = event.dataTransfer.files;
-    if (files.length > 0 && fileInputRef.current) {
-      fileInputRef.current.files = files;
-      setFileStatus(describeFiles(files));
-    }
-  }
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (busy.current) return;
     setError("");
-    if (fileInputRef.current?.files?.length) { setError(attachmentMessage); return; }
     const fields = enquiryFields(event.currentTarget);
-    const body = JSON.stringify(fields);
-    if (attempt.current.body !== body) attempt.current = { body, id: crypto.randomUUID() };
     busy.current = true;
     setPending(true);
     try {
-      await submitEnquiry({ ...fields, source: "Request a Quote", submissionId: attempt.current.id });
+      const references = await attachments.prepare(typeof fields.website === "string" ? fields.website : "");
+      const payload = { ...fields, ...(references ? { attachments: references } : {}) };
+      const body = JSON.stringify(payload);
+      if (attempt.current.body !== body) attempt.current = { body, id: crypto.randomUUID() };
+      await submitEnquiry({ ...payload, source: "Request a Quote", submissionId: attempt.current.id });
       setSubmitted(true);
     } catch (error) {
       setError(error instanceof Error && error.name !== "TimeoutError" ? error.message : "We could not confirm submission. Please retry; your details have been kept.");
@@ -343,62 +327,7 @@ export function QuoteForm() {
                   className={inputClass}
                 />
               </div>
-              <div className="space-y-2">
-                <span className={labelClass} id="attachments-label">
-                  Attach Files (optional)
-                </span>
-                {/* A <label> wrapping the input makes the whole zone clickable and keyboard-accessible. */}
-                <label
-                  htmlFor="fileInput"
-                  onDragOver={(event) => {
-                    event.preventDefault();
-                    setDragging(true);
-                  }}
-                  onDragLeave={() => setDragging(false)}
-                  onDrop={handleDrop}
-                  className={`min-w-0 border border-dashed border-outline px-4 py-8 sm:px-8 text-center cursor-pointer hover:bg-surface-container flex flex-col items-center justify-center space-y-3 has-focus-visible:ring-2 has-focus-visible:ring-ink ${
-                    dragging ? "bg-surface-container-high" : "bg-surface"
-                  }`}
-                >
-                  <span className="w-12 h-12 flex items-center justify-center text-secondary">
-                    <Icon name="folder_zip" className="text-[24px]" />
-                  </span>
-                  <span className="space-y-1 block">
-                    <span className="type-headline-sm text-on-surface block">Click to upload or drag files here</span>
-                    <span className="type-body-sm text-on-surface-variant block">
-                      Attachments are not yet supported. Please submit without files; design files can be shared after initial contact.
-                    </span>
-                  </span>
-                  <input
-                    ref={fileInputRef}
-                    id="fileInput"
-                    name="attachments"
-                    type="file"
-                    multiple
-                    aria-labelledby="attachments-label"
-                    aria-describedby="fileStatus"
-                    className="sr-only"
-                    onChange={(event) => {
-                      const files = event.currentTarget.files;
-                      setFileStatus(files?.length ? describeFiles(files) : "No documents attached yet");
-                    }}
-                  />
-                  <span id="fileStatus" aria-live="polite" className="type-body-sm text-secondary max-w-full break-all">
-                    {fileStatus}
-                  </span>
-                </label>
-                <button
-                  type="button"
-                  className="editorial-link type-body-sm"
-                  onClick={() => {
-                    if (fileInputRef.current) fileInputRef.current.value = "";
-                    setFileStatus("No documents attached yet");
-                    setError("");
-                  }}
-                >
-                  Clear selected files
-                </button>
-              </div>
+              <QuoteAttachments controller={attachments} disabled={pending} />
             </div>
           </div>
         </details>

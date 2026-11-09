@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState, type RefObject } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useRef, type RefObject } from "react";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import {
+  catalogueHref,
+  resolveCatalogueSelection,
   specimensForCategory,
   styleCategories,
   variantsForCategory,
@@ -193,13 +196,38 @@ function VariantDialog({
 /** Category-first landing, then a photo grid of the looks in the chosen category. */
 export function PortfolioCatalog() {
   const openInquiry = useInquiryModal();
-  const [view, setView] = useState<StyleCategory | null>(null);
-  const [selected, setSelected] = useState<CatalogueVariant | null>(null);
+  const searchParams = useSearchParams();
+  const { view, selected } = resolveCatalogueSelection(searchParams);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const selectionRef = useRef(selected);
+
+  function navigate(href: string, replace = false) {
+    const url = new URL(href, window.location.origin);
+    const params = new URLSearchParams(window.location.search);
+    for (const key of ["category", "product", "colourway"]) {
+      params.delete(key);
+      const value = url.searchParams.get(key);
+      if (value) params.set(key, value);
+    }
+    const next = `${url.pathname}${params.size ? `?${params}` : ""}${window.location.hash}`;
+    if (replace) window.history.replaceState(null, "", next);
+    else window.history.pushState(null, "", next);
+  }
+
+  useEffect(() => {
+    selectionRef.current = selected;
+    const dialog = dialogRef.current;
+    if (selected && !dialog?.open) dialog?.showModal();
+    else if (!selected && dialog?.open) dialog.close();
+  }, [selected]);
+
+  function closeVariant() {
+    // Ignore close events caused by Back/Forward rather than a visitor action.
+    if (selectionRef.current) navigate(catalogueHref(view?.id), true);
+  }
 
   function showVariant(variant: CatalogueVariant) {
-    setSelected(variant);
-    dialogRef.current?.showModal();
+    navigate(catalogueHref(view?.id, variant.product, variant.colourway));
   }
 
   // Only categories that have an approved specimen are offered.
@@ -231,7 +259,7 @@ export function PortfolioCatalog() {
                   image={useCard ? cards[0].image : cover.src}
                   alt={useCard ? cards[0].alt : cover.alt}
                   preview={cover.kind === "ai-concept"}
-                  onOpen={() => setView(category)}
+                  onOpen={() => navigate(catalogueHref(category.id))}
                 />
               );
             })}
@@ -243,7 +271,7 @@ export function PortfolioCatalog() {
             <div className="flex flex-wrap items-center justify-between gap-3 mt-4">
               <button
                 type="button"
-                onClick={() => setView(null)}
+                onClick={() => navigate(catalogueHref())}
                 className="action-secondary gap-2"
               >
                 <Icon name="arrow_back" className="text-[16px]" />
@@ -277,7 +305,7 @@ export function PortfolioCatalog() {
         </>
       )}
 
-      <VariantDialog variant={selected} dialogRef={dialogRef} onClosed={() => setSelected(null)} />
+      <VariantDialog variant={selected} dialogRef={dialogRef} onClosed={closeVariant} />
     </>
   );
 }

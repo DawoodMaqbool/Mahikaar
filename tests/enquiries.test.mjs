@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import server from '../.enquiry-tests/server.js';
-import client from '../.enquiry-tests/client.js';
-import limiter from '../.enquiry-tests/rate-limit.js';
+import server from '../.enquiry-tests/lib/enquiries/server.js';
+import client from '../.enquiry-tests/lib/enquiries/client.js';
+import limiter from '../.enquiry-tests/lib/enquiries/rate-limit.js';
 const { validateEnquiry, composeEmail } = server;
 // Every ordinary test supplies a mocked shared limiter; no live service is called.
 const handleEnquiry = (request, dependencies = {}) => server.handleEnquiry(request, { rateLimit: async () => false, ...dependencies });
