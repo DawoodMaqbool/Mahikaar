@@ -4,12 +4,12 @@ import { test } from 'node:test';
 
 // Run after a production build to verify emitted tags, including layout inheritance.
 const built = existsSync('.next/server/app/index.html');
-const paths = ['', 'portfolio', 'private-label', 'manufacturing', 'about', 'contact', 'request-a-quote'];
+const paths = ['', 'portfolio', 'private-label', 'manufacturing', 'about', 'contact', 'request-a-quote', 'privacy-policy'];
 const origin = 'https://www.mahikaar.com';
 const read = (name) => readFileSync(`.next/server/app/${name}`, 'utf8');
 const attributes = (tag) => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map((match) => [match[1], match[2]]));
 
-test('seven built pages emit unique metadata, canonical and consistent social URLs', { skip: !built }, () => {
+test('public pages emit unique metadata, canonical and consistent social URLs', { skip: !built }, () => {
   const titles = new Set();
   const descriptions = new Set();
   for (const path of paths) {
@@ -37,11 +37,11 @@ test('seven built pages emit unique metadata, canonical and consistent social UR
     assert.deepEqual(graph.map((item) => item['@type']), ['Organization', 'WebSite']);
     assert.equal(graph[0].url, `${origin}/`);
   }
-  assert.equal(titles.size, 7);
-  assert.equal(descriptions.size, 7);
+  assert.equal(titles.size, paths.length);
+  assert.equal(descriptions.size, paths.length);
 });
 
-test('discovery files list exactly seven public canonicals and no query or utility URLs', { skip: !built }, () => {
+test('discovery files list exactly eight public canonicals and no query or utility URLs', { skip: !built }, () => {
   const sitemap = read('sitemap.xml.body');
   const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
   assert.deepEqual(urls.sort(), paths.map((path) => `${origin}/${path}`).sort());

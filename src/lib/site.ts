@@ -7,6 +7,7 @@ export const routes = {
   privateLabel: "/private-label",
   quote: "/request-a-quote",
   contact: "/contact",
+  privacyPolicy: "/privacy-policy",
 } as const;
 
 export type NavLink = {

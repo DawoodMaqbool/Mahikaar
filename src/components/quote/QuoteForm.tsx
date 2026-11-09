@@ -154,6 +154,7 @@ const brandingOptions = [
 
 export function QuoteForm() {
   const attachments = useQuoteAttachments();
+  const showAttachments = attachments.available && !attachments.checkingAvailability;
   const confirmationRef = useRef<HTMLDivElement>(null);
   const [submitted, setSubmitted] = useState(false);
 
@@ -264,7 +265,9 @@ export function QuoteForm() {
                 Already have more details?
               </span>
               <span className="type-body-sm text-on-surface-variant block mt-0.5">
-                Delivery timing, branding, size notes or design files. All optional.
+                {showAttachments
+                  ? "Delivery timing, branding, size notes or design files. All optional."
+                  : "Delivery timing, branding or size notes. All optional."}
               </span>
             </span>
             <Icon
@@ -308,7 +311,7 @@ export function QuoteForm() {
             </div>
 
             <div className="space-y-6">
-              <SectionHeading tag="Optional" title="Design Files & Specifications" />
+              <SectionHeading tag="Optional" title={showAttachments ? "Design Files & Specifications" : "Project Specifications"} />
               <TextField
                 id="brandUrl"
                 label="Brand Website or Social Link"

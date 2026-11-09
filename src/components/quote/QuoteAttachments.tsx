@@ -4,6 +4,9 @@ import { Icon } from '@/components/ui/Icon';
 import type { useQuoteAttachments } from './useQuoteAttachments';
 export function QuoteAttachments({ controller, disabled }: { controller: ReturnType<typeof useQuoteAttachments>; disabled: boolean }) {
   const input = useRef<HTMLInputElement>(null); const [dragging, setDragging] = useState(false);
+  // Availability already reflects the server feature flag and required configuration.
+  // Render nothing while checking, disabled or unavailable; keep future uploads intact.
+  if (controller.checkingAvailability || !controller.available) return null;
   const pickerDisabled = disabled || controller.checkingAvailability || !controller.available;
   return (
     <div className="space-y-2">
