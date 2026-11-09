@@ -1,3 +1,5 @@
+import { trackSuccessfulEnquiry } from '../analytics';
+
 export function enquiryFields(form: HTMLFormElement) {
   const data = new FormData(form);
   const fields: Record<string, string | string[]> = {};
@@ -19,4 +21,5 @@ export async function submitEnquiry(payload: Record<string, unknown>) {
   }
   const result = await response.json().catch(() => null);
   if (!response.ok || result?.ok !== true) throw new Error(result?.error || 'We could not confirm submission. Please retry; your details have been kept.');
+  trackSuccessfulEnquiry(payload.source, payload.submissionId);
 }
