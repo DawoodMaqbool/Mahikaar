@@ -4,13 +4,13 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useId,
   useRef,
   useState,
   type FormEvent,
   type ReactNode,
 } from "react";
+import { enquiryFields, submitEnquiry } from "@/lib/enquiries/client";
 import { Icon } from "@/components/ui/Icon";
 
 export type InquiryTarget = {
@@ -36,8 +36,9 @@ const fieldLabel = "type-label-sm uppercase tracking-wider text-secondary block 
 const fieldInput =
   "w-full p-3 border border-outline bg-surface-container-low text-on-surface placeholder:text-on-surface-variant placeholder:opacity-100 type-body-sm focus:outline-none focus:bg-surface-container focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ink transition-colors";
 
-export function InquiryModalProvider({ children }: {
+export function InquiryModalProvider({ children, source }: {
   children: ReactNode;
+  source: "Portfolio" | "Private Label";
   /** Retained for compatibility; all enquiry dialogs now use the editorial presentation. */
   editorial?: boolean;
 }) {
@@ -48,8 +49,14 @@ export function InquiryModalProvider({ children }: {
   });
   const [submitted, setSubmitted] = useState(false);
   const id = useId();
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
+  const busy = useRef(false);
+  const attempt = useRef({ body: "", id: "" });
 
   const open = useCallback<OpenInquiry>((next) => {
+    if (busy.current) return;
+    setError("");
     setTarget(next);
     setSubmitted(false);
     // showModal() gives us a backdrop, focus trapping and Escape-to-close for free.
@@ -58,16 +65,22 @@ export function InquiryModalProvider({ children }: {
 
   const close = () => dialogRef.current?.close();
 
-  // As in the original, the dialog closes itself shortly after a successful submit.
-  useEffect(() => {
-    if (!submitted) return;
-    const timer = setTimeout(() => dialogRef.current?.close(), 2600);
-    return () => clearTimeout(timer);
-  }, [submitted]);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    if (busy.current) return;
+    const fields = { ...enquiryFields(event.currentTarget), source };
+    const body = JSON.stringify(fields);
+    if (attempt.current.body !== body) attempt.current = { body, id: crypto.randomUUID() };
+    busy.current = true;
+    setPending(true);
+    setError("");
+    try {
+      await submitEnquiry({ ...fields, submissionId: attempt.current.id });
+      setSubmitted(true);
+      attempt.current = { body: "", id: "" };
+    } catch (error) {
+      setError(error instanceof Error && error.name !== "TimeoutError" ? error.message : "We could not confirm submission. Please retry; your details have been kept.");
+    } finally { busy.current = false; setPending(false); }
   }
 
   return (
@@ -104,14 +117,15 @@ export function InquiryModalProvider({ children }: {
           {submitted ? (
             <div role="status" className="p-6 bg-surface-container-low text-center space-y-2">
               <Icon name="verified" className="text-[36px] text-secondary" />
-              <h3 className="type-headline-sm text-on-surface">Enquiry Received</h3>
+              <h3 className="type-headline-sm text-on-surface">Enquiry Submitted</h3>
               <p className="type-body-sm text-on-surface-variant">
-                Thank you. Your enquiry has been received, and we will be in touch to confirm
+                Thank you. Your enquiry has been accepted for sending, and we will be in touch to confirm
                 feasibility, materials, pricing, and timelines.
               </p>
             </div>
           ) : (
-            <form className="space-y-5 pt-2" onSubmit={handleSubmit}>
+            <form className="space-y-5 pt-2" onSubmit={handleSubmit} aria-busy={pending}>
+              <div hidden aria-hidden="true"><label>Leave blank<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
               <div className="space-y-1">
                 <label htmlFor={`${id}-style`} className={fieldLabel}>
                   Style of Interest
@@ -131,13 +145,13 @@ export function InquiryModalProvider({ children }: {
                   <label htmlFor={`${id}-name`} className={fieldLabel}>
                     Representative Name
                   </label>
-                  <input id={`${id}-name`} type="text" required placeholder="e.g. Alistair Wright" className={fieldInput} />
+                  <input name="fullName" id={`${id}-name`} type="text" required placeholder="e.g. Alistair Wright" className={fieldInput} />
                 </div>
                 <div className="space-y-1">
                   <label htmlFor={`${id}-company`} className={fieldLabel}>
                     Label / Corporate Entity
                   </label>
-                  <input id={`${id}-company`} type="text" required placeholder="e.g. Wright & Sons Bespoke" className={fieldInput} />
+                  <input name="companyName" id={`${id}-company`} type="text" required placeholder="e.g. Wright & Sons Bespoke" className={fieldInput} />
                 </div>
               </div>
 
@@ -146,13 +160,13 @@ export function InquiryModalProvider({ children }: {
                   <label htmlFor={`${id}-email`} className={fieldLabel}>
                     Business Email
                   </label>
-                  <input id={`${id}-email`} type="email" required placeholder="client@atelier.com" className={fieldInput} />
+                  <input name="businessEmail" id={`${id}-email`} type="email" required placeholder="client@atelier.com" className={fieldInput} />
                 </div>
                 <div className="space-y-1">
                   <label htmlFor={`${id}-volume`} className={fieldLabel}>
                     Projected Volume (Pairs)
                   </label>
-                  <select id={`${id}-volume`} className={fieldInput}>
+                  <select name="volume" id={`${id}-volume`} className={fieldInput}>
                     <option>12–24 Pairs (Trial Order)</option>
                     <option>25–50 Pairs (Seasonal Capsule)</option>
                     <option>50+ Pairs (Private Label Volume)</option>
@@ -166,7 +180,7 @@ export function InquiryModalProvider({ children }: {
                   Leather, Colour &amp; Branding Requirements
                 </label>
                 <textarea
-                  id={`${id}-requirements`}
+                  name="requirements" id={`${id}-requirements`}
                   rows={3}
                   placeholder="Outline leather type, colour, sole, branding, or finishing requirements..."
                   className={fieldInput}
@@ -183,6 +197,8 @@ export function InquiryModalProvider({ children }: {
                 </p>
               </div>
 
+              {error && <p role="alert" className="type-body-sm text-on-surface">{error}</p>}
+              <p role="status" className="sr-only">{pending ? "Submitting enquiry…" : ""}</p>
               <div className="flex items-center justify-end gap-3 pt-2">
                 <button
                   type="button"
@@ -193,9 +209,10 @@ export function InquiryModalProvider({ children }: {
                 </button>
                 <button
                   type="submit"
+                  disabled={pending}
                   className="action-primary"
                 >
-                  Send Enquiry
+                  {pending ? "Submitting…" : "Send Enquiry"}
                 </button>
               </div>
             </form>

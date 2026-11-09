@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type DragEvent, type FormEvent, type ReactNode } from "react";
+import { attachmentMessage, enquiryFields, submitEnquiry } from "@/lib/enquiries/client";
 import { Icon } from "@/components/ui/Icon";
 
 const inputClass =
@@ -163,6 +164,11 @@ export function QuoteForm() {
   const [dragging, setDragging] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
+  const busy = useRef(false);
+  const attempt = useRef({ body: "", id: "" });
+
   useEffect(() => {
     if (submitted) {
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -183,10 +189,22 @@ export function QuoteForm() {
     }
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // There is no backend yet: like the original, this only shows a confirmation.
-    setSubmitted(true);
+    if (busy.current) return;
+    setError("");
+    if (fileInputRef.current?.files?.length) { setError(attachmentMessage); return; }
+    const fields = enquiryFields(event.currentTarget);
+    const body = JSON.stringify(fields);
+    if (attempt.current.body !== body) attempt.current = { body, id: crypto.randomUUID() };
+    busy.current = true;
+    setPending(true);
+    try {
+      await submitEnquiry({ ...fields, source: "Request a Quote", submissionId: attempt.current.id });
+      setSubmitted(true);
+    } catch (error) {
+      setError(error instanceof Error && error.name !== "TimeoutError" ? error.message : "We could not confirm submission. Please retry; your details have been kept.");
+    } finally { busy.current = false; setPending(false); }
   }
 
   return (
@@ -194,8 +212,10 @@ export function QuoteForm() {
       <form
         className={`space-y-10 ${submitted ? "opacity-40 pointer-events-none" : ""}`}
         inert={submitted}
+        aria-busy={pending}
         onSubmit={handleSubmit}
       >
+        <div hidden aria-hidden="true"><label>Leave blank<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
         <div className="space-y-6">
           <SectionHeading tag="Required" title="About You" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -346,8 +366,7 @@ export function QuoteForm() {
                   <span className="space-y-1 block">
                     <span className="type-headline-sm text-on-surface block">Click to upload or drag files here</span>
                     <span className="type-body-sm text-on-surface-variant block">
-                      Tech packs, sketches, reference images or moodboards (PDF, ZIP, AI, DXF, PNG up
-                      to 25MB). Not needed to get started.
+                      Attachments are not yet supported. Please submit without files; design files can be shared after initial contact.
                     </span>
                   </span>
                   <input
@@ -361,24 +380,38 @@ export function QuoteForm() {
                     className="sr-only"
                     onChange={(event) => {
                       const files = event.currentTarget.files;
-                      if (files && files.length > 0) setFileStatus(describeFiles(files));
+                      setFileStatus(files?.length ? describeFiles(files) : "No documents attached yet");
                     }}
                   />
                   <span id="fileStatus" aria-live="polite" className="type-body-sm text-secondary max-w-full break-all">
                     {fileStatus}
                   </span>
                 </label>
+                <button
+                  type="button"
+                  className="editorial-link type-body-sm"
+                  onClick={() => {
+                    if (fileInputRef.current) fileInputRef.current.value = "";
+                    setFileStatus("No documents attached yet");
+                    setError("");
+                  }}
+                >
+                  Clear selected files
+                </button>
               </div>
             </div>
           </div>
         </details>
 
+        {error && <p role="alert" className="type-body-sm text-on-surface">{error}</p>}
+        <p role="status" className="sr-only">{pending ? "Submitting enquiry…" : ""}</p>
         <div className="pt-2 space-y-4">
           <button
             type="submit"
+            disabled={pending}
             className="action-primary w-full gap-3"
           >
-            <span>Send Enquiry</span>
+            <span>{pending ? "Submitting…" : "Send Enquiry"}</span>
             <Icon name="arrow_forward" className="text-[18px]" />
           </button>
           <p className="type-body-sm text-on-surface-variant text-center sm:text-left">
@@ -391,10 +424,10 @@ export function QuoteForm() {
         <div ref={confirmationRef} role="status" className="mt-8 p-6 bg-surface-container-low text-on-surface space-y-4">
           <div className="flex items-center gap-3 text-secondary">
             <Icon name="task_alt" className="text-[28px]" />
-            <span className="type-headline-sm">Enquiry Received</span>
+            <span className="type-headline-sm">Enquiry Submitted</span>
           </div>
           <p className="type-body-md text-on-surface-variant leading-relaxed">
-            Thank you for contacting Mahikaar. Your enquiry has been received. Our team will review
+            Thank you for contacting Mahikaar. Your enquiry has been accepted for sending. Our team will review
             your requirements and get back to you regarding feasibility, pricing and estimated
             timelines.
           </p>

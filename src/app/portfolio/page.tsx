@@ -15,7 +15,7 @@ export default function PortfolioPage() {
   return (
     // The provider is a client component, but the server components passed
     // in as children are still rendered on the server.
-    <InquiryModalProvider editorial>
+    <InquiryModalProvider source="Portfolio" editorial>
       <PortfolioIntro />
       <PortfolioCatalog />
       <BenchmarksSection />

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function PrivateLabelPage() {
   return (
     // The design-reference button opens the shared enquiry dialog, so it needs the provider.
-    <InquiryModalProvider>
+    <InquiryModalProvider source="Private Label">
       <PrivateLabelIntro />
       <OrderingJourney />
       <MaterialsSection />
