@@ -4,7 +4,7 @@ import { test } from 'node:test';
 
 // Run after a production build to verify emitted tags, including layout inheritance.
 const built = existsSync('.next/server/app/index.html');
-const paths = ['', 'portfolio', 'private-label', 'manufacturing', 'about', 'contact', 'request-a-quote', 'privacy-policy'];
+const paths = ['', 'portfolio', 'private-label', 'manufacturing', 'about', 'contact', 'request-a-quote'];
 const origin = 'https://www.mahikaar.com';
 const read = (name) => readFileSync(`.next/server/app/${name}`, 'utf8');
 const attributes = (tag) => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map((match) => [match[1], match[2]]));
@@ -41,7 +41,7 @@ test('public pages emit unique metadata, canonical and consistent social URLs', 
   assert.equal(descriptions.size, paths.length);
 });
 
-test('discovery files list exactly eight public canonicals and no query or utility URLs', { skip: !built }, () => {
+test('discovery files list exactly seven public canonicals and no query or utility URLs', { skip: !built }, () => {
   const sitemap = read('sitemap.xml.body');
   const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
   assert.deepEqual(urls.sort(), paths.map((path) => `${origin}/${path}`).sort());

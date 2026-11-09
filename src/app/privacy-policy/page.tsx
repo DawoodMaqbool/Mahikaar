@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+import { privacyFeaturesEnabled } from "@/lib/privacy-features";
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -15,6 +17,7 @@ function PrivacySection({ id, title, children }: { id: string; title: string; ch
 }
 
 export default function PrivacyPolicyPage() {
+  if (!privacyFeaturesEnabled) notFound();
   return (
     <article className="w-full bg-surface section-standard">
       <Container>
