@@ -2,12 +2,13 @@
 
 import Script from "next/script";
 import Link from "next/link";
+import { privacyFeaturesEnabled } from "@/lib/privacy-features";
 import { routes } from "@/lib/site";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import {
   analyticsConfigured, consentKey, measurementId, readConsent, setConsent,
-  startAnalytics, trackPageView,
+  startAnalytics, trackPageView, disableAnalytics,
 } from "@/lib/analytics";
 
 function subscribe(callback: () => void) {
@@ -23,6 +24,10 @@ export function AnalyticsConsent() {
   const [editing, setEditing] = useState(false);
 
   useEffect(() => {
+    if (!analyticsConfigured) {
+      disableAnalytics();
+      return;
+    }
     function sync(event: StorageEvent) {
       if (event.key === consentKey || event.key === null) {
         // Reconcile consent and discard any previously loaded analytics runtime.
@@ -61,7 +66,7 @@ export function AnalyticsConsent() {
                 With your permission, Google Analytics uses cookies to measure website visits and successful enquiries.
                 Rejecting does not prevent enquiries. You can change your choice using Analytics preferences in the footer.
                 Withdrawing an earlier acceptance reloads this page to stop analytics.
-                {" "}<Link href={routes.privacyPolicy} className="editorial-link">Read our Privacy Policy</Link>.
+                {privacyFeaturesEnabled && <> {" "}<Link href={routes.privacyPolicy} className="editorial-link">Read our Privacy Policy</Link>.</>}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

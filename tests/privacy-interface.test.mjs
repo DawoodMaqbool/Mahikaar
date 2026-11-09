@@ -68,7 +68,7 @@ test('approved availability restores existing upload controls and copy', () => {
 });
 
 test('privacy page renders draft disclosure and existing contact address; footer links to it', () => {
-  const load = componentLoader();
+  const load = componentLoader({ '@/lib/privacy-features': { privacyFeaturesEnabled: true } });
   const { default: Page, metadata } = load('@/app/privacy-policy/page');
   const html = renderToStaticMarkup(React.createElement(Page));
   assert.equal(metadata.alternates.canonical, 'https://www.mahikaar.com/privacy-policy');
@@ -83,6 +83,7 @@ test('privacy page renders draft disclosure and existing contact address; footer
 
 test('open consent interface links to privacy notice and retains Accept and Reject controls', () => {
   const load = componentLoader({
+    '@/lib/privacy-features': { privacyFeaturesEnabled: true },
     react: { ...React, useSyncExternalStore: (_subscribe, getSnapshot) => getSnapshot() },
     'next/navigation': { usePathname: () => '/' },
     '@/lib/analytics': { analyticsConfigured: true, readConsent: () => null },
@@ -93,4 +94,21 @@ test('open consent interface links to privacy notice and retains Accept and Reje
   assert.match(html, /Accept analytics/);
   assert.match(html, /Reject analytics/);
   assert.doesNotMatch(html, /googletagmanager\.com/);
+});
+
+
+test('temporary hold returns notFound and hides policy links and all consent UI', () => {
+  const load = componentLoader({
+    '@/lib/privacy-features': { privacyFeaturesEnabled: false },
+    '@/lib/analytics': { analyticsConfigured: false, readConsent: () => 'accepted' },
+    'next/navigation': { usePathname: () => '/', notFound: () => { throw new Error('404'); } },
+  });
+  const { default: Page } = load('@/app/privacy-policy/page');
+  assert.throws(() => renderToStaticMarkup(React.createElement(Page)), /404/);
+  const { SiteFooter } = load('@/components/layout/SiteFooter');
+  const html = renderToStaticMarkup(React.createElement(SiteFooter));
+  assert.doesNotMatch(html, /privacy-policy|Privacy Policy|Analytics preferences|Accept analytics|googletagmanager/);
+  const { default: sitemap } = load('@/app/sitemap');
+  assert.equal(sitemap().length, 7);
+  assert.ok(sitemap().every(entry => !entry.url.includes('/privacy-policy')));
 });

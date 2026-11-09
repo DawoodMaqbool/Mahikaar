@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
+process.env.NEXT_PUBLIC_PRIVACY_FEATURES_ENABLED = 'true';
 process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID = 'G-TEST123';
 process.env.NEXT_PUBLIC_GA_MANUAL_TRACKING_READY = 'true';
 const require = createRequire(import.meta.url);
@@ -116,4 +117,38 @@ test('unconfigured analytics is fail-closed', () => {
   assert.equal(unconfigured.analyticsConfigured, false);
   assert.equal(unconfigured.startAnalytics(), false);
   process.env.NEXT_PUBLIC_GA_MANUAL_TRACKING_READY = saved;
+});
+
+
+test('temporary hold blocks returning accepted visitors, clears only GA cookies and preserves enquiries', async () => {
+  delete process.env.NEXT_PUBLIC_PRIVACY_FEATURES_ENABLED;
+  for (const moduleName of ['analytics', 'privacy-features', 'enquiries/client']) {
+    delete require.cache[require.resolve(`../.enquiry-tests/lib/${moduleName}.js`)];
+  }
+  const disabled = require('../.enquiry-tests/lib/analytics.js');
+  const client = require('../.enquiry-tests/lib/enquiries/client.js');
+  const previous = { window: globalThis.window, document: globalThis.document, fetch: globalThis.fetch };
+  const cookies = [];
+  const calls = [];
+  globalThis.window = { localStorage: storage(), sessionStorage: storage(), location: { hostname: 'www.mahikaar.com', pathname: '/request-a-quote' }, gtag: (...args) => calls.push(args) };
+  window.localStorage.setItem(disabled.consentKey, 'accepted');
+  globalThis.document = { get cookie() { return '_ga=old; _ga_TEST123=old; _gid=old; _gat_test=old; necessary=keep'; }, set cookie(value) { cookies.push(value); } };
+  let submitted = false;
+  globalThis.fetch = async () => { submitted = true; return Response.json({ ok: true }); };
+  try {
+    assert.equal(disabled.analyticsConfigured, false);
+    assert.equal(disabled.readConsent(), 'accepted');
+    disabled.disableAnalytics();
+    assert.equal(window['ga-disable-G-TEST123'], true);
+    assert.equal(disabled.startAnalytics(), false);
+    disabled.trackPageView('/about');
+    disabled.trackSuccessfulEnquiry('Contact', 'returning');
+    await client.submitEnquiry({ submissionId: 'disabled-success', source: 'Request a Quote' });
+    assert.equal(submitted, true);
+    assert.deepEqual(calls, []);
+    assert.equal(window.dataLayer, undefined);
+    for (const name of ['_ga', '_ga_TEST123', '_gid', '_gat_test']) assert.ok(cookies.some(value => value.startsWith(`${name}=`) && value.includes('domain=mahikaar.com')));
+    assert.ok(cookies.every(value => !value.startsWith('necessary=')));
+    assert.equal(disabled.readConsent(), 'accepted');
+  } finally { Object.assign(globalThis, previous); }
 });

@@ -1,3 +1,4 @@
+import { privacyFeaturesEnabled } from "@/lib/privacy-features";
 import Link from "next/link";
 import { AnalyticsConsent } from "@/components/analytics/AnalyticsConsent";
 import { catalogueHref } from "@/data/portfolio";
@@ -86,7 +87,7 @@ export function SiteFooter() {
         <div className="border-t border-outline-variant/30 pt-6 flex flex-col md:flex-row md:items-start justify-between gap-4 type-body-sm text-outline-variant">
           <p>© 2026 Mahikaar. Made-to-order leather footwear.</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href={routes.privacyPolicy} className={footerLink}>Privacy Policy</Link>
+            {privacyFeaturesEnabled && <Link href={routes.privacyPolicy} className={footerLink}>Privacy Policy</Link>}
             <AnalyticsConsent />
             <span>Goodyear Welted</span>
             <span>Made to Order</span>

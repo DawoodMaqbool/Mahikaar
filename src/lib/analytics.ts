@@ -1,9 +1,11 @@
+import { privacyFeaturesEnabled } from "./privacy-features";
+
 /** Optional analytics only. Never pass enquiry payloads to this module. */
 export const consentKey = 'mahikaar.analytics-consent.v1';
 export type AnalyticsConsent = 'accepted' | 'rejected' | null;
 export const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? '';
 // Enable only after Enhanced Measurement has been disabled in the GA4 stream.
-export const analyticsConfigured = /^G-[A-Z0-9]+$/.test(measurementId)
+export const analyticsConfigured = privacyFeaturesEnabled && /^G-[A-Z0-9]+$/.test(measurementId)
   && process.env.NEXT_PUBLIC_GA_MANUAL_TRACKING_READY === 'true';
 const publicPaths = new Set(['/', '/about', '/portfolio', '/private-label', '/manufacturing', '/contact', '/request-a-quote']);
 type AnalyticsWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
@@ -38,6 +40,13 @@ export function clearAnalyticsCookies() {
       }
     }
   }
+}
+
+/** Runs even while the consent UI is hidden; keep saved preferences for restoration. */
+export function disableAnalytics() {
+  if (typeof window === 'undefined') return;
+  (window as unknown as Record<string, unknown>)[`ga-disable-${measurementId}`] = true;
+  clearAnalyticsCookies();
 }
 
 export function setConsent(value: Exclude<AnalyticsConsent, null>) {
@@ -78,7 +87,7 @@ export function startAnalytics() {
 }
 
 export function trackPageView(path: string) {
-  if (!started || readConsent() !== 'accepted') return;
+  if (!analyticsConfigured || !started || readConsent() !== 'accepted') return;
   if (!publicPaths.has(path)) { previousPath = null; return; }
   if (path === previousPath) return;
   quoteFromContact = path === '/request-a-quote' && previousPath === '/contact';
@@ -110,7 +119,7 @@ export function trackSuccessfulEnquiry(source: unknown, submissionId: unknown) {
     } catch { /* In-memory deduplication remains available. */ }
     const resolvedSource = source === 'Request a Quote' && quoteFromContact ? 'Contact' : source;
     const formSource = typeof resolvedSource === 'string' && Object.hasOwn(sources, resolvedSource) ? sources[resolvedSource] : undefined;
-    if (!formSource || !started || readConsent() !== 'accepted' || !publicPaths.has(window.location.pathname)) return;
+    if (!analyticsConfigured || !formSource || !started || readConsent() !== 'accepted' || !publicPaths.has(window.location.pathname)) return;
     (window as AnalyticsWindow).gtag?.('event', 'generate_lead', { form_source: formSource, send_to: measurementId });
   } catch { /* Blockers and storage failures must not affect accepted enquiries. */ }
 }

@@ -1,3 +1,40 @@
+# Temporary privacy and analytics hold
+
+`NEXT_PUBLIC_PRIVACY_FEATURES_ENABLED` defaults to OFF (unset or anything other
+than exactly `true`) in all environments, including Production. Existing GA ID
+and readiness settings cannot override this hold. The shared flag lives in
+`src/lib/privacy-features.ts`.
+
+While OFF, `/privacy-policy` returns 404, policy links and the sitemap entry are
+hidden, and analytics scripts, events, banner and footer preferences are disabled.
+The footer still mounts a cleanup effect: it sets the GA disable property and
+expires accessible first-party `_ga`, `_ga_*`, `_gid` and `_gat*` cookies on the
+current/root paths and host/parent domains. Stored consent is preserved but
+cannot enable tracking during the hold. HttpOnly cookies or cookies on other
+inaccessible paths/domains cannot be removed by JavaScript. Already open tabs
+running an older release need a reload to receive this change.
+
+## Re-enable both features
+
+1. Finalize and approve the preserved policy in `src/app/privacy-policy/page.tsx`
+   using the unchanged `docs/privacy-policy-review.md` checklist.
+2. Complete the GA4 configuration prerequisites below, especially disabling
+   Enhanced Measurement. Preserve `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-2XE0WF03NM`
+   and set `NEXT_PUBLIC_GA_MANUAL_TRACKING_READY=true` only after that review.
+3. Set `NEXT_PUBLIC_PRIVACY_FEATURES_ENABLED=true` in the intended build
+   environment (including Production when approved).
+4. Rebuild, validate the restored route, links, sitemap and opt-in tracking, then
+   manually deploy. Public flags are compiled at build time. Prior accepted
+   consent is retained and becomes eligible again when analytics is configured.
+5. To reinstate the hold, unset the flag or set it to `false`, rebuild and manually
+   deploy. No source deletion or policy rewrite is needed.
+
+The implementation and original integration notes below are preserved for
+restoration; references to a public draft and visible controls describe the
+integration when the hold is lifted.
+
+---
+
 # GA4 and enquiry measurement
 
 ## Implementation and audit
