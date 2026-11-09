@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { catalogueHref } from "@/data/portfolio";
 import { Container } from "@/components/ui/Container";
 import { routes } from "@/lib/site";
 
@@ -11,11 +12,11 @@ const capabilities = [
 ];
 
 const specimenLinks = [
-  "Full & Semi Brogues",
-  "Calf Leather Oxfords",
-  "Chelsea Boots",
-  "Unlined Penny Loafers",
-  "Double & Single Monkstraps",
+  { label: "Full & Semi Brogues", href: catalogueHref("full-brogue-wingtip") },
+  { label: "Calf Leather Oxfords", href: catalogueHref("oxfords-derbies") },
+  { label: "Chelsea Boots", href: catalogueHref("boots") },
+  { label: "Unlined Penny Loafers", href: catalogueHref("loafers-slip-ons") },
+  { label: "Double & Single Monkstraps", href: routes.portfolio },
 ];
 
 const inquiryLinks = [
@@ -45,9 +46,9 @@ export function SiteFooter() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
               <nav aria-label="Footwear and capabilities" className="min-w-0">
                 <ul className="type-body-sm">
-                  {specimenLinks.map((label) => (
+                  {specimenLinks.map(({ label, href }) => (
                     <li key={label}>
-                      <Link href={routes.portfolio} className={footerLink}>{label}</Link>
+                      <Link href={href} className={footerLink}>{label}</Link>
                     </li>
                   ))}
                   {inquiryLinks.filter((link) => link.href !== routes.contact).map((link) => (

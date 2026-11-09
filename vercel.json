@@ -1,0 +1,5 @@
+{
+  "crons": [
+    { "path": "/api/internal/attachments/cleanup", "schedule": "*/15 * * * *" }
+  ]
+}

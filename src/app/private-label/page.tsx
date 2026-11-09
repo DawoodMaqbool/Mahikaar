@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { MaterialsSection } from "@/components/manufacturing/MaterialsSection";
 import { InquiryModalProvider } from "@/components/portfolio/InquiryModal";
 import { CommercialTerms } from "@/components/private-label/CommercialTerms";
@@ -8,11 +8,7 @@ import { OrderingJourney } from "@/components/private-label/OrderingJourney";
 import { PrivateLabelCta } from "@/components/private-label/PrivateLabelCta";
 import { PrivateLabelIntro } from "@/components/private-label/PrivateLabelIntro";
 
-export const metadata: Metadata = {
-  title: "Private Label",
-  description:
-    "Premium made-to-order Goodyear welted footwear for international brands: the seven-stage journey from enquiry to dispatch, leather options, branding and customisation, minimum orders and timelines.",
-};
+export const metadata = pageMetadata("privateLabel");
 
 export default function PrivateLabelPage() {
   return (

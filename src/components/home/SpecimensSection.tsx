@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { portfolioSpecimens } from "@/data/portfolio";
+import { catalogueHref, portfolioSpecimens, styleCategories } from "@/data/portfolio";
 import { routes } from "@/lib/site";
 
 const featured = [
@@ -15,7 +15,8 @@ const featured = [
 /** Keep catalogue photographs and alt text as the source of truth. */
 const specimens = featured.flatMap((item) => {
   const source = portfolioSpecimens.find((entry) => entry.number === item.portfolioNumber);
-  return source ? [{ ...item, image: source.image, alt: source.alt, leadTime: source.leadTime }] : [];
+  const category = styleCategories.find((entry) => entry.numbers.includes(item.portfolioNumber));
+  return source ? [{ ...item, href: catalogueHref(category?.id, source.slug, source.colourways?.[0]?.id), image: source.image, alt: source.alt, leadTime: source.leadTime }] : [];
 });
 
 export function SpecimensSection() {
@@ -38,7 +39,7 @@ export function SpecimensSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-10">
           {specimens.map((specimen) => (
             <article key={specimen.portfolioNumber} className="min-w-0">
-              <div className="relative aspect-[4/3] bg-surface-container-low overflow-hidden">
+              <Link href={specimen.href} aria-label={`View ${specimen.name}`} className="block relative aspect-[4/3] bg-surface-container-low overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary">
                 <Image
                   src={specimen.image}
                   alt={specimen.alt}
@@ -46,12 +47,12 @@ export function SpecimensSection() {
                   sizes="(min-width: 1440px) 318px, (min-width: 1280px) 25vw, (min-width: 768px) 50vw, calc(100vw - 48px)"
                   className="object-contain"
                 />
-              </div>
+              </Link>
               <div className="pt-5 space-y-2">
                 <h3 className="type-headline-sm text-on-surface">{specimen.name}</h3>
                 <p className="type-body-sm text-on-surface-variant">{specimen.colour}</p>
                 <p className="type-body-sm text-on-surface-variant">Bulk lead time: {specimen.leadTime}</p>
-                <Link href={routes.portfolio} className="editorial-link type-body-sm inline-flex min-h-12 items-center">
+                <Link href={specimen.href} className="editorial-link type-body-sm inline-flex min-h-12 items-center">
                   View Style<span className="sr-only">: {specimen.name} in the portfolio</span>
                 </Link>
               </div>

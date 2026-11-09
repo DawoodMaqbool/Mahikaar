@@ -1,5 +1,3 @@
-export const attachmentMessage = 'Attachments are not yet supported. Please remove selected files before submitting. You can share design files with our team after initial contact.';
-
 export function enquiryFields(form: HTMLFormElement) {
   const data = new FormData(form);
   const fields: Record<string, string | string[]> = {};
@@ -14,7 +12,7 @@ export async function submitEnquiry(payload: Record<string, unknown>) {
   try {
     response = await fetch('/api/enquiries', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload), signal: AbortSignal.timeout(25_000),
+      body: JSON.stringify(payload), signal: AbortSignal.timeout(payload.attachments ? 100_000 : 25_000),
     });
   } catch {
     throw new Error('We could not confirm submission. Please check your connection and retry; your details have been kept.');

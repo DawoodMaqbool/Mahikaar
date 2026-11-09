@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import {
   ContactDetails,
   InstitutionalCommitments,
@@ -7,11 +7,7 @@ import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactFaq } from "@/components/contact/ContactFaq";
 import { Container } from "@/components/ui/Container";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Contact Mahikaar to discuss made-to-order Goodyear welted footwear, materials, customisation and private-label requirements.",
-};
+export const metadata = pageMetadata("contact");
 
 export default function ContactPage() {
   return (

@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { AfterEnquiry } from "@/components/quote/AfterEnquiry";
 import { QuoteForm } from "@/components/quote/QuoteForm";
 import { QuoteHero } from "@/components/quote/QuoteHero";
 import { QuoteSidebar } from "@/components/quote/QuoteSidebar";
 
-export const metadata: Metadata = {
-  title: "Request a Quote",
-  description:
-    "Share your brief for made-to-order Goodyear welted footwear. We confirm feasibility, material availability, pricing and estimated timelines before an order is finalised.",
-};
+export const metadata = pageMetadata("quote");
 
 export default function RequestQuotePage() {
   return (
